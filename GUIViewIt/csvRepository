@@ -1,0 +1,13 @@
+	,	,	,	,Quantidades,	,	,  	,	,	,Tamanhos,	,	,  	,	,Tempo (ms),	,	,	,	
+Tela, Nome do Arquivo,img,css,js,html,outros,total,img,css,js,html,outros,total,Blocking,Waiting,Receiving,Total,Page load, On Content Load
+ Home,D:\GUIViewIt\harRepository\www.facebook.com+2017-01-26+13-45-49.har,7,5,12,3,1,28,1033,189846,992509,131,173,1183692,1718,3186,396,5300,2800,349
+Home,D:\GUIViewIt\harRepository\www.facebook.com+2017-01-26+13-53-54.har,7,5,12,3,1,28,1033,189846,992509,131,173,1183692,3358,45318,11487,60163,11882,7531
+Home,D:\GUIViewIt\harRepository\www.facebook.com+2017-01-26+13-59-36.har,7,5,12,3,1,28,1032,189846,992509,131,172,1183690,2624,8897,1591,13112,4343,623
+Home,D:\GUIViewIt\harRepository\www.facebook.com+2017-01-26+22-17-31.har,7,5,12,3,1,28,1032,189846,992782,131,173,1183964,2025,9785,2481,14291,4918,988
+Home,D:\GUIViewIt\harRepository\www.facebook.com+2017-02-01+21-04-45.har,7,5,13,3,1,29,1032,194977,942281,131,173,1138594,3104,6774,1440,11318,5242,443
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+00-43-39.har,6,0,4,2,0,12,629,0,723750,437,0,724816,697,1402,357,2456,1041,3
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+00-45-55.har,6,0,4,2,0,12,629,0,723757,431,0,724817,371,1244,274,1889,957,2
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+00-51-50.har,6,0,4,2,0,12,629,0,723750,435,0,724814,626,1186,261,2073,1023,8
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+01-04-03.har,6,0,4,2,0,12,629,0,723750,436,0,724815,928,1258,263,2449,1329,2
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+01-32-28.har,6,0,4,2,0,12,629,0,723750,436,0,724815,741,1103,200,2044,1052,2
+Home,D:\GUIViewIt\harRepository\www.google.com.br+2017-01-26+08-29-53.har,6,0,4,2,0,12,629,0,723750,437,0,724816,768,972,349,2089,1491,2

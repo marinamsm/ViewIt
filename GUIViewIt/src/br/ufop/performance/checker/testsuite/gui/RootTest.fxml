@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="81.0" prefWidth="700.0" styleClass="dark-background-color" stylesheets="@../../../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.performance.checker.testsuite.gui.RootTestController">
+   <children>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="700.0" styleClass="dark-background-color" stylesheets="@../../../../maingui/viewit.css">
+        <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="45.0" valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <ToggleButton fx:id="openTestButton" mnemonicParsing="false" onAction="#openTestButtonAction" prefHeight="79.0" prefWidth="180.0" stylesheets="@../../../../maingui/viewit.css" text="Open Scenario" GridPane.columnIndex="2">
+               <styleClass>
+                  <String fx:value="rich-blue" />
+                  <String fx:value="dark-background-color" />
+               </styleClass></ToggleButton>
+            <ToggleButton fx:id="removeTestButton" mnemonicParsing="false" onAction="#removeTestButtonAction" prefHeight="79.0" prefWidth="179.0" stylesheets="@../../../../maingui/viewit.css" text="Remove Scenario" GridPane.columnIndex="3">
+               <styleClass>
+                  <String fx:value="dark-background-color" />
+                  <String fx:value="rich-blue" />
+               </styleClass></ToggleButton>
+            <ToggleButton fx:id="createTestButton" mnemonicParsing="false" onAction="#createTestButtonAction" prefHeight="79.0" prefWidth="174.0" stylesheets="@../../../../maingui/viewit.css" text="Create Scenario" GridPane.columnIndex="1">
+               <styleClass>
+                  <String fx:value="dark-background-color" />
+                  <String fx:value="rich-blue" />
+               </styleClass></ToggleButton>
+            <ImageView fitHeight="75.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" styleClass="background-viewit-image">
+               <image>
+                  <Image url="@../../../../../../../resources/images/viewit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

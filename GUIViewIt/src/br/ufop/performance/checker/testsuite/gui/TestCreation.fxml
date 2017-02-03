@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@../../../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.performance.checker.testsuite.gui.TestCreationController">
+   <children>
+      <AnchorPane prefHeight="244.0" prefWidth="216.0" styleClass="right-anchor-pane" stylesheets="@../../../../maingui/viewit.css">
+         <children>
+            <Text layoutX="15.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL" wrappingWidth="58.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many times the test should be executed?" wrappingWidth="223.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interval between each test" wrappingWidth="179.13671875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="245.0" prefHeight="277.0" prefWidth="217.0" styleClass="right-anchor-pane" stylesheets="@../../../../maingui/viewit.css">
+         <children>
+            <TextField fx:id="URLField" layoutX="8.0" layoutY="43.0" prefHeight="25.0" prefWidth="196.0" />
+            <ComboBox layoutX="8.0" layoutY="104.0" prefWidth="119.0" fx:id="x_times" />
+            <ComboBox fx:id="y_interval" layoutX="8.0" layoutY="179.0" prefWidth="119.0" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All the configurations for this scenario will be saved in this project before execution" wrappingWidth="401.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <ButtonBar layoutX="177.0" layoutY="300.0" prefHeight="59.0" prefWidth="275.0" styleClass="right-anchor-pane" stylesheets="@../../../../maingui/viewit.css">
+        <buttons>
+          <Button fx:id="advancedButton" mnemonicParsing="false" onAction="#advancedButtonAction" text="Advanced" />
+            <Button fx:id="finishButton" mnemonicParsing="false" onAction="#finishButtonAction" text="Finish" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

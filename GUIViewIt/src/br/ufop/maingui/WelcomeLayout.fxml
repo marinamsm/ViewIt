@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="67.0" layoutY="29.0" prefHeight="94.0" prefWidth="526.0">
+         <children>
+            <Text fill="WHITE" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsHeader" text="Welcome to" />
+            <ImageView fitHeight="78.0" fitWidth="164.0" layoutX="237.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../resources/images/viewit-welcome.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Text fill="WHITE" layoutX="189.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Getting started" />
+      <Text fill="WHITE" layoutX="213.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Tutorial (video)" />
+      <Text fill="WHITE" layoutX="213.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Tutorial (document)" />
+      <Text fill="WHITE" layoutX="213.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="FAQs" />
+      <Text fill="WHITE" layoutX="186.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Language" />
+      <Text fill="WHITE" layoutX="184.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="About" />
+   </children>
+</AnchorPane>

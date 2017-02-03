@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="366.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.maingui.RootLayoutController">
+   <left>
+      <AnchorPane styleClass="lateral-menu-background-color" stylesheets="@viewit.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="373.0" prefWidth="134.0">
+               <children>
+                  <ToggleButton fx:id="analyticsButton" mnemonicParsing="false" onAction="#analyticsButtonAction" prefHeight="123.0" prefWidth="136.0" styleClass="toggle-button-analytics" stylesheets="@viewit.css" />
+                  <ToggleButton fx:id="testButton" mnemonicParsing="false" onAction="#testButtonAction" prefHeight="129.0" prefWidth="135.0" styleClass="toggle-button-scenario" stylesheets="@viewit.css" />
+                  <ToggleButton fx:id="projectButton" mnemonicParsing="false" onAction="#projectButtonAction" prefHeight="121.0" prefWidth="134.0" styleClass="toggle-button-project" stylesheets="@viewit.css" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="373.0" prefWidth="566.0" styleClass="right-anchor-pane" stylesheets="@viewit.css" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <AnchorPane prefHeight="81.0" prefWidth="700.0" styleClass="dark-background-color" stylesheets="@viewit.css" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

@@ -1,0 +1,106 @@
+
+.writingsHeader {
+	-fx-text-fill: white;
+	-fx-font-size: 40px;
+	-fx-font-weight: bold;
+	-fx-alignment: CENTER;
+	-fx-font-family: Lora;
+}
+
+.writingsSubHeader {
+	-fx-text-fill: white;
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+	-fx-alignment: CENTER;
+	-fx-font-family: Lora;
+}
+
+.writings {
+	-fx-text-fill: white;
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-alignment: CENTER;
+	-fx-font-family: Lora;
+}
+
+
+.dark-background-color {
+	-fx-background-color: rgb(49,133,156);
+}
+
+.lateral-menu-background-color {
+	-fx-background-color: rgb(33,89,104);
+	-fx-text-fill: rgb(79,129,189);
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+	-fx-alignment: CENTER;
+	-fx-font-family: Lora;
+	/*-fx-background-radius: 25px;*/
+}
+
+.toggle-button-analytics {
+  -fx-background-image:url("../../../../resources/images/analytics.png"); 
+  -fx-background-color: #215968;
+  -fx-background-size: stretch;
+}
+
+.toggle-button-analytics:hover,selected {
+  -fx-background-image: url("../../../../resources/images/analytics-selected.png");
+  -fx-background-color: #215968;
+}
+
+.toggle-button-scenario {
+  -fx-background-image:url("../../../../resources/images/user-scenario-tests.png"); 
+  -fx-background-color: #215968;
+  -fx-background-size: stretch;
+}
+
+.toggle-button-scenario:hover,selected {
+  -fx-background-image: url("../../../../resources/images/user-scenario-tests-selected.png");
+  -fx-background-color: #215968;
+}
+
+.toggle-button-project {
+  -fx-background-image:url("../../../../resources/images/project-settings.png"); 
+  -fx-background-color: #215968;
+  -fx-background-size: stretch;
+}
+
+.toggle-button-project:hover,selected {
+  -fx-background-image: url("../../../../resources/images/project-settings-selected.png");
+  -fx-background-color: #215968;
+}
+
+.rich-blue {
+    -fx-text-fill: white;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+	-fx-alignment: CENTER;
+	-fx-font-family: Lora;
+	-fx-background-size:stretch;
+	/*-fx-background-radius: 25px;*/
+}
+
+.rich-blue:hover,selected {
+	-fx-background-color:rgb(0,0,0),
+		linear-gradient(rgb(79,129,189), rgb(53,125,215)),
+		linear-gradient(rgb(74,111,193), rgb(79,129,189));
+	/*-fx-background-insets: 0,1,2,3;*/
+    -fx-background-radius: 25px;
+    -fx-border-color: rgb(79,129,189);
+    -fx-padding: 12 30 12 30;
+    /*-fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-font-family: Lora;*/
+    -fx-background-size:stretch;
+}
+
+.rich-blue Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
+.right-anchor-pane {
+  -fx-background-color: rgb(147, 205, 221);
+}
