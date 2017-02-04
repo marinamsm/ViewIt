@@ -23,7 +23,7 @@
 	-fx-font-family: Lora;
 }
 
-
+/*header color*/
 .dark-background-color {
 	-fx-background-color: rgb(49,133,156);
 }
@@ -44,7 +44,7 @@
   -fx-background-size: stretch;
 }
 
-.toggle-button-analytics:hover,selected {
+.toggle-button-analytics:hover, .toggle-button-analytics:selected {
   -fx-background-image: url("../../../../resources/images/analytics-selected.png");
   -fx-background-color: #215968;
 }
@@ -55,7 +55,7 @@
   -fx-background-size: stretch;
 }
 
-.toggle-button-scenario:hover,selected {
+.toggle-button-scenario:hover, .toggle-button-scenario:selected {
   -fx-background-image: url("../../../../resources/images/user-scenario-tests-selected.png");
   -fx-background-color: #215968;
 }
@@ -66,7 +66,7 @@
   -fx-background-size: stretch;
 }
 
-.toggle-button-project:hover,selected {
+.toggle-button-project:hover, .toggle-button-project:selected {
   -fx-background-image: url("../../../../resources/images/project-settings-selected.png");
   -fx-background-color: #215968;
 }
@@ -81,7 +81,7 @@
 	/*-fx-background-radius: 25px;*/
 }
 
-.rich-blue:hover,selected {
+.rich-blue:hover, .rich-blue:selected {
 	-fx-background-color:rgb(0,0,0),
 		linear-gradient(rgb(79,129,189), rgb(53,125,215)),
 		linear-gradient(rgb(74,111,193), rgb(79,129,189));
