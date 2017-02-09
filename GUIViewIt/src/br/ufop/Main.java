@@ -28,11 +28,13 @@ public class Main extends Application {
 import java.io.IOException;
 
 import br.ufop.maingui.RootLayoutController;
-import br.ufop.performance.checker.testsuite.gui.AdvancedSettingsController;
-import br.ufop.performance.checker.testsuite.gui.RootTestController;
-import br.ufop.performance.checker.testsuite.gui.TestCreationController;
-import br.ufop.performance.checker.testsuite.model.TestInput;
-import br.ufop.performance.checker.testsuite.model.TestSuite;
+import br.ufop.performance.api.IPerformanceTesting;
+import br.ufop.performance.gui.AdvancedSettingsController;
+import br.ufop.performance.gui.RootTestController;
+import br.ufop.performance.gui.TestCreationController;
+import br.ufop.performance.impl.PerformanceTestingFactory;
+import br.ufop.performance.impl.PerformanceTestingFactory.ProvidedInterface;
+import br.ufop.performance.model.TestInput;
 import br.ufop.testmgr.test.SchedulingTest;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -46,7 +48,10 @@ import javafx.stage.WindowEvent;
 //Controlador principal; se comunica com os outros controladores
 public class Main extends Application {
 
-	private TestInput input = new TestInput(1, 0, "");
+	//acessa API para ter acesso ao PerformanceTestingSchedule
+		IPerformanceTesting testExecution = PerformanceTestingFactory
+				.createInstance(ProvidedInterface.ITESTSUITE);
+	private TestInput input = new TestInput(1, 100, "");
 	//private TestSuite suite = new TestSuite();
 	private SchedulingTest testSchedule = new SchedulingTest(this);
     private Stage primaryStage;
@@ -59,7 +64,7 @@ public class Main extends Application {
 
         initRootLayout();
 
-        //showRootTestView();
+        showWelcomeView();
     }
 
     /**
@@ -164,6 +169,10 @@ public class Main extends Application {
    /* public TestSuite getTestSuite() {
     	return suite;
     }*/
+    
+    public IPerformanceTesting getTestSuite() {
+    	return testExecution;
+    }
     
     public TestInput getTestInput() {
     	return input;

@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import br.ufop.Main;
-import br.ufop.performance.checker.testsuite.model.TestInput;
+import br.ufop.performance.model.TestInput;
+import br.ufop.testmgr.api.IPerformanceTestingSchedule;
 import br.ufop.testmgr.impl.TestMgrFactory;
 import br.ufop.testmgr.impl.TestMgrFactory.TestMgrProvidedInterface;
-import br.ufop.testmgr.spec.api.IPerformanceTestingSchedule;
 
 public class SchedulingTest implements Runnable{
 

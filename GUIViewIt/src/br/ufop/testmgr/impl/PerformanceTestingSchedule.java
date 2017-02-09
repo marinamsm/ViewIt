@@ -7,12 +7,12 @@ import java.util.TimerTask;
 import br.ufop.Main;
 import br.ufop.harviewer.api.IHarViewer;
 import br.ufop.harviewer.impl.HarViewerFactory;
-import br.ufop.performance.checker.testsuite.api.IPerformanceTesting;
-import br.ufop.performance.checker.testsuite.impl.PerformanceTestingFactory;
-import br.ufop.performance.checker.testsuite.impl.PerformanceTestingFactory.ProvidedInterface;
-import br.ufop.performance.checker.testsuite.model.TestInput;
-import br.ufop.performance.checker.testsuite.model.TestSuite;
-import br.ufop.testmgr.spec.api.IPerformanceTestingSchedule;
+import br.ufop.performance.api.IPerformanceTesting;
+import br.ufop.performance.impl.PerformanceTestingFactory;
+import br.ufop.performance.impl.PerformanceTestingFactory.ProvidedInterface;
+import br.ufop.performance.model.TestInput;
+import br.ufop.performance.model.TestSuite;
+import br.ufop.testmgr.api.IPerformanceTestingSchedule;
 
 class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 
@@ -28,6 +28,8 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 	
 	private TestInput testInput;
 	
+	private TestSuite t;
+	
 	private boolean ready = false;
 	
 	private String harPath;
@@ -41,10 +43,15 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 		this.main = main;
 	}
 	
+	public TestSuite loadTestSuiteConfiguration() {
+		return t;
+	}
+	
+	
 	public TestInput loadTestInputConfiguration() {
 
 		testExecution = PerformanceTestingFactory
-				.createInstance(ProvidedInterface.ITESTINPUT);
+				.createInstance(ProvidedInterface.ITESTSUITE);
 		
 		testExecution.setMain(main);
 		testInput = testExecution.loadTestInput();

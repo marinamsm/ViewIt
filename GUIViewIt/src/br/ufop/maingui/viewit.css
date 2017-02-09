@@ -1,4 +1,8 @@
 
+.drop-down-list {
+	-fx-opacity: 0.0; /*invisible }ChoiceBox*/ 
+}
+
 .writingsHeader {
 	-fx-text-fill: white;
 	-fx-font-size: 40px;

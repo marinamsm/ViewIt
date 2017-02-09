@@ -1,6 +1,6 @@
 package br.ufop.testmgr.impl;
 
-import br.ufop.testmgr.spec.api.IPerformanceTestingSchedule;
+import br.ufop.testmgr.api.IPerformanceTestingSchedule;
 
 public class TestMgrFactory {
 
