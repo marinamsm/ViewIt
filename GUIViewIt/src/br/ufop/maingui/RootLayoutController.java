@@ -24,6 +24,9 @@ public class RootLayoutController {
 	
 	@FXML
 	private void analyticsButtonAction() {
+		if(!testButton.isHover()){
+	
+		}
 		main.showRootChartView();
 	}
 	
