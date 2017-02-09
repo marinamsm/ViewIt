@@ -4,7 +4,7 @@ import br.ufop.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class AdvancedSettingsController {
+public class AdvancedSettingsTestController {
 	private Main main;
 	
 	@FXML

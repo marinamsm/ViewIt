@@ -24,7 +24,7 @@ public class RootLayoutController {
 	
 	@FXML
 	private void analyticsButtonAction() {
-	
+		main.showRootChartView();
 	}
 	
 	@FXML

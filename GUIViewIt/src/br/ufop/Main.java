@@ -27,9 +27,11 @@ public class Main extends Application {
 
 import java.io.IOException;
 
+import br.ufop.chartgenerator.gui.ChartCreationController;
+import br.ufop.chartgenerator.gui.RootChartController;
 import br.ufop.maingui.RootLayoutController;
 import br.ufop.performance.api.IPerformanceTesting;
-import br.ufop.performance.gui.AdvancedSettingsController;
+import br.ufop.performance.gui.AdvancedSettingsTestController;
 import br.ufop.performance.gui.RootTestController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.impl.PerformanceTestingFactory;
@@ -48,18 +50,16 @@ import javafx.stage.WindowEvent;
 //Controlador principal; se comunica com os outros controladores
 public class Main extends Application {
 
-	//acessa API para ter acesso ao PerformanceTestingSchedule
-		IPerformanceTesting testExecution = PerformanceTestingFactory
-				.createInstance(ProvidedInterface.ITESTSUITE);
 	private TestInput input = new TestInput(1, 100, "");
 	//private TestSuite suite = new TestSuite();
 	private SchedulingTest testSchedule = new SchedulingTest(this);
     private Stage primaryStage;
     private BorderPane rootLayout;
-    
+
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    	
+    	this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ViewIt");
 
         initRootLayout();
@@ -120,7 +120,7 @@ public class Main extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("performance/checker/testsuite/gui/RootTest.fxml"));
+            loader.setLocation(Main.class.getResource("performance/gui/RootTest.fxml"));
             AnchorPane testRootLayout = (AnchorPane) loader.load();
             rootLayout.setTop(testRootLayout);
          
@@ -138,7 +138,7 @@ public class Main extends Application {
     public void showTestCreationView() {
     	try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("performance/checker/testsuite/gui/TestCreation.fxml"));
+            loader.setLocation(Main.class.getResource("performance/gui/TestCreation.fxml"));
             AnchorPane testView = (AnchorPane) loader.load();
             rootLayout.setCenter(testView);
             
@@ -154,12 +154,12 @@ public class Main extends Application {
     public void showAdvancedSettingsView() {
     	try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("performance/checker/testsuite/gui/AdvancedSettingsForTest.fxml"));
+            loader.setLocation(Main.class.getResource("performance/gui/AdvancedSettingsForTest.fxml"));
             AnchorPane advSetView = (AnchorPane) loader.load();
             rootLayout.setCenter(advSetView);
             
             // Give the controller access to the main app.
-            AdvancedSettingsController controller = loader.getController();
+            AdvancedSettingsTestController controller = loader.getController();
             controller.setMain(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -170,10 +170,37 @@ public class Main extends Application {
     	return suite;
     }*/
     
-    public IPerformanceTesting getTestSuite() {
-    	return testExecution;
+    public void showRootChartView() {
+   	 try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/RootChart.fxml"));
+            AnchorPane chartRootLayout = (AnchorPane) loader.load();
+            rootLayout.setTop(chartRootLayout);
+         
+         // Give the controller access to the main app.
+            RootChartController controller = loader.getController();
+           	controller.setMain(this); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
+    public void showChartCreationView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/ChartCreation.fxml"));
+            AnchorPane chartView = (AnchorPane) loader.load();
+            rootLayout.setCenter(chartView);
+            
+            // Give the controller access to the main app.
+            ChartCreationController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+ 
     public TestInput getTestInput() {
     	return input;
     }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.chartgenerator.gui.ChartCreationController">
+   <children>
+      <ButtonBar layoutX="272.0" layoutY="318.0" prefHeight="59.0" prefWidth="275.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
+        <buttons>
+          <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" text="Back" />
+            <Button fx:id="finishButton" mnemonicParsing="false" onAction="#finishButtonAction" text="Finish" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
+        </buttons>
+      </ButtonBar>
+      <Text fill="WHITE" layoutX="100.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Choose the type of charts you want to create" wrappingWidth="525.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="Line" layoutX="181.0" layoutY="153.0" mnemonicParsing="false" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Line" textFill="WHITE" />
+      <CheckBox fx:id="pie" layoutX="181.0" layoutY="215.0" mnemonicParsing="false" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Pie" />
+      <CheckBox fx:id="bar" layoutX="343.0" layoutY="153.0" mnemonicParsing="false" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Bar" />
+      <CheckBox fx:id="boxplot" layoutX="343.0" layoutY="215.0" mnemonicParsing="false" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Boxplot" />
+   </children>
+</AnchorPane>
