@@ -30,12 +30,14 @@ import java.io.IOException;
 import br.ufop.chartgenerator.gui.ChartCreationController;
 import br.ufop.chartgenerator.gui.RootChartController;
 import br.ufop.maingui.RootLayoutController;
-import br.ufop.performance.api.IPerformanceTesting;
 import br.ufop.performance.gui.AdvancedSettingsTestController;
+import br.ufop.performance.gui.CheckingAlertController;
+import br.ufop.performance.gui.CheckingBoxesController;
+import br.ufop.performance.gui.ClickingController;
+import br.ufop.performance.gui.ContextClickingController;
 import br.ufop.performance.gui.RootTestController;
 import br.ufop.performance.gui.TestCreationController;
-import br.ufop.performance.impl.PerformanceTestingFactory;
-import br.ufop.performance.impl.PerformanceTestingFactory.ProvidedInterface;
+import br.ufop.performance.gui.TypingController;
 import br.ufop.performance.model.TestInput;
 import br.ufop.testmgr.test.SchedulingTest;
 import javafx.application.Application;
@@ -198,7 +200,81 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    
+    public void showTypingView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/Typing.fxml"));
+            AnchorPane typingView = (AnchorPane) loader.load();
+            rootLayout.setCenter(typingView);
+            
+            // Give the controller access to the main app.
+            TypingController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showCheckingBoxesView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/CheckingBoxes.fxml"));
+            AnchorPane checkingBoxesView = (AnchorPane) loader.load();
+            rootLayout.setCenter(checkingBoxesView);
+            
+            // Give the controller access to the main app.
+            CheckingBoxesController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showClickingView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/Clicking.fxml"));
+            AnchorPane clickingView = (AnchorPane) loader.load();
+            rootLayout.setCenter(clickingView);
+            
+            // Give the controller access to the main app.
+            ClickingController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showCheckingAlertView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/CheckingAlert.fxml"));
+            AnchorPane checkingAlertView = (AnchorPane) loader.load();
+            rootLayout.setCenter(checkingAlertView);
+            
+            // Give the controller access to the main app.
+            CheckingAlertController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showContextClickingView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/ContextClicking.fxml"));
+            AnchorPane contextClickingView = (AnchorPane) loader.load();
+            rootLayout.setCenter(contextClickingView);
+            
+            // Give the controller access to the main app.
+            ContextClickingController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
  
     public TestInput getTestInput() {

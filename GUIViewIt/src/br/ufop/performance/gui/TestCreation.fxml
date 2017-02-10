@@ -10,33 +10,33 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.performance.gui.TestCreationController">
    <children>
-      <AnchorPane prefHeight="244.0" prefWidth="216.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
+      <AnchorPane layoutX="-5.0" prefHeight="244.0" prefWidth="317.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
          <children>
-            <Text fill="WHITE" layoutX="15.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="URL" wrappingWidth="58.13671875">
+            <Text fill="WHITE" layoutX="15.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="URL" wrappingWidth="299.13672644644976">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="15.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="How many times the test should be executed?" wrappingWidth="223.13671875">
+            <Text fill="WHITE" layoutX="15.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="How many times the test should be executed?" wrappingWidth="299.13671875">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="15.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Interval between each test" wrappingWidth="179.13671875">
+            <Text fill="WHITE" layoutX="14.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Interval between each test" wrappingWidth="274.9999952316284">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="245.0" prefHeight="277.0" prefWidth="217.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
+      <AnchorPane layoutX="329.0" prefHeight="277.0" prefWidth="217.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
          <children>
             <TextField fx:id="URLField" layoutX="8.0" layoutY="43.0" prefHeight="25.0" prefWidth="196.0" />
             <ComboBox layoutX="8.0" layoutY="104.0" prefWidth="119.0" fx:id="x_times" />
             <ComboBox fx:id="y_interval" layoutX="8.0" layoutY="179.0" prefWidth="119.0" />
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="128.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="All the configurations for this scenario will be saved in this project before execution" wrappingWidth="401.13671875">
+      <Text fill="WHITE" layoutX="14.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="All the configurations for this scenario will be saved in this project before execution" wrappingWidth="526.13671875">
          <font>
             <Font size="14.0" />
          </font>
