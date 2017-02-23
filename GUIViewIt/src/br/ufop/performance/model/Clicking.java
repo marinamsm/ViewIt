@@ -38,11 +38,19 @@ public class Clicking extends PerformanceTestCase {
 	public ByLocator getLocator() {
 		return locator;
 	}
-
+	
+	//FOR XML ONLY
 	public void setLocator(ByLocator locator) {
 		this.locator = locator;
 	}
-
+	
+	//FOR GUI ONLY
+	public void setLocatorGUI(String by, String value) {
+		locator = new ByLocator();
+		locator.setByFromString(by);
+		locator.setValue(value);
+	}
+	
 	@Override
 	public void executeTest(WebDriver webdriver) {
 

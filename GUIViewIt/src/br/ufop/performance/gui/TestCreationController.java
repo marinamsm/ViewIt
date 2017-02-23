@@ -85,7 +85,7 @@ public class TestCreationController {
 				main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
 				main.getTestInput().setURL(URLField.getText());
 				System.out.println(main.getTestInput().getURL() + "  " + main.getTestInput().getX_times() + "  " + main.getTestInput().getY_interval());
-				//main.getTestInput().setMain(main);
+				main.getTestInput().setMain(main);
 				control = false;
 			}catch(Exception e){
 				e.printStackTrace();

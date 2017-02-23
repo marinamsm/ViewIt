@@ -22,19 +22,23 @@ class PerformanceTesting implements IPerformanceTesting {
 
 	private TestInput config;
 	
-	private TestSuite t;
+	private TestSuite testSuite;
+	
+	private boolean XML = true; //defines how the program is being run, with XML or with GUI
 	
 	public void setMain(Main main) {
 		this.main = main;
 	}
-	
-	public TestSuite loadTestSuite() {return t;}
 	
 	public TestInput loadTestInput() {
 		try {
 			//faz e retorna as configurações do teste
 			config = main.getTestInput();
 			config.setNavigation();
+			//System.out.println("URL main.getTEstInput" + main.getTestInput().getURL());
+			//config.sortTestCasesByStepId();
+			System.out.println("URL config" + config.getURL());
+			XML = false; //running ViewIt GUI
 			return config;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,6 +46,17 @@ class PerformanceTesting implements IPerformanceTesting {
 		return null;
 	}
 
+	public TestSuite loadTestSuite(String testSuitePath) {
+
+		// inicialmente o numero de passos eh o.
+
+		testSuite = TestSuiteConfigLoader.loadTestSuiteConfiguration(testSuitePath);
+		testSuite.sortTestCasesByStepId();
+
+		return testSuite;
+
+	}
+	
 	public void run() {
         // configura FirefoxProfile
         setProfilePreferences();
@@ -54,8 +69,12 @@ class PerformanceTesting implements IPerformanceTesting {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
         webDriver.manage().window().maximize();
-        config.executeTest(webDriver);
+        if(XML == false)
+        	config.executeTest(webDriver);
+        else
+        	testSuite.executeTest(webDriver);
         webDriver.quit();
 }
 	private void setProfilePreferences() {
@@ -77,7 +96,7 @@ class PerformanceTesting implements IPerformanceTesting {
 		}
 		// Configura preferências do Firefox
         profile.setPreference("app.update.enabled", false);
-        String domain =  "extensions.firebug.";//para versão > 47 do FF: "extensions.firebug@software.joehewitt.com.";   
+        String domain =  "extensions.firebug.";//ou para versão > 47 do FF: "extensions.firebug@software.joehewitt.com.";   
 
         // Set default Firebug preferences
         profile.setPreference(domain + "currentVersion", "2.0.18");
@@ -85,10 +104,18 @@ class PerformanceTesting implements IPerformanceTesting {
         profile.setPreference(domain + "defaultPanelName", "net");
         profile.setPreference(domain + "net.enableSites", true);
 
-        // Set default NetExport preferences
+         
+     // Set default NetExport preferences
         profile.setPreference(domain + "netexport.alwaysEnableAutoExport", true);
         profile.setPreference(domain + "netexport.showPreview", false);
-        profile.setPreference(domain + "netexport.defaultLogDir", config.getHarDirectoryPath());
+        if(XML == false)
+        	profile.setPreference(domain + "netexport.defaultLogDir", config.getHarDirectoryPath());
+        else
+        	profile.setPreference(domain + "netexport.defaultLogDir", testSuite.getHarDirectoryPath());
+        /*profile.setPreference(domain + "netexport.sendToConfirmation", false);
+        profile.setPreference(domain + "netexport.pageLoadedTimeout", 1500);
+		profile.setPreference(domain + "netexport.Automation", true);*/
+         
 	}
 
 }

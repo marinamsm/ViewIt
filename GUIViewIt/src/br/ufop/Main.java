@@ -38,6 +38,7 @@ import br.ufop.performance.gui.ContextClickingController;
 import br.ufop.performance.gui.RootTestController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
+import br.ufop.performance.model.Clicking;
 import br.ufop.performance.model.TestInput;
 import br.ufop.testmgr.test.SchedulingTest;
 import javafx.application.Application;
@@ -53,7 +54,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
 
 	private TestInput input = new TestInput(1, 100, "");
-	//private TestSuite suite = new TestSuite();
+	//private Clicking click = new Clicking();
 	private SchedulingTest testSchedule = new SchedulingTest(this);
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -284,10 +285,11 @@ public class Main extends Application {
     public SchedulingTest getSchedulingTest() {
     	return testSchedule;
     }
-    /**
-     * Returns the main stage.
-     * @return
-     */
+    
+    /*public Clicking getClicking() {
+    	return click;
+    }*/
+    
     public Stage getPrimaryStage() {
         return primaryStage;
     }

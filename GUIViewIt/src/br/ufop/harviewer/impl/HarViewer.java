@@ -244,5 +244,75 @@ class HarViewer implements IHarViewer {
 		}
 		return harInfoList;
 	}
+	
+	//FOR XML:
+	
+	public void exportHarFilesToCSVFile(String harConfigPath) {
 
+		String csvContent = " ";
+
+		readHarFilesFromDirectory(harConfigPath);
+
+		for (int i = 0; i < harInfoList.size(); i++) {
+
+			HarInfoSummary harInfoSummary = harInfoList.get(i);
+
+			csvContent = csvContent + harInfoSummary.getPageName() + ","
+					+ harInfoSummary.printsCSVFormat();
+
+		}
+
+		csvContent = CSVFile.CSVHEADER + CSVFile.CSVSUBHEADER + csvContent;
+
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(harConfig.getCsvFileName());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		PrintWriter out = new PrintWriter(fw);
+		out.print(csvContent);
+
+		// Flush the output to the file
+		out.flush();
+
+		// Close the Print Writer
+		out.close();
+
+		// Close the File Writer
+		try {
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public List<HarInfoSummary> readHarFilesFromDirectory(String harConfigPath) {
+
+		harConfig = loadHarDirectoryConfigurations(harConfigPath);
+		String directoryPath = harConfig.getHarDirectoryPath();
+		File[] files = finder(directoryPath);
+		Arrays.sort(files);
+
+		List<String> pagesList = harConfig.getPageNames();
+
+		int numberOfPages = harConfig.getPageNames().size();
+		int pageIndex = 0;
+
+		for (int i = 0; i < files.length; i++) {
+			if (pageIndex == numberOfPages)
+				pageIndex = 0;
+
+			HarInfoSummary harInfoSummary = readHarFile(files[i].getPath(),
+					pagesList.get(pageIndex));
+
+			harInfoList.add(harInfoSummary);
+			pageIndex++;
+
+		}
+		return harInfoList;
+	}
 }

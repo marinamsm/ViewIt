@@ -53,7 +53,14 @@ public class Typing extends PerformanceTestCase {
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
 	}
-
+	
+	//FOR GUI ONLY
+	public void setLocatorGUI(String by, String value) {
+		locator = new ByLocator();
+		locator.setByFromString(by);
+		locator.setValue(value);
+	}
+		
 	@Override
 	public void executeTest(WebDriver webdriver) {
 

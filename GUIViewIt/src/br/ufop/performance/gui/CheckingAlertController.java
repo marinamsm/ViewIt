@@ -1,10 +1,15 @@
 package br.ufop.performance.gui;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import br.ufop.Main;
+import br.ufop.performance.model.CheckingAlert;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class CheckingAlertController {
@@ -15,10 +20,12 @@ public class CheckingAlertController {
 	private TextField description;
 	
 	@FXML
-	private ComboBox optionInTheCheckbox;
+	private TextField optionInTheCheckbox;
 	
 	@FXML
-	private ComboBox stepNumber;
+	private ComboBox<String> stepNumber;
+	
+	ObservableList<String> stepsList = FXCollections.observableArrayList("01", "02", "03", "04", "05", "06", "07", "08", "09", "10");
 	
 	@FXML
 	private Button okButton;
@@ -26,13 +33,36 @@ public class CheckingAlertController {
 	@FXML
 	private Button cancelButton;
 	
+	private boolean control = true;
+	
 	public void setMain(Main main) {
 		this.main = main;
+		if(control){
+			main.getTestInput().initCheckingAlertList();
+			control = false;
+		}
+	}
+	
+	@FXML
+	public void initialize() { 
+		//this method is called before any other methods because it is called during screen loading
+		stepNumber.setItems(stepsList);
 	}
 	
 	public void okButtonAction() {
+		CheckingAlert check = new CheckingAlert();
+		check.setDescription(description.getText());
+		check.setStepID(stepNumber.getValue()+1);
+		check.setOption(optionInTheCheckbox.getText());
+		main.getTestInput().getCheckingAlertSteps().add(check);
+		for(int i = 0; i < main.getTestInput().getCheckingAlertSteps().size(); i++)
+			System.out.println("   " + main.getTestInput().getCheckingAlertSteps().get(i));
 		main.showAdvancedSettingsView();
 	}
 	
-
+	@FXML
+	public void cancelButtonAction() {
+		main.showAdvancedSettingsView();
+	}
+	
 }

@@ -12,10 +12,15 @@ public interface IPerformanceTestingSchedule {
 	
 	public TestInput loadTestInputConfiguration();
 	
-	public TestSuite loadTestSuiteConfiguration();
-
 	public void runPeriodically(List<String> pageName);
 
 	public void readHarFilesFromDirectory(String harPath, String csvPath, List<String> pageName);
+	
+	public TestSuite loadTestSuiteConfiguration(String testConfigPath); //FOR XML
+
+	public void runPeriodically(long x_in_x_seconds, int y_times); //FOR XML
+
+	public void readHarFilesFromDirectory(String harConfigPath); //FOR XML
+
 
 }

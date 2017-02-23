@@ -14,12 +14,46 @@ public class ByLocator {
 	@XStreamAlias("value")
 	private String value;
 
+	public ByLocator(){
+	}
 	
-
 	public ByTypes getBy() {
 		return by;
 	}
-
+	
+	//FOR GUI
+	public void setByFromString(String by) {
+		switch (by) {
+		case "ById":
+			setBy(ByTypes.ById);
+			break;
+		case "ByClassName":
+			setBy(ByTypes.ByClassName);
+			break;
+		case "ByCssSelector":
+			setBy(ByTypes.ByCssSelector);
+			break;
+		case "ByLinkText":
+			setBy(ByTypes.ByLinkText);
+			break;
+		case "ByName":
+			setBy(ByTypes.ByName);
+			break;
+		case "ByPartialLinkText":
+			setBy(ByTypes.ByPartialLinkText);
+			break;
+		case "ByTagName":
+			setBy(ByTypes.ByTagName);
+			break;
+		case "ByXPath":
+			setBy(ByTypes.ByXPath);
+			break;
+		default:
+			setBy(ByTypes.ByXPath);
+		}
+	}
+	
+	//FOR XML ONLY
 	public void setBy(ByTypes by) {
 		this.by = by;
 	}

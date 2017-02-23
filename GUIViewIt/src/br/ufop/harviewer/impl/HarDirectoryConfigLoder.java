@@ -16,8 +16,7 @@ public class HarDirectoryConfigLoder {
 			XStream xstream = new XStream();
 
 			xstream.processAnnotations(HarDirectoryConfig.class);
-			HarDirectoryConfig config = (HarDirectoryConfig) xstream
-					.fromXML(in);
+			HarDirectoryConfig config = (HarDirectoryConfig) xstream.fromXML(in);
 			return config;
 		} catch (Exception e) {
 			e.printStackTrace();

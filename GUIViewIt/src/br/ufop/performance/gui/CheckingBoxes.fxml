@@ -54,13 +54,13 @@
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
               <buttons>
                   <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" text="OK" />
-                  <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
               </buttons>
                <GridPane.margin>
                   <Insets bottom="20.0" top="20.0" />
                </GridPane.margin>
             </ButtonBar>
-            <ComboBox fx:id="inputLocator1" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="optionsToCheck" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

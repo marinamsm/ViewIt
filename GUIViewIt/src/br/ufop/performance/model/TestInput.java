@@ -44,7 +44,8 @@ public class TestInput extends TestSuite{
     }
     
     public TestInput(int x_times, int y_interval, String URL) {
-        this.x_times = new SimpleIntegerProperty();
+        super.setHarPath(this.getHarFolder());
+    	this.x_times = new SimpleIntegerProperty();
         this.y_interval = new SimpleIntegerProperty();
         this.URL = new SimpleStringProperty();
     	setX_times(x_times);
@@ -52,15 +53,16 @@ public class TestInput extends TestSuite{
     	setURL(URL);
     }
     
-    public TestInput setNavigation() {
+    public void setNavigation() {
 		Navigating nav = new Navigating();
 		nav.setDescription("descricaoNavigating");
 		nav.setStepID("01");
+		nav.setPageURL(this.getURL());
 		List<Navigating> navigatingSteps = new LinkedList<Navigating>(); 
 		navigatingSteps.add(nav);
 		setNavigatingSteps(navigatingSteps);
 		sortTestCasesByStepId();
-		return this;
+		//return this;
 	}
 
     
@@ -133,7 +135,8 @@ public class TestInput extends TestSuite{
     }
 
     public void setHarFolder(String harFolder) {
-        this.harFolder.set(harFolder);
+    	super.setHarPath(this.getHarFolder());
+    	this.harFolder.set(harFolder);
     }
 
     public StringProperty harFolderProperty() {
@@ -157,6 +160,7 @@ public class TestInput extends TestSuite{
     }
 
     public void setTestDescription(String testDescription) {
+    	super.setDescription(testDescription);
         this.testDescription.set(testDescription);
     }
 
@@ -175,5 +179,9 @@ public class TestInput extends TestSuite{
     public StringProperty pageNameProperty() {
         return pageName;
     }
+    
+    /*public <T> void setList(List<T> list) {
+    	list = new LinkedList<T>();
+    }*/
     
 }

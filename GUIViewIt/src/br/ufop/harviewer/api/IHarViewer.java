@@ -11,5 +11,12 @@ public interface IHarViewer {
 	public void exportHarFilesToCSVFile(String harConfig, String test, List <String> pageName);
 	
 	public List<HarInfoSummary> readHarFilesFromDirectory(String directoryPath, String csvFileName, List <String> pageName);
+	
+	
+	//FOR XML:
+
+	public void exportHarFilesToCSVFile(String harConfig);
+	
+	public List<HarInfoSummary> readHarFilesFromDirectory(String directoryPath);
 
 }

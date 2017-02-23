@@ -40,6 +40,13 @@ public class CheckingBoxes extends PerformanceTestCase {
 	public void setLocatorRadioForm(ByLocator locatorRadioForm) {
 		this.locatorRadioForm = locatorRadioForm;
 	}
+	
+	//FOR GUI ONLY
+	public void setLocatorGUI(String by, String value) {
+		locatorRadioForm = new ByLocator();
+		locatorRadioForm.setByFromString(by);
+		locatorRadioForm.setValue(value);
+	}
 
 	public List<String> getVisibleTexts() {
 		return visibleTexts;

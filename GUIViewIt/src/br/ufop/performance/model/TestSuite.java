@@ -10,32 +10,45 @@ import java.util.TreeMap;
 
 import org.openqa.selenium.WebDriver;
 
-import br.ufop.Main;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
+@XStreamAlias("testSuite")
 public class TestSuite extends PerformanceTestCase {
 
 	
 	private SortedMap<String, PerformanceTestCase> mapStepId_PerformanceTest;
 
+	@XStreamAsAttribute
 	private String description;
 	
-	private String harPath; //folder to store .har files
-	
+	@XStreamAsAttribute
+	private String harPath;
+
+	@XStreamImplicit(itemFieldName = "navigating")
 	private List<Navigating> navigatingSteps;
 
+	@XStreamImplicit(itemFieldName = "typing")
 	private List<Typing> typingSteps;
 
+	@XStreamImplicit(itemFieldName = "checkingBoxes")
 	private List<CheckingBoxes> checkingBoxSteps;
 
+	@XStreamImplicit(itemFieldName = "selectingOption")
 	private List<SelectingOption> selectingOptionSteps;
 
+	@XStreamImplicit(itemFieldName = "clicking")
 	private List<Clicking> clickingSteps;
 
+	@XStreamImplicit(itemFieldName = "submitting")
 	private List<Submitting> submittingSteps;
 	
+	@XStreamImplicit(itemFieldName = "checkingAlert")
 	private List<CheckingAlert> checkingAlertSteps;
 	
-	private List<ContextClicking> contextclickingSteps;
+	@XStreamImplicit(itemFieldName = "contextClicking")
+	private List<ContextClicking> contextClickingSteps;
 	
 	public TestSuite() {}	
 	
@@ -68,7 +81,7 @@ public class TestSuite extends PerformanceTestCase {
 	}
 	
 	public void initContextClickingList() {
-		contextclickingSteps = new LinkedList<ContextClicking>();
+		contextClickingSteps = new LinkedList<ContextClicking>();
 	}
 	
 	
@@ -104,11 +117,11 @@ public class TestSuite extends PerformanceTestCase {
 		this.selectingOptionSteps = selectingOptionSteps;
 	}
 
-	public List<Clicking> getclickingStepss() {
+	public List<Clicking> getClickingSteps() {
 		return clickingSteps;
 	}
 
-	public void setclickingStepss(List<Clicking> clickingSteps) {
+	public void setClickingSteps(List<Clicking> clickingSteps) {
 		this.clickingSteps = clickingSteps;
 	}
 
@@ -149,22 +162,16 @@ public class TestSuite extends PerformanceTestCase {
 		this.mapStepId_PerformanceTest = mapStepId_PerformanceTest;
 	}
 
-	public List<Clicking> getclickingSteps() {
-		return clickingSteps;
-	}
-
 	public void setclickingSteps(List<Clicking> clickingSteps) {
 		this.clickingSteps = clickingSteps;
 	}
-	
-	
-	
-	public List<ContextClicking> getContextclickingStepss() {
-		return contextclickingSteps;
+		
+	public List<ContextClicking> getContextClickingSteps() {
+		return contextClickingSteps;
 	}
 
 	public void setContextclickingStepss(List<ContextClicking> contextclickingSteps) {
-		this.contextclickingSteps = contextclickingSteps;
+		this.contextClickingSteps = contextclickingSteps;
 	}
 
 	public void sortTestCasesByStepId() {
@@ -211,8 +218,8 @@ public class TestSuite extends PerformanceTestCase {
 				mapStepId_PerformanceTest.put(alert.getStepID(), alert);
 			}
 		//contextClicking
-		if(contextclickingSteps != null)
-			for(ContextClicking contextClicking : contextclickingSteps){
+		if(contextClickingSteps != null)
+			for(ContextClicking contextClicking : contextClickingSteps){
 				mapStepId_PerformanceTest.put(contextClicking.getStepID(), contextClicking);
 			}
 	}

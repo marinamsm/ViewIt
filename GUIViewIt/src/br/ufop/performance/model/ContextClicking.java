@@ -34,7 +34,12 @@ public class ContextClicking extends PerformanceTestCase{
 		this.locator = locator;
 	}
 
-
+	//FOR GUI ONLY
+		public void setLocatorGUI(String by, String value) {
+			locator = new ByLocator();
+			locator.setByFromString(by);
+			locator.setValue(value);
+		}
 
 	public String getDescription() {
 		return description;

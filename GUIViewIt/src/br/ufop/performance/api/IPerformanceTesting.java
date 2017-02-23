@@ -10,7 +10,7 @@ public interface IPerformanceTesting {
 	
 	public TestInput loadTestInput();
 	
-	public TestSuite loadTestSuite();
+	public TestSuite loadTestSuite(String testSuitePath);
 
 	public void run();
 
