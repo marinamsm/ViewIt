@@ -1,10 +1,8 @@
 package br.ufop.performance.gui;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import br.ufop.Main;
 import br.ufop.performance.model.Clicking;
+import br.ufop.performance.model.Submitting;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,12 +37,13 @@ public class ClickingController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true; //if control is true then it is the first time a screen is loaded by main
+	private boolean control = true; //if control is true then it is the first time the Clicking screen is loaded by main
 	
 	public void setMain(Main main) {
 		this.main = main;
 		if(control) {
 			main.getTestInput().initClickingList();
+			main.getTestInput().initSubmittingList();
 			control = false;
 		}
 		
@@ -53,7 +52,7 @@ public class ClickingController {
 	@FXML
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
-		inputLocator.setValue("ByXPath");
+		inputLocator.setValue("ByXPath"); //default value
 		inputLocator.setItems(list);
 		stepNumber.setItems(stepsList);
 	}
@@ -65,8 +64,15 @@ public class ClickingController {
 		click.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
 		click.setStepID(stepNumber.getValue()+1);
 		main.getTestInput().getClickingSteps().add(click);
-		for(int i = 0; i < main.getTestInput().getClickingSteps().size(); i++)
+		Submitting submit = new Submitting();
+		submit.setDescription(description.getText());
+		submit.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
+		submit.setStepID(stepNumber.getValue()+1);
+		main.getTestInput().getSubmittingSteps().add(submit);
+		for(int i = 0; i < main.getTestInput().getClickingSteps().size(); i++){
 			System.out.println("   " + main.getTestInput().getClickingSteps().get(i));
+			System.out.println("   " + main.getTestInput().getSubmittingSteps().get(i));
+		}
 		main.showAdvancedSettingsView();
 	}
 	

@@ -28,6 +28,7 @@ public class Main extends Application {
 import java.io.IOException;
 
 import br.ufop.chartgenerator.gui.ChartCreationController;
+import br.ufop.chartgenerator.gui.LineChartController;
 import br.ufop.chartgenerator.gui.RootChartController;
 import br.ufop.maingui.RootLayoutController;
 import br.ufop.performance.gui.AdvancedSettingsTestController;
@@ -38,7 +39,6 @@ import br.ufop.performance.gui.ContextClickingController;
 import br.ufop.performance.gui.RootTestController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
-import br.ufop.performance.model.Clicking;
 import br.ufop.performance.model.TestInput;
 import br.ufop.testmgr.test.SchedulingTest;
 import javafx.application.Application;
@@ -278,6 +278,22 @@ public class Main extends Application {
         }
     }
  
+    public void showLineChartView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/LineChart.fxml"));
+            AnchorPane lineView = (AnchorPane) loader.load();
+            rootLayout.setCenter(lineView);
+            
+            // Give the controller access to the main app.
+            LineChartController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
     public TestInput getTestInput() {
     	return input;
     }

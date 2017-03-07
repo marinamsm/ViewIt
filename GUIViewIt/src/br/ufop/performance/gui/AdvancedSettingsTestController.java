@@ -11,6 +11,9 @@ public class AdvancedSettingsTestController {
 	private Button back;
 	
 	@FXML
+	private Button ok;
+	
+	@FXML
 	private Button typing;
 	
 	@FXML
@@ -37,6 +40,10 @@ public class AdvancedSettingsTestController {
 	
 	@FXML
 	public void backButtonAction() {
+		main.showWelcomeView();
+	}
+	
+	public void okButtonAction() {
 		main.showTestCreationView();
 	}
 	

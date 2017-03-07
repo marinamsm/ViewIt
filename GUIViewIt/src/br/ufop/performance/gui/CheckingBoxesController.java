@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.ufop.Main;
 import br.ufop.performance.model.CheckingBoxes;
+import br.ufop.performance.model.SelectingOption;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -77,8 +78,16 @@ public class CheckingBoxesController {
 		}
 		check.setVisibleTexts(options);
 		main.getTestInput().getCheckingBoxSteps().add(check);
-		for(int i = 0; i < main.getTestInput().getCheckingBoxSteps().size(); i++)
+		SelectingOption selected = new SelectingOption();
+		selected.setDescription(description.getText());
+		selected.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
+		selected.setStepID(stepNumber.getValue()+1);
+		selected.setVisibleText("");
+		main.getTestInput().getSelectingOptionSteps().add(selected);
+		for(int i = 0; i < main.getTestInput().getCheckingBoxSteps().size(); i++){
 			System.out.println("   " + main.getTestInput().getCheckingBoxSteps().get(i));
+			System.out.println("   " + main.getTestInput().getSelectingOptionSteps().get(i));
+		}
 		main.showAdvancedSettingsView();
 	}
 	

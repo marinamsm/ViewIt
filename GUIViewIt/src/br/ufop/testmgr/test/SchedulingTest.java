@@ -27,18 +27,18 @@ public class SchedulingTest {
 		IPerformanceTestingSchedule testSchedule = (IPerformanceTestingSchedule) TestMgrFactory
 				.createInstance(TestMgrProvidedInterface.IPERFORMANCETESTINGSCHEDULE);
 		
-		/*	
+			
 		testSchedule
-				.loadTestSuiteConfiguration("D:\\testSelenium\\src\\br\\ufop\\testmgr\\executionconfig\\testeBlazer.xml");
+				.loadTestSuiteConfiguration("D:\\ViewItGUIRepo\\GUIViewIt\\src\\br\\ufop\\testmgr\\executionconfig\\testGoogle.xml");
 		
 		testSchedule.runPeriodically(x_in_x_seconds, y_times);
-		*/
 		
-			
+		
+		/*	
 		testSchedule
 			.readHarFilesFromDirectory(
 				"src/br/ufop/testmgr/executionconfig/testeBlazerHar.xml");
-		
+		*/
 
 	}
 }	

@@ -39,12 +39,17 @@ public class Submitting extends PerformanceTestCase{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	
-
-	
+	//FOR XML
 	public ByLocator getLocator() {
 		return locator;
+	}
+	
+	//FOR GUI ONLY
+	public void setLocatorGUI(String by, String value) {
+		locator = new ByLocator();
+		locator.setByFromString(by);
+		locator.setValue(value);
 	}
 
 	public void setLocator(ByLocator locator) {

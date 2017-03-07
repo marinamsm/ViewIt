@@ -131,5 +131,6 @@
          </children>
       </AnchorPane>
       <Button fx:id="back" layoutX="477.0" layoutY="311.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="25.0" prefWidth="69.0" text="Back" />
+      <Button fx:id="ok" layoutX="388.0" layoutY="311.0" mnemonicParsing="false" onAction="#okButtonAction" prefHeight="25.0" prefWidth="69.0" text="OK" />
    </children>
 </AnchorPane>

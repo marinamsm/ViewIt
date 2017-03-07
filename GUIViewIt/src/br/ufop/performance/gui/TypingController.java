@@ -38,7 +38,7 @@ public class TypingController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true;
+	private boolean control = true; //if control is true then it is the first time the Typing screen is loaded by main
 	
 	public void setMain(Main main) {
 		this.main = main;

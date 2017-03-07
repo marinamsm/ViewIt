@@ -58,6 +58,7 @@ public class ContextClickingController {
 		stepNumber.setItems(stepsList);
 	}
 	
+	@FXML
 	public void okButtonAction() {
 		ContextClicking context = new ContextClicking();
 		context.setDescription(description.getText());

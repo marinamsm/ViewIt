@@ -42,6 +42,14 @@ public class SelectingOption extends PerformanceTestCase {
 		return locatorCheckBoxes;
 	}
 
+	//FOR GUI ONLY
+	public void setLocatorGUI(String by, String value) {
+		locatorCheckBoxes = new ByLocator();
+		locatorCheckBoxes.setByFromString(by);
+		locatorCheckBoxes.setValue(value);
+	}
+
+	
 	public void setLocatorCheckBoxes(ByLocator locatorCheckBoxes) {
 		this.locatorCheckBoxes = locatorCheckBoxes;
 	}

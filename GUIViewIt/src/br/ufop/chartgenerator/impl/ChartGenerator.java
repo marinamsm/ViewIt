@@ -15,9 +15,7 @@ class ChartGenerator implements IChartGenerator{
 	@Override
 	public ChartSuite loadChartSuite(String chartSuitePath) {
 		chartSuite = ChartSuiteConfigLoader.loadChartSuiteConfiguration(chartSuitePath);
-		
 		chartSuite.addChartsToSetConfig();
-		
 		/*
 		csvPreview = (ICsvPreview)CsvPreviewFactory
 				 .createInstance(ProvidedInterface.ICSVPREVIEW);
