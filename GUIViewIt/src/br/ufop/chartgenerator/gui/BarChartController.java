@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import br.ufop.Main;
-import br.ufop.chartgenerator.model.LineChart;
+import br.ufop.chartgenerator.model.BarChart;
 import br.ufop.chartgenerator.model.Pages;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class LineChartController {
+public class BarChartController {
 	
 	@FXML
 	private TextField title;
@@ -36,7 +36,7 @@ public class LineChartController {
 	public void setMain(Main main) {
 		this.main = main;
 		if(control) {
-        	main.getChartSuite().initLineChart();
+        	main.getChartSuite().initBarChart();
             main.getChartSuite().setCsvPath("geral.csv");
             main.getChartSuite().setChartFolder("src");
             main.setGUIFlag();
@@ -44,7 +44,7 @@ public class LineChartController {
         }
 	} 
 	
-	public LineChartController(){
+	public BarChartController(){
 	}
 	
 	public void initialize() {
@@ -60,10 +60,10 @@ public class LineChartController {
 		for(int i = 0; i < s.length; i++)
 			pages.add(s[i]);
 		page.setPages(pages);
-		LineChart line = new LineChart();
-		line.setPages(page);
-		line.setTitle(title.getText());
-		main.getChartSuite().getLineCharts().add(line);
+		BarChart bar = new BarChart();
+		bar.setPages(page);
+		bar.setTitle(title.getText());
+		main.getChartSuite().getBarCharts().add(bar);
 		main.showChartCreationView();
 	}
 	

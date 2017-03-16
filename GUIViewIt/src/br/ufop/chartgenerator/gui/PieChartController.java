@@ -1,33 +1,25 @@
 package br.ufop.chartgenerator.gui;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import br.ufop.Main;
-import br.ufop.chartgenerator.model.LineChart;
-import br.ufop.chartgenerator.model.Pages;
+import br.ufop.chartgenerator.model.PieChart;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class LineChartController {
+public class PieChartController {
 	
 	@FXML
 	private TextField title;
 	
 	@FXML
-	private TextArea pagesName;
+	private TextField pageName;
 	
 	@FXML
 	private Button okButton;
 	
 	@FXML 
 	private Button cancelButton;
-	
-	private Pages page;
-	
-	private List<String> pages;
 	
 	private Main main;
 	
@@ -36,15 +28,15 @@ public class LineChartController {
 	public void setMain(Main main) {
 		this.main = main;
 		if(control) {
-        	main.getChartSuite().initLineChart();
+        	main.getChartSuite().initPieChart();
             main.getChartSuite().setCsvPath("geral.csv");
             main.getChartSuite().setChartFolder("src");
             main.setGUIFlag();
             control = false;
         }
-	} 
+	}
 	
-	public LineChartController(){
+	public PieChartController(){
 	}
 	
 	public void initialize() {
@@ -54,16 +46,13 @@ public class LineChartController {
 	@FXML
 	public void okButtonAction() {
 		
-		page = new Pages();
-		pages = new LinkedList<String>();
-		String[] s = pagesName.getText().split(" ");
-		for(int i = 0; i < s.length; i++)
-			pages.add(s[i]);
-		page.setPages(pages);
-		LineChart line = new LineChart();
-		line.setPages(page);
-		line.setTitle(title.getText());
-		main.getChartSuite().getLineCharts().add(line);
+		PieChart pie = new PieChart();
+		pie.setChartFolder("src");
+		pie.setTitle(title.getText());
+		pie.setPageName(pageName.getText());
+		pie.setType("resource");
+		pie.setInformation("quantity");
+		main.getChartSuite().getPieCharts().add(pie);
 		main.showChartCreationView();
 	}
 	
@@ -73,4 +62,5 @@ public class LineChartController {
 	}
 	
 	
+
 }

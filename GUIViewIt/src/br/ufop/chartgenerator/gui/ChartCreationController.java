@@ -28,7 +28,7 @@ public class ChartCreationController {
 	private Button bar;
 	
 	@FXML
-	private Button boxplot;
+	private Button boxPlot;
 	
 	@FXML
 	private Button backButton;
@@ -39,22 +39,12 @@ public class ChartCreationController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true; //if it is the first time this class is called, then it is "true"
-	
-	private ChartSuite chartSuite;
-	
 	public void setMain(Main main) {
         this.main = main;
-        if(control) {
-        	IChartGenerator chartExecution = ChartGeneratorFactory.createInstance(ProvidedInterface.ICHARTGENERATOR);
-        	chartSuite = new ChartSuite();
-        	control = false;
-        }
     }
 	
-	@FXML
+	
 	public void initialize() {
-		
 	}
 	
 	public ChartCreationController() {
@@ -68,22 +58,25 @@ public class ChartCreationController {
 	
 	@FXML
 	public void pieButtonAction() {
-		
+		main.showPieChartView();
 	}
 	
 	@FXML 
 	public void barButtonAction() {
-		
+		main.showBarChartView();		
 	}
 	
 	@FXML 
-	public void boxplotButtonAction() {
-		
+	public void boxPlotButtonAction() {
+		main.showBoxPlotChartView();
 	}
 	
 	@FXML
 	private void finishButtonAction() {
-		chartSuite.addChartsToSetConfig();
+		main.getChartSuite().addChartsToSetConfig();
+		IChartGenerator chartExecution = 
+				ChartGeneratorFactory.createInstance(ProvidedInterface.ICHARTGENERATOR);
+		chartExecution.run();
 	}
 
 	@FXML

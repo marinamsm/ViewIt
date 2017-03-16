@@ -1,35 +1,14 @@
 package br.ufop;
-/*	
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-
-
-public class Main extends Application {
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
-} */
 
 import java.io.IOException;
 
+import br.ufop.chartgenerator.gui.BarChartController;
+import br.ufop.chartgenerator.gui.BoxPlotChartController;
 import br.ufop.chartgenerator.gui.ChartCreationController;
 import br.ufop.chartgenerator.gui.LineChartController;
+import br.ufop.chartgenerator.gui.PieChartController;
 import br.ufop.chartgenerator.gui.RootChartController;
+import br.ufop.chartgenerator.model.ChartSuite;
 import br.ufop.maingui.RootLayoutController;
 import br.ufop.performance.gui.AdvancedSettingsTestController;
 import br.ufop.performance.gui.CheckingAlertController;
@@ -49,12 +28,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import utils.guiflags.GUIFlag;
 
 //Controlador principal; se comunica com os outros controladores
 public class Main extends Application {
-
+	private GUIFlag flag;
 	private TestInput input = new TestInput(1, 100, "");
-	//private Clicking click = new Clicking();
+	private static ChartSuite chart = new ChartSuite();
 	private SchedulingTest testSchedule = new SchedulingTest(this);
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -281,7 +261,7 @@ public class Main extends Application {
     public void showLineChartView() {
     	try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("performance/gui/LineChart.fxml"));
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/LineChart.fxml"));
             AnchorPane lineView = (AnchorPane) loader.load();
             rootLayout.setCenter(lineView);
             
@@ -293,18 +273,66 @@ public class Main extends Application {
         }
     }
 
+    public void showPieChartView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/PieChart.fxml"));
+            AnchorPane pieView = (AnchorPane) loader.load();
+            rootLayout.setCenter(pieView);
+            
+            // Give the controller access to the main app.
+            PieChartController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showBarChartView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/BarChart.fxml"));
+            AnchorPane barView = (AnchorPane) loader.load();
+            rootLayout.setCenter(barView);
+            
+            // Give the controller access to the main app.
+            BarChartController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showBoxPlotChartView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("chartgenerator/gui/BoxPlotChart.fxml"));
+            AnchorPane boxPlotView = (AnchorPane) loader.load();
+            rootLayout.setCenter(boxPlotView);
+            
+            // Give the controller access to the main app.
+            BoxPlotChartController controller = loader.getController();
+            controller.setMain(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public TestInput getTestInput() {
     	return input;
     }
     
+    public ChartSuite getChartSuite() {
+    	return chart;
+    }
+
     public SchedulingTest getSchedulingTest() {
     	return testSchedule;
     }
     
-    /*public Clicking getClicking() {
-    	return click;
-    }*/
+    public void setGUIFlag() {
+    	flag = new GUIFlag(true, getChartSuite().getCsvPath(), getChartSuite());
+    }
     
     public Stage getPrimaryStage() {
         return primaryStage;

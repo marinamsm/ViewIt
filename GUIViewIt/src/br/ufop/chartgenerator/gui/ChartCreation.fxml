@@ -36,7 +36,7 @@
             <Button fx:id="line" mnemonicParsing="false" onAction="#lineButtonAction" prefHeight="25.0" prefWidth="87.0" text="Line Chart" textAlignment="CENTER" />
             <Button fx:id="pie" mnemonicParsing="false" onAction="#pieButtonAction" prefHeight="25.0" prefWidth="87.0" text="Pie Chart" textAlignment="CENTER" GridPane.rowIndex="1" />
             <Button fx:id="bar" mnemonicParsing="false" onAction="#barButtonAction" prefHeight="25.0" prefWidth="90.0" text="Bar Chart" textAlignment="CENTER" GridPane.columnIndex="1" />
-            <Button fx:id="boxplot" mnemonicParsing="false" onAction="#boxplotButtonAction" text="Boxplot Chart" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="boxPlot" mnemonicParsing="false" onAction="#boxPlotButtonAction" text="BoxPlot Chart" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

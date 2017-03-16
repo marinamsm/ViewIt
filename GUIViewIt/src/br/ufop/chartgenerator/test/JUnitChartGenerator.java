@@ -15,8 +15,6 @@ public class JUnitChartGenerator {
 				ChartGeneratorFactory.createInstance(ProvidedInterface.ICHARTGENERATOR);
 		ChartSuite chartSuiteSample = 
 				chartExecution.loadChartSuite("src/br/ufop/testmgr/executionconfig/chartsConf.xml");
-		System.out.println("CSV: "+chartSuiteSample.getCsvPath());
-		System.out.println("chartFolder: "+chartSuiteSample.getChartFolder());
 		chartExecution.run();
 		
 		

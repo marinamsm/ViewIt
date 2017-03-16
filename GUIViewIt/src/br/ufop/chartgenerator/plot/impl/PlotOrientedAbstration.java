@@ -132,48 +132,9 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 		CategoryPlot plot = (CategoryPlot)lineChart.getPlot();
 		
 		CategoryAxis xAxis = (CategoryAxis)plot.getDomainAxis();
-		//CategoryAxis xAxis = new CategoryAxisSkipLabels();
 		xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_90);
-		//((CategoryAxisSkipLabels)xAxis).setDisplaySkippedTickMarks(true);
-		//NumberAxis rangeAxis = new NumberAxis("Value");
-		//xAxis.setTickLabelsVisible(true);
-		
-		
-		
-        
 		lineChart.setBackgroundPaint(ChartColor.WHITE);
 		
-		
-		/*
-		CategoryItemRenderer renderer = new CategoryStepRenderer(true);
-        CategoryAxis domainAxis = new CategoryAxisSkipLabels();  // new CategoryAxis("Category");
-        domainAxis.setTickMarksVisible(true);
-        ((CategoryAxisSkipLabels)domainAxis).setDisplaySkippedTickMarks(true);
-        ((CategoryAxisSkipLabels)domainAxis).setDisplaySkippedTickMarks(true);
-        NumberAxis rangeAxis = new NumberAxis("Value");
-        CategoryPlot plot = new CategoryPlot(
-            dataset, domainAxis, rangeAxis, renderer
-        );
-  
-        JFreeChart lineChart = new JFreeChart(title, plot);
- 
-        // NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
-        lineChart.setBackgroundPaint(Color.white);
-        
-        plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
-        plot.setBackgroundPaint(Color.lightGray);
-        plot.setDomainGridlinesVisible(true);
-        plot.setDomainGridlinePaint(Color.white);
-        plot.setRangeGridlinesVisible(true);
-        plot.setRangeGridlinePaint(Color.white);
-        domainAxis.setLowerMargin(0.0);
-        domainAxis.setUpperMargin(0.0);
-        domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_90);
-        
-        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        rangeAxis.setLabelAngle(0*Math.PI / 2.0);
-        
-		*/
 		//nao muda abaixo
 		File fileChart = new File(title+".png");
 		try {
@@ -204,7 +165,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 														 true,//legend
 														 false,
 														 false);
-		File fileChart = new File(pageName+"ttr.png");
+		File fileChart = new File(pageName+"Pie.png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, pieChart, 640, 480);
 		} catch (IOException e) {
@@ -231,7 +192,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 				 false,
 				 false);
 		
-		File fileChart = new File(pageName+"tr.png");
+		File fileChart = new File(pageName+"dataPieChart.png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, pieChart, 640, 480);
 		} catch (IOException e) {

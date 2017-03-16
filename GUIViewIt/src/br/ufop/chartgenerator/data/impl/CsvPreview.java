@@ -39,13 +39,13 @@ class CsvPreview implements ICsvPreview {
 				auxLine = line.split(",");
 				String pageName = auxLine[0].replaceAll("\\s+","");
 				String harName = auxLine[1];
+				
 				ContentInfo contentInfo = new ContentInfo.Builder()
 						.totalImage(Integer.parseInt(auxLine[2]))
 						.totalCss(Integer.parseInt(auxLine[3]))
 						.totalJavascript(Integer.parseInt(auxLine[4]))
 						.totalHtml(Integer.parseInt(auxLine[5]))
-						.totalOthers(Integer.parseInt(auxLine[6]))
-						
+						.totalOthers(Integer.parseInt(auxLine[6]))		
 						.image(Long.parseLong(auxLine[8]))
 						.css(Long.parseLong(auxLine[9]))
 						.javascript(Long.parseLong(auxLine[10]))
@@ -58,7 +58,6 @@ class CsvPreview implements ICsvPreview {
 						.waiting(Long.parseLong(auxLine[15]))
 						.receiving(Long.parseLong(auxLine[16]))
 						.build();
-				
 				Long onload = Long.parseLong(auxLine[18]);
 				Long onContentLoad = Long.parseLong(auxLine[19]);
 				PageTimings pageTimings = new PageTimings(onload, onContentLoad);

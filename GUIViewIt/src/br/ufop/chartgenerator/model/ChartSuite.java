@@ -3,12 +3,14 @@ package br.ufop.chartgenerator.model;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-import br.ufop.chartgenerator.data.api.ICsvPreview;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+import br.ufop.chartgenerator.data.api.ICsvPreview;
 
 @XStreamAlias("chartSuite")
 public class ChartSuite extends ChartTypeSuite{
@@ -32,6 +34,22 @@ public class ChartSuite extends ChartTypeSuite{
 	
 	@XStreamImplicit(itemFieldName = "lineChart")
 	private List<LineChart> lineCharts;
+
+	public void initLineChart() {
+		lineCharts = new LinkedList();
+	}
+	
+	public void initPieChart() {
+		pieCharts = new LinkedList();
+	}
+	
+	public void initBoxPlotChart() {
+		boxPlotCharts = new LinkedList();
+	}
+	
+	public void initBarChart() {
+		barCharts = new LinkedList();
+	}
 	
 	public List<ChartTypeSuite> getChartsConfig() {
 		return chartsConfig;
@@ -50,8 +68,8 @@ public class ChartSuite extends ChartTypeSuite{
 			e.printStackTrace();
 		}
 		// determinar o diretório
-		String defaulLogDir = canonicalPath + File.separator + csvPath;
-		return defaulLogDir;
+		String defaultLogDir = canonicalPath + File.separator + csvPath;
+		return defaultLogDir;
 	}
 
 	public void setCsvPath(String csvPath) {
@@ -146,6 +164,7 @@ public class ChartSuite extends ChartTypeSuite{
 	@Override
 	public void plotChart(ICsvPreview csvPreview) {
 		for(ChartTypeSuite chartCg : chartsConfig){
+			System.out.println("Grafico pronto!Confira sua pasta.");
 			chartCg.plotChart(csvPreview);
 		}
 		

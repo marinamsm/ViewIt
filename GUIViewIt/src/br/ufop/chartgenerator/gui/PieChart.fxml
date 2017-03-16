@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.chartgenerator.gui.LineChartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.chartgenerator.gui.PieChartController">
    <children>
       <GridPane layoutX="123.0" layoutY="77.0" prefHeight="291.0" prefWidth="386.0">
         <columnConstraints>
@@ -24,15 +23,15 @@
         </rowConstraints>
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Chart Title" textAlignment="CENTER" wrappingWidth="90.3515625" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Pages name" GridPane.rowIndex="1" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Page name" GridPane.rowIndex="1" />
             <TextField fx:id="title" GridPane.columnIndex="1" />
-            <TextArea fx:id="pagesName" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <buttons>
                 <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" text="OK" />
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
               </buttons>
             </ButtonBar>
+            <TextField fx:id="pageName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Line Chart Data" />

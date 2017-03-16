@@ -1,4 +1,4 @@
-<chartSuite csvPath="testeHomeUfop000c.csv" chartFolder="src\ChartsDir">
+<chartSuite csvPath="geral.csv" chartFolder="src">
 	
 	<pieChart title="pie1" pageName="ALL">
 		<type>resource</type>
