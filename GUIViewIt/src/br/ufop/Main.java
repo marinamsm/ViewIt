@@ -38,7 +38,22 @@ public class Main extends Application {
 	private SchedulingTest testSchedule = new SchedulingTest(this);
     private Stage primaryStage;
     private BorderPane rootLayout;
-
+    private RootLayoutController controller;
+    private RootTestController testController;
+    private TestCreationController testCreationController;
+    private AdvancedSettingsTestController advSettingsController;
+    private RootChartController rootChartController;
+    private ChartCreationController chartCreationController;
+    private TypingController typingController;
+    private CheckingBoxesController checkingBoxesController;
+    private ClickingController clickingController;
+    private CheckingAlertController checkingAlertController;
+    private ContextClickingController contextClickingController;
+    private LineChartController lineChartController;
+    private PieChartController pieChartController;
+    private BarChartController barChartController;
+    private BoxPlotChartController boxplotChartController;
+    
     @Override
     public void start(Stage primaryStage) {
     	
@@ -69,8 +84,10 @@ public class Main extends Application {
 
             
          // Give the controller access to the main app.
-            RootLayoutController controller = loader.getController();
-            controller.setMain(this);
+            if(controller == null){
+            	controller = loader.getController();
+            	controller.setMain(this);
+            }
             primaryStage.setFullScreen(true);
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
@@ -108,8 +125,10 @@ public class Main extends Application {
             rootLayout.setTop(testRootLayout);
          
          // Give the controller access to the main app.
-            RootTestController controller = loader.getController();
-           	controller.setMain(this); 
+            if(testController == null){
+            	testController = loader.getController();
+            	testController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -126,8 +145,10 @@ public class Main extends Application {
             rootLayout.setCenter(testView);
             
             // Give the controller access to the main app.
-            TestCreationController controller = loader.getController();
-            controller.setMain(this);
+            if(testCreationController == null){
+            	testCreationController = loader.getController();
+                testCreationController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -142,8 +163,10 @@ public class Main extends Application {
             rootLayout.setCenter(advSetView);
             
             // Give the controller access to the main app.
-            AdvancedSettingsTestController controller = loader.getController();
-            controller.setMain(this);
+            if(advSettingsController == null){
+            	advSettingsController = loader.getController();
+                advSettingsController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,8 +185,10 @@ public class Main extends Application {
             rootLayout.setTop(chartRootLayout);
          
          // Give the controller access to the main app.
-            RootChartController controller = loader.getController();
-           	controller.setMain(this); 
+            if(rootChartController == null){
+            	rootChartController = loader.getController();
+               	rootChartController.setMain(this); 
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,8 +201,10 @@ public class Main extends Application {
             rootLayout.setCenter(chartView);
             
             // Give the controller access to the main app.
-            ChartCreationController controller = loader.getController();
-            controller.setMain(this);
+            if(chartCreationController == null){
+            	chartCreationController = loader.getController();
+                chartCreationController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -191,8 +218,10 @@ public class Main extends Application {
             rootLayout.setCenter(typingView);
             
             // Give the controller access to the main app.
-            TypingController controller = loader.getController();
-            controller.setMain(this);
+            if(typingController == null){
+            	typingController = loader.getController();
+                typingController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,8 +235,10 @@ public class Main extends Application {
             rootLayout.setCenter(checkingBoxesView);
             
             // Give the controller access to the main app.
-            CheckingBoxesController controller = loader.getController();
-            controller.setMain(this);
+            if(checkingBoxesController == null){
+            	checkingBoxesController = loader.getController();
+                checkingBoxesController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -221,8 +252,10 @@ public class Main extends Application {
             rootLayout.setCenter(clickingView);
             
             // Give the controller access to the main app.
-            ClickingController controller = loader.getController();
-            controller.setMain(this);
+            if(clickingController == null){
+            	clickingController = loader.getController();
+                clickingController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -236,8 +269,10 @@ public class Main extends Application {
             rootLayout.setCenter(checkingAlertView);
             
             // Give the controller access to the main app.
-            CheckingAlertController controller = loader.getController();
-            controller.setMain(this);
+            if(checkingAlertController == null){
+            	checkingAlertController = loader.getController();
+                checkingAlertController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -251,8 +286,10 @@ public class Main extends Application {
             rootLayout.setCenter(contextClickingView);
             
             // Give the controller access to the main app.
-            ContextClickingController controller = loader.getController();
-            controller.setMain(this);
+            if(contextClickingController == null){
+            	contextClickingController = loader.getController();
+                contextClickingController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -266,8 +303,10 @@ public class Main extends Application {
             rootLayout.setCenter(lineView);
             
             // Give the controller access to the main app.
-            LineChartController controller = loader.getController();
-            controller.setMain(this);
+            if(lineChartController == null){
+            	lineChartController = loader.getController();
+                lineChartController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -281,8 +320,10 @@ public class Main extends Application {
             rootLayout.setCenter(pieView);
             
             // Give the controller access to the main app.
-            PieChartController controller = loader.getController();
-            controller.setMain(this);
+            if(pieChartController == null){
+            	pieChartController = loader.getController();
+                pieChartController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -296,8 +337,10 @@ public class Main extends Application {
             rootLayout.setCenter(barView);
             
             // Give the controller access to the main app.
-            BarChartController controller = loader.getController();
-            controller.setMain(this);
+            if(barChartController == null){
+            	barChartController = loader.getController();
+                barChartController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -311,8 +354,10 @@ public class Main extends Application {
             rootLayout.setCenter(boxPlotView);
             
             // Give the controller access to the main app.
-            BoxPlotChartController controller = loader.getController();
-            controller.setMain(this);
+            if(boxplotChartController == null){
+            	boxplotChartController = loader.getController();
+                boxplotChartController.setMain(this);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -33,7 +33,6 @@ public class CsvSummary {
 	      // Display elements
 	      while(i.hasNext()) {
 	         Map.Entry me = (Map.Entry)i.next();
-	         System.out.println(me.getKey() + ": ");
 	         csvInfoSummaries.get((String)me.getKey()).printTest();
 	      }
 		

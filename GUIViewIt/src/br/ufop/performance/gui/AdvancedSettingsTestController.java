@@ -1,6 +1,7 @@
 package br.ufop.performance.gui;
 
 import br.ufop.Main;
+import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -40,10 +41,12 @@ public class AdvancedSettingsTestController {
 	
 	@FXML
 	public void backButtonAction() {
-		main.showWelcomeView();
+		main.showTestCreationView();
 	}
 	
+	//saveButton
 	public void okButtonAction() {
+		AlertMessage.showConfirmationAlert("Advanced Settings", "", "The steps have been saved successfully!");
 		main.showTestCreationView();
 	}
 	

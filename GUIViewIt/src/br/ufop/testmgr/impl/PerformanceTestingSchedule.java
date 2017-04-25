@@ -59,9 +59,7 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 		this.y_times = testInput.getX_times();
 		this.x_in_x_seconds = testInput.getY_interval();
 		this.harPath = testInput.getHarDirectoryPath(); 
-		System.out.println(harPath);
 		this.csvPath = testInput.getCsvFolder();
-		System.out.println(csvPath);
 		this.pageName = pageName;
 		timer = new Timer();
 		

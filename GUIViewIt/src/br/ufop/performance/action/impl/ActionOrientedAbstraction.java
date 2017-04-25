@@ -19,7 +19,7 @@ import br.ufop.performance.action.api.IActionOrientedAbstraction;
  */
 public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 
-	private final int sleepTime = 10000;
+	private final int sleepTime = 2000;
 	private final int waitTime = 20; //20 s
 
 	/*
@@ -49,6 +49,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			// esperar ate que o har seja exportado - caso abra nova pagina
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
@@ -59,6 +60,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
@@ -75,8 +77,9 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			// quando nova pagina eh carregada)
 
 			Thread.sleep(sleepTime);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 
 	}
@@ -93,7 +96,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 	public void selectOptionInRadioForm(By locatorRadioForm,
 			String selectedVisibleText) {
 		if(locatorRadioForm == null){
-			System.out.println("o erro é aki");
+			System.out.println("O erro eh aqui");
 		}
 		
 		Select sel = new Select(driver.findElement(locatorRadioForm));
@@ -123,6 +126,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			}
 		}catch(Exception e){
 			System.err.println(e.toString());
+			System.exit(0);
 		}
 	}
 	
@@ -140,6 +144,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 

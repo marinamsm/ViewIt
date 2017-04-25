@@ -56,8 +56,7 @@ public class Clicking extends PerformanceTestCase {
 
 		 this.actionBot = new ActionOrientedAbstraction(webdriver);
 		 actionBot.click(locator.getByObject(locator.getBy(),
-				 		 locator.getValue()));
-
+		 				 		 locator.getValue()));
 	}
 
 }

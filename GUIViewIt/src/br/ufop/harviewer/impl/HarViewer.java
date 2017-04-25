@@ -95,7 +95,6 @@ class HarViewer implements IHarViewer {
 
 		HarLog log = null;
 		File f = new File(harPathName);
-		System.out.println("::::"+harPathName);
 		HarFileReader r = new HarFileReader();
 
 		try {
@@ -155,8 +154,6 @@ class HarViewer implements IHarViewer {
 
 		String csvContent = " ";
 		readHarFilesFromDirectory(harPath, csv, pageName);
-		//System.out.println(harConfigPath);
-
 		for (int i = 0; i < harInfoList.size(); i++) {
 
 			HarInfoSummary harInfoSummary = harInfoList.get(i);
@@ -223,14 +220,11 @@ class HarViewer implements IHarViewer {
 		harConfig.setCsvFilePath(csv);
 		harConfig.setPageName(pageName);
 		File[] files = finder(harPath);
-		//System.out.println(files.length);
 		Arrays.sort(files);
 		
 		List<String> pagesList = harConfig.getPageNames();
 		int numberOfPages = harConfig.getPageNames().size();
 		int pageIndex = 0;
-		
-		//System.out.println("Numero de pag: "+numberOfPages);
 
 		for (int i = 0; i < files.length; i++) {
 			if (pageIndex == numberOfPages)

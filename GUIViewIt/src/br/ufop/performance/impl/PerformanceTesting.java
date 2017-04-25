@@ -35,9 +35,7 @@ class PerformanceTesting implements IPerformanceTesting {
 			//faz e retorna as configurações do teste
 			config = main.getTestInput();
 			config.setNavigation();
-			//System.out.println("URL main.getTEstInput" + main.getTestInput().getURL());
 			//config.sortTestCasesByStepId();
-			System.out.println("URL config" + config.getURL());
 			XML = false; //running ViewIt GUI
 			return config;
 		} catch (Exception e) {
