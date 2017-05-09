@@ -181,8 +181,6 @@ public class TestSuite extends PerformanceTestCase {
 		// buscando testes do tipo navegacao
 		if (navigatingSteps != null)
 			for (Navigating navigate : navigatingSteps) {
-				if (mapStepId_PerformanceTest == null)
-					System.out.println("NULLLL");
 				mapStepId_PerformanceTest.put(navigate.getStepID(), navigate);
 			}
 

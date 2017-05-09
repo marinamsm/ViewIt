@@ -2,6 +2,7 @@ package br.ufop.performance.model;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedMap;
 
 import br.ufop.Main;
 import javafx.beans.property.IntegerProperty;
@@ -180,9 +181,5 @@ public class TestInput extends TestSuite{
     public StringProperty pageNameProperty() {
         return pageName;
     }
-    
-    /*public <T> void setList(List<T> list) {
-    	list = new LinkedList<T>();
-    }*/
     
 }

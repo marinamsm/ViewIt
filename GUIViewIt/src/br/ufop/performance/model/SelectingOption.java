@@ -28,6 +28,7 @@ public class SelectingOption extends PerformanceTestCase {
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
+		this.step.set(stepID);
 	}
 
 	public String getDescription() {
@@ -38,7 +39,7 @@ public class SelectingOption extends PerformanceTestCase {
 		this.description = description;
 	}
 
-	public ByLocator getLocatorCheckBoxes() {
+	public ByLocator getLocator() {
 		return locatorCheckBoxes;
 	}
 

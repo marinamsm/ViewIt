@@ -52,6 +52,7 @@ public class Typing extends PerformanceTestCase {
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
+		this.step.set(stepID);
 	}
 	
 	//FOR GUI ONLY

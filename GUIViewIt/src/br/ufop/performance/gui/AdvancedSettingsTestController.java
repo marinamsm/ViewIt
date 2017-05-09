@@ -15,6 +15,9 @@ public class AdvancedSettingsTestController {
 	private Button ok;
 	
 	@FXML
+	private Button myActions;
+	
+	@FXML
 	private Button typing;
 	
 	@FXML
@@ -42,6 +45,11 @@ public class AdvancedSettingsTestController {
 	@FXML
 	public void backButtonAction() {
 		main.showTestCreationView();
+	}
+	
+	@FXML
+	public void myActionsButtonAction() {
+		main.showMyActionsView();
 	}
 	
 	//saveButton

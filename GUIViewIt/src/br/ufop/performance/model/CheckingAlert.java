@@ -35,6 +35,7 @@ public class CheckingAlert extends PerformanceTestCase{
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
+		this.step.set(stepID);
 	}
 
 

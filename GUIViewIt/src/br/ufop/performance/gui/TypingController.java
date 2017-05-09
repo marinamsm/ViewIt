@@ -62,6 +62,7 @@ public class TypingController {
 		type.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
 		type.setStepID(stepNumber.getValue()+1);
 		type.setKey(key.getText());
+		System.out.println("stepProperty.toString em typingController: " + type.stepProperty().toString());
 		main.getTestInput().getTypingSteps().add(type);
 		for(int i = 0; i < main.getTestInput().getTypingSteps().size(); i++)
 			System.out.println("   " + main.getTestInput().getTypingSteps().get(i));

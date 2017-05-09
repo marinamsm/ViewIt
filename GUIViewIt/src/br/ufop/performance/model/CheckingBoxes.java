@@ -31,9 +31,10 @@ public class CheckingBoxes extends PerformanceTestCase {
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
+		this.step.set(stepID);
 	}
 
-	public ByLocator getLocatorRadioForm() {
+	public ByLocator getLocator() {
 		return locatorRadioForm;
 	}
 

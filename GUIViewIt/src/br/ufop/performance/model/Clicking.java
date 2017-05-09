@@ -6,6 +6,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import br.ufop.performance.action.impl.ActionOrientedAbstraction;
+import javafx.beans.property.SimpleStringProperty;
 
 @XStreamAlias("clicking")
 public class Clicking extends PerformanceTestCase {
@@ -25,6 +26,7 @@ public class Clicking extends PerformanceTestCase {
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
+		this.step.set(stepID);
 	}
 
 	public String getDescription() {
