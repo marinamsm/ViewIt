@@ -63,10 +63,21 @@ public class ContextClickingController {
 		ContextClicking context = new ContextClicking();
 		context.setDescription(description.getText());
 		context.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		context.setStepID(stepNumber.getValue()+1);
+		int var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		String str;
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		context.setStepID(str);
+		context.stepProperty().set(str);
+		context.actionProperty().set(context.getAction().get());
 		main.getTestInput().getContextClickingSteps().add(context);
 		for(int i = 0; i < main.getTestInput().getContextClickingSteps().size(); i++)
 			System.out.println("   " + main.getTestInput().getContextClickingSteps().get(i));
+		main.getTestInput().sortTestCasesByStepId();
+		addToObsList(context);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -75,4 +86,7 @@ public class ContextClickingController {
 		main.showAdvancedSettingsView();
 	}
 	
+	public void addToObsList(ContextClicking context) {
+		main.getData().add(context);
+	}
 }

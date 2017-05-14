@@ -60,12 +60,22 @@ public class TypingController {
 		Typing type = new Typing();
 		type.setDescription(description.getText());
 		type.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		type.setStepID(stepNumber.getValue()+1);
+		int var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		String str;
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		type.setStepID(str);
+		type.stepProperty().set(str);
+		type.actionProperty().set(type.getAction().get());
 		type.setKey(key.getText());
-		System.out.println("stepProperty.toString em typingController: " + type.stepProperty().toString());
 		main.getTestInput().getTypingSteps().add(type);
 		for(int i = 0; i < main.getTestInput().getTypingSteps().size(); i++)
-			System.out.println("   " + main.getTestInput().getTypingSteps().get(i));
+			System.out.println("   " + main.getTestInput().getTypingSteps().get(i)); 
+		main.getTestInput().sortTestCasesByStepId();
+		addToObsList(type);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -74,4 +84,7 @@ public class TypingController {
 		main.showAdvancedSettingsView();
 	}
 	
+	public void addToObsList(Typing type) {
+		main.getData().add(type);
+	}
 }

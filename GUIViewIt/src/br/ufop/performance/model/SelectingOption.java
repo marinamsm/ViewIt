@@ -6,6 +6,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import br.ufop.performance.action.impl.ActionOrientedAbstraction;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @XStreamAlias("selectingOption")
 public class SelectingOption extends PerformanceTestCase {
@@ -21,16 +23,22 @@ public class SelectingOption extends PerformanceTestCase {
 
 	@XStreamAlias("selectedElement_visibleText")
 	private String visibleText;
+	
+	//FOR GUI
+	private StringProperty action = new SimpleStringProperty("SelectingOption");
 
+	public StringProperty getAction() {
+		return action;
+	}
+	
 	public String getStepID() {
 		return stepID;
 	}
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
-		this.step.set(stepID);
 	}
-
+	
 	public String getDescription() {
 		return description;
 	}

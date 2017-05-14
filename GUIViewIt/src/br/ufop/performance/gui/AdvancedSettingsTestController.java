@@ -12,7 +12,7 @@ public class AdvancedSettingsTestController {
 	private Button back;
 	
 	@FXML
-	private Button ok;
+	private Button save;
 	
 	@FXML
 	private Button myActions;
@@ -53,7 +53,7 @@ public class AdvancedSettingsTestController {
 	}
 	
 	//saveButton
-	public void okButtonAction() {
+	public void saveButtonAction() {
 		AlertMessage.showConfirmationAlert("Advanced Settings", "", "The steps have been saved successfully!");
 		main.showTestCreationView();
 	}

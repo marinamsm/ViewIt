@@ -17,10 +17,10 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView prefHeight="598.0" prefWidth="210.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="actionTable" prefHeight="598.0" prefWidth="210.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="stepColumn" prefWidth="105.0" text="Step" />
-                      <TableColumn fx:id="actionColumn" prefWidth="104.0" text="Action" />
+                      <TableColumn fx:id="stepColumn" prefWidth="105.0" styleClass="right-anchor-pane" text="Step" />
+                      <TableColumn fx:id="actionColumn" prefWidth="104.0" styleClass="right-anchor-pane" text="Action" />
                     </columns>
                   </TableView>
                </children>
@@ -43,24 +43,25 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Description" textFill="WHITE" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Key" GridPane.rowIndex="1" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Locator" GridPane.rowIndex="2" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Name of locator" GridPane.rowIndex="3" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Option to check" GridPane.rowIndex="4" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Label" GridPane.columnIndex="1" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="descriptionLabel" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Description" textFill="WHITE" />
+                              <Label fx:id="keyLabel" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Key" GridPane.rowIndex="1" />
+                              <Label fx:id="locatorLabel" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Locator" GridPane.rowIndex="2" />
+                              <Label fx:id="nameOfLocatorLabel" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Name of locator" GridPane.rowIndex="3" />
+                              <Label fx:id="optionToCheckLabel" styleClass="writings" stylesheets="@../../maingui/viewit.css" text="Option to check" GridPane.rowIndex="4" />
+                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="-" GridPane.columnIndex="1" />
+                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label styleClass="writings" stylesheets="@../../maingui/viewit.css" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
                         </GridPane>
                      </children></AnchorPane>
-                  <ButtonBar layoutX="261.0" layoutY="527.0" prefHeight="40.0" prefWidth="200.0">
+                  <ButtonBar layoutX="207.0" layoutY="509.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
                       <Button mnemonicParsing="false" text="New..." />
                         <Button mnemonicParsing="false" text="Edit..." />
                         <Button mnemonicParsing="false" text="Delete" />
+                        <Button mnemonicParsing="false" text="Back" />
                     </buttons>
                   </ButtonBar>
                </children>

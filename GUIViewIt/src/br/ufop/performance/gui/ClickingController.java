@@ -3,6 +3,7 @@ package br.ufop.performance.gui;
 import br.ufop.Main;
 import br.ufop.performance.model.Clicking;
 import br.ufop.performance.model.Submitting;
+import br.ufop.performance.model.Typing;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -62,17 +63,35 @@ public class ClickingController {
 		Clicking click = new Clicking();
 		click.setDescription(description.getText());
 		click.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		click.setStepID(stepNumber.getValue()+1);
+		int var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		String str;
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		click.setStepID(str);
+		click.stepProperty().set(str);
+		click.actionProperty().set(click.getAction().get());
 		main.getTestInput().getClickingSteps().add(click);
+		
 		Submitting submit = new Submitting();
 		submit.setDescription(description.getText());
 		submit.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		submit.setStepID(stepNumber.getValue()+1);
+		var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		str = "";
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		submit.setStepID(str);
+		submit.stepProperty().set(str);
+		submit.actionProperty().set(submit.getAction().get());
 		main.getTestInput().getSubmittingSteps().add(submit);
-		for(int i = 0; i < main.getTestInput().getClickingSteps().size(); i++){
-			System.out.println("   " + main.getTestInput().getClickingSteps().get(i));
-			System.out.println("   " + main.getTestInput().getSubmittingSteps().get(i));
-		}
+		
+		main.getTestInput().sortTestCasesByStepId();
+		addToObsList(click, submit);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -81,5 +100,9 @@ public class ClickingController {
 		main.showAdvancedSettingsView();
 	}
 	
+	public void addToObsList(Clicking click, Submitting submit) {
+		main.getData().add(click);
+		main.getData().add(submit);
+	}
 
 }

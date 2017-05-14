@@ -6,6 +6,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import br.ufop.performance.action.impl.ActionOrientedAbstraction;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @XStreamAlias("typing")
 public class Typing extends PerformanceTestCase {
@@ -22,6 +24,13 @@ public class Typing extends PerformanceTestCase {
 	@XStreamAsAttribute
 	private String stepID;
 
+	//FOR GUI
+	private StringProperty action = new SimpleStringProperty("Typing");
+	
+	public StringProperty getAction() {
+		return action;
+	}
+	
 	public ByLocator getLocator() {
 		return locator;
 	}
@@ -52,7 +61,6 @@ public class Typing extends PerformanceTestCase {
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
-		this.step.set(stepID);
 	}
 	
 	//FOR GUI ONLY

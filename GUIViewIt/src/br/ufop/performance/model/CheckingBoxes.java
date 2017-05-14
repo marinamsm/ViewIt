@@ -9,6 +9,8 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import br.ufop.performance.action.impl.ActionOrientedAbstraction;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @XStreamAlias("ckeckingBoxes")
 public class CheckingBoxes extends PerformanceTestCase {
@@ -24,16 +26,22 @@ public class CheckingBoxes extends PerformanceTestCase {
 
 	@XStreamImplicit(itemFieldName = "selectedElements_visibleText")
 	private List<String> visibleTexts;
+	
+	//FOR GUI
+	private StringProperty action = new SimpleStringProperty("CheckingBoxes");
 
+	public StringProperty getAction() {
+		return action;
+	}
+	
 	public String getStepID() {
 		return stepID;
 	}
 
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
-		this.step.set(stepID);
 	}
-
+	
 	public ByLocator getLocator() {
 		return locatorRadioForm;
 	}

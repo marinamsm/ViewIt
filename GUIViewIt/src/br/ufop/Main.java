@@ -19,9 +19,12 @@ import br.ufop.performance.gui.ContextClickingController;
 import br.ufop.performance.gui.RootTestController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
+import br.ufop.performance.model.PerformanceTestCase;
 import br.ufop.performance.model.TestInput;
 import br.ufop.testmgr.test.SchedulingTest;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -55,6 +58,7 @@ public class Main extends Application {
     private PieChartController pieChartController;
     private BarChartController barChartController;
     private BoxPlotChartController boxplotChartController;
+    private ObservableList<PerformanceTestCase> data = FXCollections.observableArrayList();
     
     @Override
     public void start(Stage primaryStage) {
@@ -376,6 +380,10 @@ public class Main extends Application {
 
     public SchedulingTest getSchedulingTest() {
     	return testSchedule;
+    }
+    
+    public ObservableList<PerformanceTestCase> getData() {
+    	return data;
     }
     
     public void setGUIFlag() {

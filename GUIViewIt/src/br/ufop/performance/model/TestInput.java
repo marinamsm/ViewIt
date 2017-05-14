@@ -182,4 +182,7 @@ public class TestInput extends TestSuite{
         return pageName;
     }
     
+    public SortedMap<String, PerformanceTestCase> getSortedMap(){
+    	return super.getMapStepId_PerformanceTest();
+    }
 }

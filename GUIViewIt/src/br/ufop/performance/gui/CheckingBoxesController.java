@@ -71,23 +71,45 @@ public class CheckingBoxesController {
 		CheckingBoxes check = new CheckingBoxes();
 		check.setDescription(description.getText());
 		check.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		check.setStepID(stepNumber.getValue()+1);
+		int var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		String str;
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		check.setStepID(str);
+		check.stepProperty().set(str);
+		check.actionProperty().set(check.getAction().get());
 		String[] s = optionsToCheck.getText().split(" ");
 		for(int i = 0; i < s.length; i++) {
 			options.add(s[i]);
 		}
 		check.setVisibleTexts(options);
 		main.getTestInput().getCheckingBoxSteps().add(check);
+		
 		SelectingOption selected = new SelectingOption();
 		selected.setDescription(description.getText());
 		selected.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		selected.setStepID(stepNumber.getValue()+1);
+		var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		str = "";
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		selected.setStepID(str);
+		selected.stepProperty().set(str);
+		selected.actionProperty().set(selected.getAction().get());
 		selected.setVisibleText("");
 		main.getTestInput().getSelectingOptionSteps().add(selected);
 		for(int i = 0; i < main.getTestInput().getCheckingBoxSteps().size(); i++){
 			System.out.println("   " + main.getTestInput().getCheckingBoxSteps().get(i));
 			System.out.println("   " + main.getTestInput().getSelectingOptionSteps().get(i));
 		}
+		
+		main.getTestInput().sortTestCasesByStepId();
+		addToObsList(check, selected);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -96,5 +118,9 @@ public class CheckingBoxesController {
 		main.showAdvancedSettingsView();
 	}
 	
-
+	public void addToObsList(CheckingBoxes check, SelectingOption selected) {
+		main.getData().add(check);
+		main.getData().add(selected);
+	}
+	
 }

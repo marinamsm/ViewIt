@@ -8,20 +8,20 @@ import javafx.beans.property.StringProperty;
 
 public abstract class PerformanceTestCase {
 
-	protected StringProperty step = new SimpleStringProperty();
+	protected StringProperty stepProperty = new SimpleStringProperty();
 	
-	protected StringProperty action = new SimpleStringProperty(); 
+	protected StringProperty actionProperty = new SimpleStringProperty(); 
 	
 	ActionOrientedAbstraction actionBot;
 	
 	public abstract void executeTest(WebDriver webDriver);
 	
 	public StringProperty stepProperty() {
-	        return step;
+	        return stepProperty;
 	}
 	
 	public StringProperty actionProperty() {
-        return action;
+        return actionProperty;
 	}
 	
 }

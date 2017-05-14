@@ -52,17 +52,33 @@ public class CheckingAlertController {
 	public void okButtonAction() {
 		CheckingAlert check = new CheckingAlert();
 		check.setDescription(description.getText());
-		check.setStepID(stepNumber.getValue()+1);
+		
+		int var = Integer.parseInt(stepNumber.getValue());
+		var++;
+		String str;
+		if(var < 10)
+			str = "0" + Integer.toString(var);
+		else
+			str = Integer.toString(var);
+		check.setStepID(str);
+		check.stepProperty().set(str);
+		check.actionProperty().set(check.getAction().get());
 		check.setOption(optionInTheCheckbox.getText());
 		main.getTestInput().getCheckingAlertSteps().add(check);
 		for(int i = 0; i < main.getTestInput().getCheckingAlertSteps().size(); i++)
 			System.out.println("   " + main.getTestInput().getCheckingAlertSteps().get(i));
+		main.getTestInput().sortTestCasesByStepId();
+		addToObsList(check);
 		main.showAdvancedSettingsView();
 	}
 	
 	@FXML
 	public void cancelButtonAction() {
 		main.showAdvancedSettingsView();
+	}
+	
+	public void addToObsList(CheckingAlert check) {
+		main.getData().add(check);
 	}
 	
 }

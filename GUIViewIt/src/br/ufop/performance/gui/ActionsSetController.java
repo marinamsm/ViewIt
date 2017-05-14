@@ -5,13 +5,16 @@ import java.util.Iterator;
 import br.ufop.Main;
 import br.ufop.performance.model.PerformanceTestCase;
 import br.ufop.performance.model.TestInput;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class ActionsSetController {
 	
@@ -23,8 +26,6 @@ public class ActionsSetController {
     
 	@FXML
     private TableColumn<PerformanceTestCase, String> actionColumn;
-	
-	private final ObservableList<PerformanceTestCase> data = FXCollections.observableArrayList();
 	
 	@FXML
 	private Label descriptionLabel;
@@ -44,15 +45,35 @@ public class ActionsSetController {
 	@FXML
 	private Main main;
 	
-	private TestInput test = null;
+	private TestInput test;
 	
-	private boolean control = true; //if control is true then it is the first time the Typing screen is loaded by main
+	private boolean control = true; //if control is true then it is the first time this screen is loaded by main
 	
 	public void setMain(Main main) {
 		this.main = main;
+		test = main.getTestInput();
 		if(control){
 			control = false;
 		}
+
+		setTable();
+		
+		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
+        
+		actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
+        /*actionColumn.setCellValueFactory(new Callback<CellDataFeatures<PerformanceTestCase, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(CellDataFeatures<PerformanceTestCase, String> p) {
+                // p.getValue() returns the Person instance for a particular TableView row
+                return p.getValue().actionProperty();
+            }
+         });*/
+        
+        //showTestSuiteDetails(null);
+        
+        // Listen for selection changes and show the test suit details when changed
+        //actionTable.getSelectionModel().selectedItemProperty().addListener(
+          //      (observable, oldValue, newValue) -> showTestSuitDetails(newValue));
+
 	}
 	
 	/**
@@ -62,26 +83,14 @@ public class ActionsSetController {
     @FXML
     private void initialize() {
     	//Initialize the table with the two columns
-    	//test = main.getTestInput();
-    	Iterator<String> iterator = main.getTestInput().getMapStepId_PerformanceTest().keySet()
-				.iterator();
-		while (iterator.hasNext()) {
-			Object key = iterator.next();
-			PerformanceTestCase testCase = main.getTestInput().getMapStepId_PerformanceTest().get(key);
-			data.add(testCase);
-		}
-		//sets tableview
-		actionTable.setItems(data);
-		
-		stepColumn = new TableColumn<>("");
-		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
-        actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
-        
-        //showTestSuiteDetails(null);
-        
-        // Listen for selection changes and show the test suit details when changed
-        //actionTable.getSelectionModel().selectedItemProperty().addListener(
-          //      (observable, oldValue, newValue) -> showTestSuitDetails(newValue));
+     }
+    
+    private void setTable(){
+    	//sets tableview
+    	actionTable.setItems(main.getData());
+    	for (int i = 0; i < main.getData().size(); i++) {
+    		System.out.println("Step: " + main.getData().get(i).stepProperty().get()+ "  Action: " + main.getData().get(i).actionProperty().get());
+    	}	
     }
     
     private void showTestSuiteDetails(PerformanceTestCase testCase) {
