@@ -1,20 +1,20 @@
 package br.ufop.performance.gui;
 
-import java.util.Iterator;
-
 import br.ufop.Main;
+import br.ufop.performance.model.CheckingAlert;
+import br.ufop.performance.model.CheckingBoxes;
+import br.ufop.performance.model.Clicking;
+import br.ufop.performance.model.ContextClicking;
 import br.ufop.performance.model.PerformanceTestCase;
+import br.ufop.performance.model.SelectingOption;
+import br.ufop.performance.model.Submitting;
 import br.ufop.performance.model.TestInput;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import br.ufop.performance.model.Typing;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
 public class ActionsSetController {
 	
@@ -37,7 +37,7 @@ public class ActionsSetController {
 	private Label locatorLabel;
 	
 	@FXML
-	private Label nameOfLocatorLabel;
+	private Label typeOfLocatorLabel;
 	
 	@FXML
 	private Label optionToCheckLabel;
@@ -61,18 +61,14 @@ public class ActionsSetController {
 		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
         
 		actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
-        /*actionColumn.setCellValueFactory(new Callback<CellDataFeatures<PerformanceTestCase, String>, ObservableValue<String>>() {
-            public ObservableValue<String> call(CellDataFeatures<PerformanceTestCase, String> p) {
-                // p.getValue() returns the Person instance for a particular TableView row
-                return p.getValue().actionProperty();
-            }
-         });*/
         
-        //showTestSuiteDetails(null);
+	//	actionTable.getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
+		
+        showTestSuiteDetails();
         
         // Listen for selection changes and show the test suit details when changed
-        //actionTable.getSelectionModel().selectedItemProperty().addListener(
-          //      (observable, oldValue, newValue) -> showTestSuitDetails(newValue));
+        actionTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showTestSuiteDetails());
 
 	}
 	
@@ -88,31 +84,77 @@ public class ActionsSetController {
     private void setTable(){
     	//sets tableview
     	actionTable.setItems(main.getData());
-    	for (int i = 0; i < main.getData().size(); i++) {
+    	/*for (int i = 0; i < main.getData().size(); i++) {
     		System.out.println("Step: " + main.getData().get(i).stepProperty().get()+ "  Action: " + main.getData().get(i).actionProperty().get());
-    	}	
+    	}*/	
     }
     
-    private void showTestSuiteDetails(PerformanceTestCase testCase) {
-        if (testCase != null) {
-        	
-            // Fill the labels with info from the person object.
-            /*descriptionLabel.setText(testCase.getClass()getFirstName());
-            keyLabel.setText(person.getLastName());
-            locatorLabel.setText(person.getStreet());
-            nameOfLocatorLabel.setText(Integer.toString(person.getPostalCode()));
-            optionToCheck.setText(person.getCity());
-
-            birthdayLabel.setText(DateUtil.format(person.getBirthday()));*/
-        } else {
-            // Person is null, remove all the text.
-            /*firstNameLabel.setText("");
-            lastNameLabel.setText("");
-            streetLabel.setText("");
-            postalCodeLabel.setText("");
-            cityLabel.setText("");
-            birthdayLabel.setText("");*/
-        }
+    private void showTestSuiteDetails() {
+    	
+    	//Add change listener
+        //actionTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            //Check whether item is selected and set value of selected item to Label
+            if (actionTable.getSelectionModel().getSelectedItem() != null) {
+            	Typing type = new Typing();
+            	Clicking click = new Clicking();
+            	Submitting submit = new Submitting();
+            	SelectingOption select = new SelectingOption();
+            	ContextClicking context = new ContextClicking();
+            	CheckingBoxes check = new CheckingBoxes();
+            	CheckingAlert alert = new CheckingAlert();
+            	if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(type)) {
+            		type = (Typing)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(type.getDescription());
+                    keyLabel.setText(type.getKey());
+                    typeOfLocatorLabel.setText(type.getLocator().getBy().toString());
+                    locatorLabel.setText(type.getLocator().getValue());
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(click)) {
+            		click = (Clicking)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(click.getDescription());
+                    typeOfLocatorLabel.setText(click.getLocator().getBy().toString());
+                    locatorLabel.setText(click.getLocator().getValue());
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(submit)) {
+            		submit = (Submitting)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(submit.getDescription());
+                    typeOfLocatorLabel.setText(submit.getLocator().getBy().toString());
+                    locatorLabel.setText(submit.getLocator().getValue());
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(select)) {
+            		select = (SelectingOption)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(select.getDescription());
+                    typeOfLocatorLabel.setText(select.getLocator().getBy().toString());
+                    locatorLabel.setText(select.getLocator().getValue());
+                    //SETAR VISIBLETEXT E COLOCAR NA VIEW ESTA LABEL TB??
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(context)) {
+            		context = (ContextClicking)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(context.getDescription());
+                    typeOfLocatorLabel.setText(context.getLocator().getBy().toString());
+                    locatorLabel.setText(context.getLocator().getValue());
+                    //SETAR NAME E COLOCAR NA VIEW ESTA LABEL TB??
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(check)) {
+            		check = (CheckingBoxes)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(check.getDescription());
+                    typeOfLocatorLabel.setText(check.getLocator().getBy().toString());
+                    locatorLabel.setText(check.getLocator().getValue());
+                  //SETAR VISIBLETEXTS E COLOCAR NA VIEW ESTA LABEL TB??
+            	}
+            	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(alert)) {
+            		alert = (CheckingAlert)actionTable.getSelectionModel().getSelectedItem();
+            		descriptionLabel.setText(alert.getDescription());
+                    optionToCheckLabel.setText(alert.getOption());
+            	}
+            }
+            else{
+            	descriptionLabel.setText("-");
+                keyLabel.setText("-");
+                typeOfLocatorLabel.setText("-");
+                locatorLabel.setText("-");
+            }
+       // });
     }
 
 }
