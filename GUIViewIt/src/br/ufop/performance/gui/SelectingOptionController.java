@@ -14,17 +14,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class CheckingBoxesController {
-	
+public class SelectingOptionController {
+
 	private Main main;
 	
 	@FXML
 	private TextField description;
-	
-	@FXML
-	private TextField optionsToCheck;
-	
-	private List<String> options;
 	
 	@FXML
 	private ComboBox<String> inputLocator;
@@ -51,8 +46,7 @@ public class CheckingBoxesController {
 	public void setMain(Main main) {
 		this.main = main;
 		if(control){
-			main.getTestInput().initCheckingBoxList();
-			options = new LinkedList();
+			main.getTestInput().initSelectingOptionList();
 			control = false;
 		}
 	}
@@ -67,27 +61,24 @@ public class CheckingBoxesController {
 	
 	@FXML
 	public void okButtonAction() {
-		CheckingBoxes check = new CheckingBoxes();
-		check.setDescription(description.getText());
-		check.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
+		
+		SelectingOption selected = new SelectingOption();
+		selected.setDescription(description.getText());
+		selected.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
 		int var = Integer.parseInt(stepNumber.getValue());
 		var++;
-		String str;
+		String str = "";
 		if(var < 10)
 			str = "0" + Integer.toString(var);
 		else
 			str = Integer.toString(var);
-		check.setStepID(str);
-		check.stepProperty().set(str);
-		check.actionProperty().set(check.getAction().get());
-		String[] s = optionsToCheck.getText().split(" ");
-		for(int i = 0; i < s.length; i++) {
-			options.add(s[i]);
-		}
-		check.setVisibleTexts(options);
-		main.getTestInput().getCheckingBoxSteps().add(check);
+		selected.setStepID(str);
+		selected.stepProperty().set(str);
+		selected.actionProperty().set(selected.getAction().get());
+		selected.setVisibleText("");
+		main.getTestInput().getSelectingOptionSteps().add(selected);
 		main.getTestInput().sortTestCasesByStepId();
-		addToObsList(check);
+		addToObsList(selected);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -96,8 +87,7 @@ public class CheckingBoxesController {
 		main.showAdvancedSettingsView();
 	}
 	
-	public void addToObsList(CheckingBoxes check) {
-		main.getData().add(check);
+	public void addToObsList(SelectingOption selected) {
+		main.getData().add(selected);
 	}
-	
 }

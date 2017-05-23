@@ -1,11 +1,7 @@
 package br.ufop.performance.gui;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import br.ufop.Main;
-import br.ufop.performance.model.CheckingBoxes;
-import br.ufop.performance.model.SelectingOption;
+import br.ufop.performance.model.Submitting;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,26 +10,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class CheckingBoxesController {
-	
+public class SubmittingController {
+
 	private Main main;
 	
 	@FXML
 	private TextField description;
 	
 	@FXML
-	private TextField optionsToCheck;
-	
-	private List<String> options;
-	
-	@FXML
-	private ComboBox<String> inputLocator;
+	private ComboBox<String> inputLocator; //String to be converted into ByTypes in ByLocator class
 	
 	ObservableList<String> list = FXCollections.observableArrayList("ByClassName", "ByCssSelector", "ById", "ByLinkText", "ByName", "ByPartialLinkText", "ByTagName", "ByXPath");
 	
 	@FXML	
-	private TextArea nameOfInputLocator;
-	
+	private TextArea nameOfInputLocator; //String to be set in the value field of the ByLocator class
 	
 	@FXML
 	private ComboBox<String> stepNumber;
@@ -46,48 +36,44 @@ public class CheckingBoxesController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true;
+	private boolean control = true; //if control is true then it is the first time the Clicking screen is loaded by main
 	
 	public void setMain(Main main) {
 		this.main = main;
-		if(control){
-			main.getTestInput().initCheckingBoxList();
-			options = new LinkedList();
+		if(control) {
+			main.getTestInput().initSubmittingList();
 			control = false;
 		}
+		
 	}
 	
 	@FXML
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
-		inputLocator.setValue("ByXPath");
+		inputLocator.setValue("ByXPath"); //default value
 		inputLocator.setItems(list);
 		stepNumber.setItems(stepsList);
 	}
 	
 	@FXML
 	public void okButtonAction() {
-		CheckingBoxes check = new CheckingBoxes();
-		check.setDescription(description.getText());
-		check.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
+		
+		Submitting submit = new Submitting();
+		submit.setDescription(description.getText());
+		submit.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
 		int var = Integer.parseInt(stepNumber.getValue());
 		var++;
-		String str;
+		String str = "";
 		if(var < 10)
 			str = "0" + Integer.toString(var);
 		else
 			str = Integer.toString(var);
-		check.setStepID(str);
-		check.stepProperty().set(str);
-		check.actionProperty().set(check.getAction().get());
-		String[] s = optionsToCheck.getText().split(" ");
-		for(int i = 0; i < s.length; i++) {
-			options.add(s[i]);
-		}
-		check.setVisibleTexts(options);
-		main.getTestInput().getCheckingBoxSteps().add(check);
+		submit.setStepID(str);
+		submit.stepProperty().set(str);
+		submit.actionProperty().set(submit.getAction().get());
+		main.getTestInput().getSubmittingSteps().add(submit);
 		main.getTestInput().sortTestCasesByStepId();
-		addToObsList(check);
+		addToObsList(submit);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -96,8 +82,7 @@ public class CheckingBoxesController {
 		main.showAdvancedSettingsView();
 	}
 	
-	public void addToObsList(CheckingBoxes check) {
-		main.getData().add(check);
+	public void addToObsList(Submitting submit) {
+		main.getData().add(submit);
 	}
-	
 }

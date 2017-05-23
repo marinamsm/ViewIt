@@ -71,7 +71,7 @@ public class AdvancedSettingsTestController {
 	@FXML
 	public void selectingOptionButton() {
 		//it has the same action and view as checkingBox
-		checkingBoxesButton();
+		main.showSelectingOptionView();
 	}
 	
 	@FXML
@@ -81,7 +81,7 @@ public class AdvancedSettingsTestController {
 	
 	@FXML
 	public void submittingButton() {
-		clickingButton();
+		main.showSubmittingView();
 	}
 	
 	@FXML

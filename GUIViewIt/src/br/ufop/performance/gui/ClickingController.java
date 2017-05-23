@@ -44,7 +44,6 @@ public class ClickingController {
 		this.main = main;
 		if(control) {
 			main.getTestInput().initClickingList();
-			main.getTestInput().initSubmittingList();
 			control = false;
 		}
 		
@@ -74,24 +73,8 @@ public class ClickingController {
 		click.stepProperty().set(str);
 		click.actionProperty().set(click.getAction().get());
 		main.getTestInput().getClickingSteps().add(click);
-		
-		Submitting submit = new Submitting();
-		submit.setDescription(description.getText());
-		submit.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
-		var = Integer.parseInt(stepNumber.getValue());
-		var++;
-		str = "";
-		if(var < 10)
-			str = "0" + Integer.toString(var);
-		else
-			str = Integer.toString(var);
-		submit.setStepID(str);
-		submit.stepProperty().set(str);
-		submit.actionProperty().set(submit.getAction().get());
-		main.getTestInput().getSubmittingSteps().add(submit);
-		
 		main.getTestInput().sortTestCasesByStepId();
-		addToObsList(click, submit);
+		addToObsList(click);
 		main.showAdvancedSettingsView();
 	}
 	
@@ -100,9 +83,8 @@ public class ClickingController {
 		main.showAdvancedSettingsView();
 	}
 	
-	public void addToObsList(Clicking click, Submitting submit) {
+	public void addToObsList(Clicking click) {
 		main.getData().add(click);
-		main.getData().add(submit);
 	}
 
 }

@@ -108,43 +108,57 @@ public class ActionsSetController {
                     keyLabel.setText(type.getKey());
                     typeOfLocatorLabel.setText(type.getLocator().getBy().toString());
                     locatorLabel.setText(type.getLocator().getValue());
+                    optionToCheckLabel.setText("-");
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(click)) {
             		click = (Clicking)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(click.getDescription());
+            		keyLabel.setText("-");
                     typeOfLocatorLabel.setText(click.getLocator().getBy().toString());
                     locatorLabel.setText(click.getLocator().getValue());
+                    optionToCheckLabel.setText("-");
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(submit)) {
             		submit = (Submitting)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(submit.getDescription());
+            		keyLabel.setText("-");
                     typeOfLocatorLabel.setText(submit.getLocator().getBy().toString());
                     locatorLabel.setText(submit.getLocator().getValue());
+                    optionToCheckLabel.setText("-");
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(select)) {
             		select = (SelectingOption)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(select.getDescription());
+            		keyLabel.setText("-");
                     typeOfLocatorLabel.setText(select.getLocator().getBy().toString());
                     locatorLabel.setText(select.getLocator().getValue());
-                    //SETAR VISIBLETEXT E COLOCAR NA VIEW ESTA LABEL TB??
+                    optionToCheckLabel.setText("-");
+                    //SET VISIBLETEXT??
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(context)) {
             		context = (ContextClicking)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(context.getDescription());
+            		keyLabel.setText("-");
                     typeOfLocatorLabel.setText(context.getLocator().getBy().toString());
                     locatorLabel.setText(context.getLocator().getValue());
-                    //SETAR NAME E COLOCAR NA VIEW ESTA LABEL TB??
+                    optionToCheckLabel.setText("-");
+                    //SET NAME??
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(check)) {
             		check = (CheckingBoxes)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(check.getDescription());
+            		keyLabel.setText("-");
                     typeOfLocatorLabel.setText(check.getLocator().getBy().toString());
                     locatorLabel.setText(check.getLocator().getValue());
-                  //SETAR VISIBLETEXTS E COLOCAR NA VIEW ESTA LABEL TB??
+                    optionToCheckLabel.setText("-");
+                  //SET VISIBLETEXTS??
             	}
             	else if(actionTable.getSelectionModel().getSelectedItem().getClass().isInstance(alert)) {
             		alert = (CheckingAlert)actionTable.getSelectionModel().getSelectedItem();
             		descriptionLabel.setText(alert.getDescription());
+            		keyLabel.setText("-");
+            		typeOfLocatorLabel.setText("-");
+            		locatorLabel.setText("-");
                     optionToCheckLabel.setText(alert.getOption());
             	}
             }
@@ -153,6 +167,7 @@ public class ActionsSetController {
                 keyLabel.setText("-");
                 typeOfLocatorLabel.setText("-");
                 locatorLabel.setText("-");
+                optionToCheckLabel.setText("-");
             }
        // });
     }

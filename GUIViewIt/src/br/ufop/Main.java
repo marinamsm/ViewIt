@@ -17,6 +17,8 @@ import br.ufop.performance.gui.CheckingBoxesController;
 import br.ufop.performance.gui.ClickingController;
 import br.ufop.performance.gui.ContextClickingController;
 import br.ufop.performance.gui.RootTestController;
+import br.ufop.performance.gui.SelectingOptionController;
+import br.ufop.performance.gui.SubmittingController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
 import br.ufop.performance.model.PerformanceTestCase;
@@ -51,7 +53,9 @@ public class Main extends Application {
     private ChartCreationController chartCreationController;
     private TypingController typingController;
     private CheckingBoxesController checkingBoxesController;
+    private SelectingOptionController selectingOptionController;
     private ClickingController clickingController;
+    private SubmittingController submittingController;
     private CheckingAlertController checkingAlertController;
     private ContextClickingController contextClickingController;
     private LineChartController lineChartController;
@@ -254,6 +258,22 @@ public class Main extends Application {
         }
     }
     
+    public void showSelectingOptionView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/SelectingOption.fxml"));
+            AnchorPane selectingOptionView = (AnchorPane) loader.load();
+            rootLayout.setCenter(selectingOptionView);
+            
+            // Give the controller access to the main app.
+            selectingOptionController = loader.getController();
+            selectingOptionController.setMain(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void showClickingView() {
     	try {
             FXMLLoader loader = new FXMLLoader();
@@ -264,6 +284,22 @@ public class Main extends Application {
             // Give the controller access to the main app.
             clickingController = loader.getController();
             clickingController.setMain(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showSubmittingView() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/Submitting.fxml"));
+            AnchorPane submittingView = (AnchorPane) loader.load();
+            rootLayout.setCenter(submittingView);
+            
+            // Give the controller access to the main app.
+            submittingController = loader.getController();
+            submittingController.setMain(this);
             
         } catch (IOException e) {
             e.printStackTrace();
