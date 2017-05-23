@@ -11,6 +11,7 @@ import br.ufop.performance.model.Submitting;
 import br.ufop.performance.model.TestInput;
 import br.ufop.performance.model.Typing;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -45,6 +46,18 @@ public class ActionsSetController {
 	@FXML
 	private Main main;
 	
+	@FXML
+	private Button newButton;
+	
+	@FXML
+	private Button editButton;
+	
+	@FXML
+	private Button deleteButton;
+	
+	@FXML
+	private Button backButton;
+	
 	private TestInput test;
 	
 	private boolean control = true; //if control is true then it is the first time this screen is loaded by main
@@ -61,12 +74,9 @@ public class ActionsSetController {
 		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
         
 		actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
-        
-	//	actionTable.getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
-		
         showTestSuiteDetails();
         
-        // Listen for selection changes and show the test suit details when changed
+        // Listen for selection changes and show the test suite details when changed
         actionTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showTestSuiteDetails());
 
@@ -170,6 +180,22 @@ public class ActionsSetController {
                 optionToCheckLabel.setText("-");
             }
        // });
+    }
+    
+    public void newButton() {
+    	main.showAdvancedSettingsView();
+    }
+    
+    public void editButton() {
+    	
+    }
+    
+    public void deleteButton() {
+    	
+    }
+    
+    public void backButton() {
+    	
     }
 
 }

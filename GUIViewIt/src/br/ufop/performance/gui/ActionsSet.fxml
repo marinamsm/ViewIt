@@ -58,10 +58,10 @@
                      </children></AnchorPane>
                   <ButtonBar layoutX="207.0" layoutY="509.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="New..." />
-                        <Button mnemonicParsing="false" text="Edit..." />
-                        <Button mnemonicParsing="false" text="Delete" />
-                        <Button mnemonicParsing="false" text="Back" />
+                      <Button fx:id="newButton" mnemonicParsing="false" onAction="#newButton" text="New..." />
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButton" text="Edit..." />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" text="Back" />
                     </buttons>
                   </ButtonBar>
                </children>
