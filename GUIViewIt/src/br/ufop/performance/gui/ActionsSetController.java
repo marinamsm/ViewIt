@@ -11,6 +11,8 @@ import br.ufop.performance.model.Submitting;
 import br.ufop.performance.model.TestInput;
 import br.ufop.performance.model.Typing;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -191,7 +193,20 @@ public class ActionsSetController {
     }
     
     public void deleteButton() {
-    	
+    
+        int selectedIndex = actionTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            actionTable.getItems().remove(selectedIndex);
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Action Selected");
+            alert.setContentText("Please select an action in the table.");
+            alert.showAndWait();
+            }
+    
     }
     
     public void backButton() {
