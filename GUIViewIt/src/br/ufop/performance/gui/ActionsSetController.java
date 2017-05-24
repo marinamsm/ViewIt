@@ -189,7 +189,10 @@ public class ActionsSetController {
     }
     
     public void editButton() {
-    	
+    	 PerformanceTestCase selectedAction = actionTable.getSelectionModel().getSelectedItem();
+         if (selectedAction != null) {
+             main.showActionEditionView(selectedAction);
+         }
     }
     
     public void deleteButton() {

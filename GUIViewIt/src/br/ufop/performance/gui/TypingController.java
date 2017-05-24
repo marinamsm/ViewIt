@@ -2,6 +2,7 @@ package br.ufop.performance.gui;
 
 import br.ufop.Main;
 import br.ufop.performance.model.Typing;
+import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,6 +72,13 @@ public class TypingController {
 		type.stepProperty().set(str);
 		type.actionProperty().set(type.getAction().get());
 		type.setKey(key.getText());
+		/*if(main.getTestInput().getMapStepId_PerformanceTest() != null){
+			System.out.println("AEEEEEEEEEEE");
+			if(main.getTestInput().getMapStepId_PerformanceTest().containsKey(str)){
+				AlertMessage.showWarningAlert("Warning", "Step already filled!", "This step has already been filled. Do you want to override it?");
+				
+			}
+		}*/
 		main.getTestInput().getTypingSteps().add(type);
 		for(int i = 0; i < main.getTestInput().getTypingSteps().size(); i++)
 			System.out.println("   " + main.getTestInput().getTypingSteps().get(i)); 

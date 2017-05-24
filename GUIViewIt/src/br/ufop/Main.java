@@ -10,6 +10,7 @@ import br.ufop.chartgenerator.gui.PieChartController;
 import br.ufop.chartgenerator.gui.RootChartController;
 import br.ufop.chartgenerator.model.ChartSuite;
 import br.ufop.maingui.RootLayoutController;
+import br.ufop.performance.gui.ActionEditionController;
 import br.ufop.performance.gui.ActionsSetController;
 import br.ufop.performance.gui.AdvancedSettingsTestController;
 import br.ufop.performance.gui.CheckingAlertController;
@@ -62,6 +63,7 @@ public class Main extends Application {
     private PieChartController pieChartController;
     private BarChartController barChartController;
     private BoxPlotChartController boxplotChartController;
+    private ActionEditionController actionEditionController;
     private ObservableList<PerformanceTestCase> data = FXCollections.observableArrayList();
     
     @Override
@@ -402,8 +404,21 @@ public class Main extends Application {
         }
     }
     
-    public void showMyActions(){
-    	
+    public void showActionEditionView(PerformanceTestCase action){
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("performance/gui/ActionEdition.fxml"));
+            AnchorPane actionView = (AnchorPane) loader.load();
+            rootLayout.setCenter(actionView);
+            
+            // Give the controller access to the main app.
+            actionEditionController = loader.getController();
+            actionEditionController.setMain(this);
+            actionEditionController.setAction(action);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public TestInput getTestInput() {
