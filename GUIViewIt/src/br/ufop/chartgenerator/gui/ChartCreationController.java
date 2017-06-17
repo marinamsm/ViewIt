@@ -85,7 +85,7 @@ public class ChartCreationController {
 	}
 	@FXML
 	private void backButtonAction() {
-		
+		main.showRootChartView();
 	}
 
 }

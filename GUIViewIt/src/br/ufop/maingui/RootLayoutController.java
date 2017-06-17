@@ -37,6 +37,6 @@ public class RootLayoutController {
 	
 	@FXML
 	private void projectButtonAction() {
-		
+		main.showRootProjectView();
 	}
 }

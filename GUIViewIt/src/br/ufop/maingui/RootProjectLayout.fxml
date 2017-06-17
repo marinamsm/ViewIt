@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="81.0" prefWidth="700.0" styleClass="dark-background-color" stylesheets="@viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.maingui.RootProjectController">
+   <children>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="731.0" styleClass="dark-background-color" stylesheets="@../../maingui/viewit.css">
+        <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="139.0" minWidth="128.0" prefWidth="139.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="152.0" minWidth="136.0" prefWidth="152.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="176.0" minWidth="141.0" prefWidth="154.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="187.0" minWidth="133.0" prefWidth="143.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="157.0" minWidth="10.0" prefWidth="146.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="45.0" valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <ToggleButton fx:id="openButton" mnemonicParsing="false" onAction="#openButtonAction" prefHeight="79.0" prefWidth="180.0" stylesheets="@../../maingui/viewit.css" text="Open Project" GridPane.columnIndex="2">
+               <styleClass>
+                  <String fx:value="rich-blue" />
+                  <String fx:value="dark-background-color" />
+               </styleClass></ToggleButton>
+            <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#aboutAction" prefHeight="79.0" prefWidth="137.0" stylesheets="@../../maingui/viewit.css" text="About" GridPane.columnIndex="3">
+               <styleClass>
+                  <String fx:value="dark-background-color" />
+                  <String fx:value="rich-blue" />
+               </styleClass></ToggleButton>
+            <ToggleButton fx:id="createButton" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="79.0" prefWidth="157.0" stylesheets="@../../maingui/viewit.css" text="Create Project" GridPane.columnIndex="1">
+               <styleClass>
+                  <String fx:value="dark-background-color" />
+                  <String fx:value="rich-blue" />
+               </styleClass></ToggleButton>
+            <ImageView fitHeight="75.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" styleClass="background-viewit-image">
+               <image>
+                  <Image url="@../../../../resources/images/viewit.png" />
+               </image>
+            </ImageView>
+            <ToggleButton fx:id="exitButton" mnemonicParsing="false" onAction="#exitAction" stylesheets="@viewit.css" text="Exit" GridPane.columnIndex="4">
+               <styleClass>
+                  <String fx:value="dark-background-color" />
+                  <String fx:value="rich-blue" />
+               </styleClass>
+            </ToggleButton>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

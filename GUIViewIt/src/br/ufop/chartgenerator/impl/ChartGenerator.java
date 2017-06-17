@@ -14,7 +14,7 @@ class ChartGenerator implements IChartGenerator{
 	private ICsvPreview csvPreview;
 	
 	//FOR GUI
-	private static boolean GUI; //says if it's using GUI or not
+	private static boolean GUI; 
 	
 	//FOR GUI
 	private static String csvPath; 
@@ -46,7 +46,7 @@ class ChartGenerator implements IChartGenerator{
 	public void configCsvPreview(){
 		csvPreview = (ICsvPreview)CsvPreviewFactory
 				 .createInstance(ProvidedInterface.ICSVPREVIEW);
-		if(GUIFlag.GUI)//is you are using ViewIt with GUI
+		if(GUIFlag.GUI)
 			csvPreview.readCsvFile(GUIFlag.csvPathForChart);
 		else
 			csvPreview.readCsvFile(chartSuite.getCsvPath());

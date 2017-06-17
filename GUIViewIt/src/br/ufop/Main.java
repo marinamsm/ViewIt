@@ -1,6 +1,12 @@
 package br.ufop;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.prefs.Preferences;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import br.ufop.chartgenerator.gui.BarChartController;
 import br.ufop.chartgenerator.gui.BoxPlotChartController;
@@ -10,6 +16,7 @@ import br.ufop.chartgenerator.gui.PieChartController;
 import br.ufop.chartgenerator.gui.RootChartController;
 import br.ufop.chartgenerator.model.ChartSuite;
 import br.ufop.maingui.RootLayoutController;
+import br.ufop.maingui.RootProjectController;
 import br.ufop.performance.gui.ActionEditionController;
 import br.ufop.performance.gui.ActionsSetController;
 import br.ufop.performance.gui.AdvancedSettingsTestController;
@@ -31,6 +38,8 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -64,6 +73,7 @@ public class Main extends Application {
     private BarChartController barChartController;
     private BoxPlotChartController boxplotChartController;
     private ActionEditionController actionEditionController;
+    private RootProjectController rootProjectController;
     private ObservableList<PerformanceTestCase> data = FXCollections.observableArrayList();
     
     @Override
@@ -418,6 +428,90 @@ public class Main extends Application {
             
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void showRootProjectView(){
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("maingui/RootProjectLayout.fxml"));
+            AnchorPane projectView = (AnchorPane) loader.load();
+            rootLayout.setTop(projectView);
+            
+            // Give the controller access to the main app.
+            rootProjectController = loader.getController();
+            rootProjectController.setMain(this);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void loadTestScenarioDataFromFile(File file){
+    	try {
+            JAXBContext context = JAXBContext
+                    .newInstance(TestScenarioListWrapper.class);
+            Unmarshaller um = context.createUnmarshaller();
+
+            TestScenarioListWrapper wrapper = (TestScenarioListWrapper) um.unmarshal(file);
+
+            data.clear();
+            data.addAll(wrapper.getActions());
+
+            setProjectFilePath(file);
+
+        } catch (Exception e) { 
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file:\n" + file.getPath());
+
+            alert.showAndWait();
+        }
+    }
+    
+    public void saveTestScenarioDataToFile(File file) {
+        try {
+            JAXBContext context = JAXBContext
+                    .newInstance(TestScenarioListWrapper.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            TestScenarioListWrapper wrapper = new TestScenarioListWrapper();
+            wrapper.setActions(data);
+
+            m.marshal(wrapper, file);
+            
+            setProjectFilePath(file);
+        } catch (Exception e) { 
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not save data");
+            alert.setContentText("Could not save data to file:\n" + file.getPath());
+            alert.showAndWait();
+        }
+    }
+    
+    public File getProjectFilePath() {
+        Preferences prefs = Preferences.userNodeForPackage(Main.class);
+        String filePath = prefs.get("filePath", null);
+        if (filePath != null) {
+            return new File(filePath);
+        } else {
+            return null;
+        }
+    }
+    
+    public void setProjectFilePath(File file) {
+        Preferences prefs = Preferences.userNodeForPackage(Main.class);
+        if (file != null) {
+            prefs.put("filePath", file.getPath());
+
+            primaryStage.setTitle("Project - " + file.getName());
+        } else {
+            prefs.remove("filePath");
+
+            primaryStage.setTitle("Project");
         }
     }
     

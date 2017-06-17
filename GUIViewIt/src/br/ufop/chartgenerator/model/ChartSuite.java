@@ -164,8 +164,8 @@ public class ChartSuite extends ChartTypeSuite{
 	@Override
 	public void plotChart(ICsvPreview csvPreview) {
 		for(ChartTypeSuite chartCg : chartsConfig){
-			System.out.println("Grafico pronto!Confira sua pasta.");
 			chartCg.plotChart(csvPreview);
+			System.out.println("Grafico pronto!Confira sua pasta.");
 		}
 		
 	}

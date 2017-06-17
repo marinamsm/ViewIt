@@ -75,8 +75,15 @@ public class Typing extends PerformanceTestCase {
 
 		actionBot = new ActionOrientedAbstraction(webdriver);
 
-		actionBot.type(locator.getByObject(locator.getBy(),
-				 locator.getValue()), key);
+		try {
+			actionBot.type(locator.getByObject(locator.getBy(),
+					locator.getValue()), key);
+		}
+		catch(Exception e) {
+			System.out.println("EXCEPTION IN TYPING");
+			e.printStackTrace();
+		}
+			
 
 		
 		
