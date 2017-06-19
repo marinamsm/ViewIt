@@ -29,9 +29,19 @@ import br.ufop.performance.gui.SelectingOptionController;
 import br.ufop.performance.gui.SubmittingController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
+import br.ufop.performance.model.CheckingAlert;
+import br.ufop.performance.model.CheckingBoxes;
+import br.ufop.performance.model.Clicking;
+import br.ufop.performance.model.ContextClicking;
+import br.ufop.performance.model.Navigating;
 import br.ufop.performance.model.PerformanceTestCase;
+import br.ufop.performance.model.SelectingOption;
+import br.ufop.performance.model.Submitting;
 import br.ufop.performance.model.TestInput;
+import br.ufop.performance.model.TestSuite;
+import br.ufop.performance.model.Typing;
 import br.ufop.testmgr.test.SchedulingTest;
+import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -449,16 +459,31 @@ public class Main extends Application {
     
     public void loadTestScenarioDataFromFile(File file){
     	try {
+    		
             JAXBContext context = JAXBContext
                     .newInstance(TestScenarioListWrapper.class);
             Unmarshaller um = context.createUnmarshaller();
-
-            TestScenarioListWrapper wrapper = (TestScenarioListWrapper) um.unmarshal(file);
-
-            data.clear();
-            data.addAll(wrapper.getActions());
-
-            setProjectFilePath(file);
+            
+            System.out.println("1");
+            try{
+            	TestScenarioListWrapper wrapper = (TestScenarioListWrapper) um.unmarshal(file);
+            	
+            	//JAXBContext jc = JAXBContext.newInstance(Customer.class, Address.class, PhoneNumber.class);
+            	System.out.println("2");
+                data.clear();
+                data.addAll(wrapper.getActions());
+                System.out.println("3");
+                for(int i = 0; i < data.size(); i++){
+                	System.out.println("Tamanho da lista de acoes: " + data.size());
+                	System.out.println(data);
+                }
+                
+                setProjectFilePath(file);
+            }
+            catch(Exception e){
+            	e.printStackTrace();
+            }
+            
 
         } catch (Exception e) { 
             Alert alert = new Alert(AlertType.ERROR);
@@ -472,6 +497,11 @@ public class Main extends Application {
     
     public void saveTestScenarioDataToFile(File file) {
         try {
+        	for(int i = 0; i < data.size(); i++){
+            	System.out.println("Tamanho da lista de acoes: " + data.size());
+            	System.out.println(data);
+            }
+        	
             JAXBContext context = JAXBContext
                     .newInstance(TestScenarioListWrapper.class);
             Marshaller m = context.createMarshaller();
@@ -483,7 +513,9 @@ public class Main extends Application {
             m.marshal(wrapper, file);
             
             setProjectFilePath(file);
-        } catch (Exception e) { 
+            AlertMessage.showConfirmationAlert("Advanced Settings", "", "The test scenario has been saved successfully!");
+        } catch (Exception e) {
+        	e.printStackTrace();
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Could not save data");
@@ -495,6 +527,7 @@ public class Main extends Application {
     public File getProjectFilePath() {
         Preferences prefs = Preferences.userNodeForPackage(Main.class);
         String filePath = prefs.get("filePath", null);
+        System.out.println("filepath in main.getProjectFilePath " + filePath);
         if (filePath != null) {
             return new File(filePath);
         } else {

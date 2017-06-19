@@ -1,5 +1,7 @@
 package br.ufop.performance.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.openqa.selenium.WebDriver;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -10,6 +12,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 @XStreamAlias("submitting")
+//@XmlRootElement(name="submit")
 public class Submitting extends PerformanceTestCase{
 
 	@XStreamAsAttribute

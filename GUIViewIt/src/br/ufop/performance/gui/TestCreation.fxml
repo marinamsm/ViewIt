@@ -41,11 +41,13 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <ButtonBar layoutX="216.0" layoutY="320.0" prefHeight="59.0" prefWidth="275.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
+      <ButtonBar layoutX="196.0" layoutY="319.0" prefHeight="59.0" prefWidth="275.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
         <buttons>
           <Button fx:id="advancedButton" mnemonicParsing="false" onAction="#advancedButtonAction" text="Advanced" />
-            <Button fx:id="finishButton" mnemonicParsing="false" onAction="#finishButtonAction" text="Finish" />
+            <Button fx:id="runButton" mnemonicParsing="false" onAction="#runButtonAction" text="Run" />
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
+            <Button fx:id="save" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="25.0" prefWidth="75.0" text="Save" />
+            <Button fx:id="saveAs" mnemonicParsing="false" onAction="#saveAsButtonAction" text="Save as..." />
         </buttons>
       </ButtonBar>
    </children>

@@ -1,5 +1,7 @@
 package br.ufop.performance.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.openqa.selenium.WebDriver;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -8,6 +10,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import br.ufop.performance.action.impl.ActionOrientedAbstraction;
 
 @XStreamAlias("navigating")
+//@XmlRootElement(name="navigate")
 public class Navigating extends PerformanceTestCase {
 
 	@XStreamAsAttribute

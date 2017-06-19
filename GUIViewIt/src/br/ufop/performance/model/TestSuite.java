@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.openqa.selenium.WebDriver;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -15,6 +17,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("testSuite")
+//@XmlRootElement(name="suit")
 public class TestSuite extends PerformanceTestCase {
 
 	
@@ -236,7 +239,11 @@ public class TestSuite extends PerformanceTestCase {
 		String defaulLogDir = canonicalPath + File.separator + harPath;
 		return defaulLogDir;
 	}
-
+	
+	public String getHarPath() {
+		return harPath;
+	}
+	
 	@Override
 	public void executeTest(WebDriver webDriver) {
 		Iterator<String> iterator = mapStepId_PerformanceTest.keySet()

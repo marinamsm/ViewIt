@@ -130,8 +130,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button fx:id="back" layoutX="477.0" layoutY="311.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="25.0" prefWidth="69.0" text="Back" />
-      <Button fx:id="save" layoutX="388.0" layoutY="311.0" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="25.0" prefWidth="69.0" text="Save" />
-      <Button fx:id="myActions" layoutX="564.0" layoutY="311.0" mnemonicParsing="false" onAction="#myActionsButtonAction" text="My Actions" />
+      <Button fx:id="back" layoutX="388.0" layoutY="311.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="25.0" prefWidth="69.0" text="OK" />
+      <Button fx:id="myActions" layoutX="467.0" layoutY="311.0" mnemonicParsing="false" onAction="#myActionsButtonAction" prefHeight="25.0" prefWidth="69.0" text="Edit..." />
    </children>
 </AnchorPane>

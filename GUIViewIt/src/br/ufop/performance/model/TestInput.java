@@ -14,27 +14,22 @@ import javafx.beans.property.StringProperty;
 public class TestInput extends TestSuite{
 	
 	private Main main;
-    
-	private final StringProperty projectLocation = new SimpleStringProperty("");
-    
-	private final StringProperty projectFolder = new SimpleStringProperty(""); //name of the folder
-    
-	//private final IntegerProperty virtualUsers;
-    //private final FloatProperty desiredTimeForPageLoading;
-    
+        
 	private IntegerProperty x_times;// = new SimpleIntegerProperty(1); //how many times the test will be executed
     
 	private IntegerProperty y_interval;// = new SimpleIntegerProperty(100); //interval between each execution
     
 	private StringProperty URL;// = new SimpleStringProperty("https://www.google.com");
     
-	private StringProperty harFolder = new SimpleStringProperty("harRepository");
+	private StringProperty harFolder = new SimpleStringProperty("harDirectory");
     
-	private final StringProperty csvFolder = new SimpleStringProperty("csvRepository");
+	private final StringProperty csvFolder = new SimpleStringProperty("csvDirectory");
     
 	private final StringProperty testDescription = new SimpleStringProperty("description");
     
 	private final StringProperty pageName = new SimpleStringProperty("pageName");
+	
+	private boolean saveFlag = false;
 
     public void setMain(Main main) {
     	this.main = main;
@@ -56,46 +51,26 @@ public class TestInput extends TestSuite{
     }
     
     public void setNavigation() {
-		Navigating nav = new Navigating();
+		setNavigationOnSave();
+		sortTestCasesByStepId();
+		//return this;
+	}
+
+    public void setNavigationOnSave() {
+    	Navigating nav = new Navigating();
 		nav.setDescription("descricaoNavigating");
 		nav.setStepID("01");
 		nav.setPageURL(this.getURL());
 		List<Navigating> navigatingSteps = new LinkedList<Navigating>(); 
 		navigatingSteps.add(nav);
 		setNavigatingSteps(navigatingSteps);
-		sortTestCasesByStepId();
-		//return this;
-	}
-
+		main.getData().add(nav);
+    }
     
     public TestInput getThis() {
     	return this;
     }
     
-    public String getProjectLocation() {
-        return projectLocation.get();
-    }
-
-    public void setProjectLocation(String projectLocation) {
-        this.projectLocation.set(projectLocation);
-    }
-
-    public StringProperty projectLocationProperty() {
-        return projectLocation;
-    }
-
-    public String getProjectFolder() {
-        return projectFolder.get();
-    }
-
-    public void setProjectFolder(String projectFolder) {
-        this.projectFolder.set(projectFolder);
-    }
-
-    public StringProperty projectFolderProperty() {
-        return projectFolder;
-    }
-
     public int getX_times() {
         return x_times.get();
     }
@@ -137,7 +112,7 @@ public class TestInput extends TestSuite{
     }
 
     public void setHarFolder(String harFolder) {
-    	super.setHarPath(this.getHarFolder());
+    	super.setHarPath(harFolder);
     	this.harFolder.set(harFolder);
     }
 
@@ -185,4 +160,13 @@ public class TestInput extends TestSuite{
     public SortedMap<String, PerformanceTestCase> getSortedMap(){
     	return super.getMapStepId_PerformanceTest();
     }
+    
+    public boolean getSaveFlag() {
+    	return saveFlag;
+    }
+    
+    public void setSaveFlag(boolean saveFlag) {
+    	this.saveFlag = saveFlag;
+    }
+    
 }

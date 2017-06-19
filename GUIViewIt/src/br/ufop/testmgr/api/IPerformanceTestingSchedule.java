@@ -14,7 +14,7 @@ public interface IPerformanceTestingSchedule {
 	
 	public void runPeriodically(List<String> pageName);
 
-	public void readHarFilesFromDirectory(String harPath, String csvPath, List<String> pageName);
+	public void readHarFilesFromDirectory(List<String> pageName);
 	
 	public TestSuite loadTestSuiteConfiguration(String testConfigPath); //FOR XML
 

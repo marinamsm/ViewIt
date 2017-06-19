@@ -107,7 +107,7 @@ class PerformanceTesting implements IPerformanceTesting {
         profile.setPreference(domain + "netexport.alwaysEnableAutoExport", true);
         profile.setPreference(domain + "netexport.showPreview", false);
         if(XML == false)
-        	profile.setPreference(domain + "netexport.defaultLogDir", config.getHarDirectoryPath());
+        	profile.setPreference(domain + "netexport.defaultLogDir", config.getHarPath());
         else
         	profile.setPreference(domain + "netexport.defaultLogDir", testSuite.getHarDirectoryPath());
         /*profile.setPreference(domain + "netexport.sendToConfirmation", false);

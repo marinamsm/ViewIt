@@ -1,5 +1,6 @@
 package br.ufop.performance.gui;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 public class TestCreationController {
 	
@@ -36,7 +38,13 @@ public class TestCreationController {
 	private Button advancedButton;
 	
 	@FXML
-	private Button finishButton;
+	private Button runButton;
+	
+	@FXML
+	private Button save;
+	
+	@FXML
+	private Button saveAs;
 	
 	@FXML
 	private Button cancelButton;
@@ -76,15 +84,71 @@ public class TestCreationController {
 	public TestCreationController() {
 	}
 	
+	//saveButton
+	public void saveButtonAction() {
+		setTest();
+		File projectFile = main.getProjectFilePath();
+	       if (projectFile != null) {
+	       	main.saveTestScenarioDataToFile(projectFile);
+	       } else {
+	       saveAs();
+	    }
+		main.showTestCreationView();
+	}
+	
+	public void setTest() {
+		main.getTestInput().setMain(main);
+//		if(main.getData() != null) {
+//			main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
+//			main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
+//			main.getTestInput().setURL(URLField.getText());
+//			main.getTestInput().setNavigationOnSave();
+//		}
+//		
+		main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
+		main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
+		main.getTestInput().setURL(URLField.getText());
+		main.getTestInput().setNavigationOnSave();
+//		main.getData().add(main.getTestInput());
+	}
+	
+	public void saveAsButtonAction() {
+		setTest();
+		saveAs();
+	}
+	
 	@FXML
-	private void finishButtonAction() {
+	private void saveAs() {
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+		          "XML files (*.xml)", "*.xml");
+		fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(main.getPrimaryStage());
+        if (file != null) {
+            if (!file.getPath().endsWith(".xml")) {
+                file = new File(file.getPath() + ".xml");
+            }
+            System.out.println("file.getPath " + file.getPath());
+            System.out.println("file.getParentPath " + file.getParent());
+            try{
+            	System.out.println("file.getCanonicalPath " + file.getCanonicalPath());
+            }
+            catch(Exception e){
+            	e.printStackTrace();
+            }
+            main.getTestInput().setHarFolder(file.getParent()+ "\\harDirectory");
+            main.getTestInput().setCsvFolder(file.getParent()+"\\csvDirectory");
+            main.getTestInput().setSaveFlag(true);
+            main.saveTestScenarioDataToFile(file);
+        }
+	}
+	
+	@FXML
+	private void runButtonAction() {
 		boolean control = true;
 		while(control){
 			try{
-				main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
-				main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
-				main.getTestInput().setURL(URLField.getText());
-				main.getTestInput().setMain(main);
+				setTest();
 				control = false;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -100,8 +164,9 @@ public class TestCreationController {
 		        //main.getSchedulingTest().test();
 		    	testSchedule.setMain(main);
 		    	pageName.add("Home");
-		    	//do the tests and save the results in .har files
+		    	//run the tests and save the results in .har files
 		    	testSchedule.runPeriodically(pageName);
+		    	
 		    	return null;
 		    }
 		};

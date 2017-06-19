@@ -19,7 +19,7 @@ import br.ufop.performance.action.api.IActionOrientedAbstraction;
  */
 public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 
-	private final int sleepTime = 2000;
+	private final int sleepTime = 3000;
 	private final int waitTime = 20; //20 s
 
 	/*

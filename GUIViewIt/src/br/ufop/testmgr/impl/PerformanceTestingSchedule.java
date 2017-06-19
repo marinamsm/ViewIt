@@ -41,7 +41,7 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 		this.main = main;
 	}
 	
-	
+	//GUI
 	public TestInput loadTestInputConfiguration() {
 
 		testExecution = PerformanceTestingFactory
@@ -53,12 +53,17 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 		return testInput;
 
 	}
-
+	//GUI
 	public void runPeriodically(List<String> pageName) {
 		this.loadTestInputConfiguration();
 		this.y_times = testInput.getX_times();
 		this.x_in_x_seconds = testInput.getY_interval();
-		this.harPath = testInput.getHarDirectoryPath(); 
+		if(main.getTestInput().getSaveFlag()) {
+			this.harPath = testInput.getHarPath();
+		}
+		else {
+			this.harPath = testInput.getHarDirectoryPath();
+		} 
 		this.csvPath = testInput.getCsvFolder();
 		this.pageName = pageName;
 		timer = new Timer();
@@ -76,19 +81,20 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 				testExecution.run();
 				numExecutions--;
 			} else {
-				readHarFilesFromDirectory(harPath, csvPath, pageName);
-				System.exit(0);
+				System.out.println("Fim da execucao do teste!");
+				readHarFilesFromDirectory(pageName);
+				//System.exit(0);
+				this.cancel();
 			}
 		}
 	}
 	
 	@Override
-	public void readHarFilesFromDirectory(String harConfigPath, String csvPath, List <String> pageName) {
+	public void readHarFilesFromDirectory(List <String> pageName) {
 
 		IHarViewer harviewer = (IHarViewer) HarViewerFactory
 				.createInstance(HarViewerFactory.IHARVIEWER);
-
-		harviewer.exportHarFilesToCSVFile(harConfigPath, csvPath, pageName);
+		harviewer.exportHarFilesToCSVFile(harPath, csvPath, pageName);
 	}
 	
 	//Below are methods for XML

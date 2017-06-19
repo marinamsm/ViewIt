@@ -2,6 +2,8 @@ package br.ufop.performance.model;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.openqa.selenium.WebDriver;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -13,6 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 @XStreamAlias("ckeckingBoxes")
+//@XmlRootElement(name="checkBox")
 public class CheckingBoxes extends PerformanceTestCase {
 
 	@XStreamAsAttribute

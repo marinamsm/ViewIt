@@ -36,8 +36,7 @@ public class RootProjectController {
 	public RootProjectController() {
 	}
 	
-	@FXML
-	private void createButtonAction() {
+	public void createButtonAction() {
 		//main.showChartCreationView();
 		File projectFile = main.getProjectFilePath();
         if (projectFile != null) {
@@ -61,6 +60,8 @@ public class RootProjectController {
 
 	            if (!file.getPath().endsWith(".xml")) {
 	                file = new File(file.getPath() + ".xml");
+	                System.out.println("saveAs, file.getPath: " + file.getPath());
+	                System.out.println("saveAs, file: " + file);
 	            }
 	            main.saveTestScenarioDataToFile(file);
 	        }

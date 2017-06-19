@@ -287,6 +287,7 @@ class HarViewer implements IHarViewer {
 	public List<HarInfoSummary> readHarFilesFromDirectory(String harConfigPath) {
 
 		harConfig = loadHarDirectoryConfigurations(harConfigPath);
+		
 		String directoryPath = harConfig.getHarDirectoryPath();
 		File[] files = finder(directoryPath);
 		Arrays.sort(files);
