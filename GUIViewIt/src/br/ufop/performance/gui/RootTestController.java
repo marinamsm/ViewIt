@@ -16,9 +16,6 @@ public class RootTestController {
 	@FXML
 	private ToggleButton openTestButton;
 	
-	@FXML
-	private ToggleButton removeTestButton;
-	
 	public void setMain(Main main) {
         this.main = main;
     }
@@ -45,8 +42,5 @@ public class RootTestController {
             main.loadTestScenarioDataFromFile(file);
         }
 	}
-	@FXML
-	private void removeTestButtonAction() {
-		
-	}
+
 }

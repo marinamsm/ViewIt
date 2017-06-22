@@ -13,9 +13,6 @@ public class RootProjectController {
 	private Main main;
 	
 	@FXML
-	private ToggleButton createButton;
-	
-	@FXML
 	private ToggleButton openButton;
 	
 	@FXML
@@ -36,37 +33,6 @@ public class RootProjectController {
 	public RootProjectController() {
 	}
 	
-	public void createButtonAction() {
-		//main.showChartCreationView();
-		File projectFile = main.getProjectFilePath();
-        if (projectFile != null) {
-            main.saveTestScenarioDataToFile(projectFile);
-        } else {
-            saveAs();
-        }
-	}
-	
-	 @FXML
-	 private void saveAs() {
-	        FileChooser fileChooser = new FileChooser();
-
-	        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-	                "XML files (*.xml)", "*.xml");
-	        fileChooser.getExtensionFilters().add(extFilter);
-
-	        File file = fileChooser.showSaveDialog(main.getPrimaryStage());
-
-	        if (file != null) {
-
-	            if (!file.getPath().endsWith(".xml")) {
-	                file = new File(file.getPath() + ".xml");
-	                System.out.println("saveAs, file.getPath: " + file.getPath());
-	                System.out.println("saveAs, file: " + file);
-	            }
-	            main.saveTestScenarioDataToFile(file);
-	        }
-	 }
-
 	@FXML
 	private void openButtonAction() {
 		FileChooser fileChooser = new FileChooser();
@@ -94,9 +60,6 @@ public class RootProjectController {
         alert.showAndWait();
     }
 
-    /**
-     * Closes the application.
-     */
     @FXML
     private void exitAction() {
         System.exit(0);

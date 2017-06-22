@@ -70,7 +70,7 @@ public class ActionsSetController {
 		if(control){
 			control = false;
 		}
-
+		
 		setTable();
 		
 		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
@@ -95,7 +95,11 @@ public class ActionsSetController {
     
     private void setTable(){
     	//sets tableview
+//    	for(int i = 0; i < main.getData().size(); i++) {
+//    		System.out.println(main.getData());
+//    	}
     	actionTable.setItems(main.getData());
+    	System.out.println(actionTable.getItems());
     	/*for (int i = 0; i < main.getData().size(); i++) {
     		System.out.println("Step: " + main.getData().get(i).stepProperty().get()+ "  Action: " + main.getData().get(i).actionProperty().get());
     	}*/	
@@ -181,7 +185,6 @@ public class ActionsSetController {
                 locatorLabel.setText("-");
                 optionToCheckLabel.setText("-");
             }
-       // });
     }
     
     public void newButton() {
@@ -213,7 +216,7 @@ public class ActionsSetController {
     }
     
     public void backButton() {
-    	
+    	main.showAdvancedSettingsView();
     }
 
 }

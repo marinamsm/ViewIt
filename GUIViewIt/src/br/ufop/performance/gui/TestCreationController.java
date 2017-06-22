@@ -59,10 +59,19 @@ public class TestCreationController {
         this.main = main;
         //inicializa os campos para input do usuário
         /*no construtor não funciona porque o construtor é chamado antes de carregar a interface gráfica,
-         * assim os campos da interface ainda são nulos (são alocados automaticamente no fxml pelo SceneBuilder)*/ 
-        URLField.setText("https://");
+         * assim os campos da interface ainda são nulos (são alocados automaticamente no fxml pelo SceneBuilder)*/
         x_times.setItems(optionX_times);
 		y_interval.setItems(optionY_interval);
+        if(main.getTestInput().getURL() != "") {
+        	System.out.println("TestInput não nulo, uhuul!");
+        	URLField.setText(main.getTestInput().getURL());
+            x_times.setValue(main.getTestInput().getX_times());
+            y_interval.setValue(main.getTestInput().getY_interval());
+        }
+        else {
+        	URLField.setText("https://");
+        }
+        
 		//init();
 		
     }
@@ -98,18 +107,12 @@ public class TestCreationController {
 	
 	public void setTest() {
 		main.getTestInput().setMain(main);
-//		if(main.getData() != null) {
-//			main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
-//			main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
-//			main.getTestInput().setURL(URLField.getText());
-//			main.getTestInput().setNavigationOnSave();
-//		}
-//		
-		main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
-		main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
+		if(x_times.getSelectionModel().getSelectedItem() != null)
+			main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
+		if(y_interval.getSelectionModel().getSelectedItem() != null)
+			main.getTestInput().setY_interval(y_interval.getSelectionModel().getSelectedItem());
 		main.getTestInput().setURL(URLField.getText());
 		main.getTestInput().setNavigationOnSave();
-//		main.getData().add(main.getTestInput());
 	}
 	
 	public void saveAsButtonAction() {
@@ -180,6 +183,7 @@ public class TestCreationController {
 	}
 	@FXML
 	private void advancedButtonAction() {
+		setTest();
 		main.showAdvancedSettingsView();
 	}
 

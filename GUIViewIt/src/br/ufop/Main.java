@@ -463,21 +463,27 @@ public class Main extends Application {
             JAXBContext context = JAXBContext
                     .newInstance(TestScenarioListWrapper.class);
             Unmarshaller um = context.createUnmarshaller();
-            
-            System.out.println("1");
+
             try{
             	TestScenarioListWrapper wrapper = (TestScenarioListWrapper) um.unmarshal(file);
             	
-            	//JAXBContext jc = JAXBContext.newInstance(Customer.class, Address.class, PhoneNumber.class);
-            	System.out.println("2");
                 data.clear();
                 data.addAll(wrapper.getActions());
-                System.out.println("3");
-                for(int i = 0; i < data.size(); i++){
-                	System.out.println("Tamanho da lista de acoes: " + data.size());
-                	System.out.println(data);
-                }
-                
+//                System.out.println(wrapper.getX_times());
+//                System.out.println(wrapper.getY_interval());
+//                System.out.println(wrapper.getURL());
+                getTestInput().setX_times(wrapper.getX_times());
+                getTestInput().setY_interval(wrapper.getY_interval());
+                getTestInput().setURL(wrapper.getURL());
+//                System.out.println(getTestInput().getX_times());
+//                System.out.println(getTestInput().getY_interval());
+//                System.out.println(getTestInput().getURL());
+//                for(int i = 0; i < data.size(); i++){
+//                	System.out.println("Tamanho da lista de acoes: " + data.size());
+//                	System.out.println(data);
+//                }
+      
+                showTestCreationView();
                 setProjectFilePath(file);
             }
             catch(Exception e){
@@ -497,10 +503,10 @@ public class Main extends Application {
     
     public void saveTestScenarioDataToFile(File file) {
         try {
-        	for(int i = 0; i < data.size(); i++){
-            	System.out.println("Tamanho da lista de acoes: " + data.size());
-            	System.out.println(data);
-            }
+//        	for(int i = 0; i < data.size(); i++){
+//            	System.out.println("Tamanho da lista de acoes: " + data.size());
+//            	System.out.println(data);
+//            }
         	
             JAXBContext context = JAXBContext
                     .newInstance(TestScenarioListWrapper.class);
@@ -509,9 +515,17 @@ public class Main extends Application {
 
             TestScenarioListWrapper wrapper = new TestScenarioListWrapper();
             wrapper.setActions(data);
-
+            wrapper.setX_times(getTestInput().getX_times());
+            wrapper.setY_interval(getTestInput().getY_interval());
+            wrapper.setURL(getTestInput().getURL());
+//            System.out.println(getTestInput().getX_times());
+//            System.out.println(getTestInput().getY_interval());
+//            System.out.println(getTestInput().getURL());
+//            System.out.println(wrapper.getX_times());
+//            System.out.println(wrapper.getY_interval());
+//            System.out.println(wrapper.getURL());
+           
             m.marshal(wrapper, file);
-            
             setProjectFilePath(file);
             AlertMessage.showConfirmationAlert("Advanced Settings", "", "The test scenario has been saved successfully!");
         } catch (Exception e) {
@@ -550,6 +564,13 @@ public class Main extends Application {
     
     public TestInput getTestInput() {
     	return input;
+    }
+    
+    private void setTestInput(TestInput input) {
+    	this.input = input;
+    	System.out.println("main TestInput apos receber wrapper.input " + this.input);
+    	System.out.println(this.input.getX_times());
+    	System.out.println(this.input.getY_interval());
     }
     
     public ChartSuite getChartSuite() {

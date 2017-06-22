@@ -27,11 +27,6 @@
                   <String fx:value="rich-blue" />
                   <String fx:value="dark-background-color" />
                </styleClass></ToggleButton>
-            <ToggleButton fx:id="removeTestButton" mnemonicParsing="false" onAction="#removeTestButtonAction" prefHeight="79.0" prefWidth="179.0" stylesheets="@../../maingui/viewit.css" text="Remove Scenario" GridPane.columnIndex="3">
-               <styleClass>
-                  <String fx:value="dark-background-color" />
-                  <String fx:value="rich-blue" />
-               </styleClass></ToggleButton>
             <ToggleButton fx:id="createTestButton" mnemonicParsing="false" onAction="#createTestButtonAction" prefHeight="79.0" prefWidth="174.0" stylesheets="@../../maingui/viewit.css" text="Create Scenario" GridPane.columnIndex="1">
                <styleClass>
                   <String fx:value="dark-background-color" />
