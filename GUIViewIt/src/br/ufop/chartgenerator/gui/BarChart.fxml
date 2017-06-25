@@ -35,6 +35,6 @@
             </ButtonBar>
          </children>
       </GridPane>
-      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Line Chart Data" />
+      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Bar Chart Data" />
    </children>
 </AnchorPane>

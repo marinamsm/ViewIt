@@ -58,14 +58,18 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 		this.loadTestInputConfiguration();
 		this.y_times = testInput.getX_times();
 		this.x_in_x_seconds = testInput.getY_interval();
+		System.out.println("saveFlag " + main.getTestInput().getSaveFlag());
 		if(main.getTestInput().getSaveFlag()) {
 			this.harPath = testInput.getHarPath();
+			this.csvPath = testInput.getCsvFolder();
 		}
 		else {
 			this.harPath = testInput.getHarDirectoryPath();
+			this.csvPath = testInput.getCsvDirectoryPath();
 		} 
-		this.csvPath = testInput.getCsvFolder();
-		this.pageName = pageName;
+		System.out.println(this.harPath);
+		System.out.println(this.csvPath);
+		this.pageName = pageName; //just "Home" for now (testing)
 		timer = new Timer();
 		
 		timer.schedule(new Reminder(),
@@ -94,6 +98,9 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 
 		IHarViewer harviewer = (IHarViewer) HarViewerFactory
 				.createInstance(HarViewerFactory.IHARVIEWER);
+		System.out.println(this.harPath);
+		System.out.println(this.csvPath);
+		System.out.println(pageName.get(0));
 		harviewer.exportHarFilesToCSVFile(harPath, csvPath, pageName);
 	}
 	

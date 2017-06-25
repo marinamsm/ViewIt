@@ -16,6 +16,12 @@ public class PieChartController {
 	private TextField pageName;
 	
 	@FXML
+	private TextField type;
+	
+	@FXML
+	private TextField information;
+	
+	@FXML
 	private Button okButton;
 	
 	@FXML 
@@ -58,7 +64,7 @@ public class PieChartController {
 	
 	@FXML 
 	public void cancelButtonAction() {
-		
+		main.showChartCreationView();
 	}
 	
 	

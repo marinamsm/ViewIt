@@ -1,18 +1,18 @@
 package br.ufop.chartgenerator.gui;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.io.File;
 
 import br.ufop.Main;
 import br.ufop.chartgenerator.api.IChartGenerator;
 import br.ufop.chartgenerator.impl.ChartGeneratorFactory;
 import br.ufop.chartgenerator.impl.ChartGeneratorFactory.ProvidedInterface;
-import br.ufop.chartgenerator.model.ChartSuite;
-import br.ufop.chartgenerator.model.LineChart;
-import br.ufop.chartgenerator.model.Pages;
+import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
+import utils.guiflags.GUIFlag;
 
 public class ChartCreationController {
 	
@@ -73,10 +73,30 @@ public class ChartCreationController {
 	
 	@FXML
 	private void finishButtonAction() {
+		if(main.getChartSuite().getChartsConfig() == null || main.getChartSuite().getChartsConfig().size() == 0){
+			AlertMessage.showWarningAlert("No chart set", "No charts were set", "Please, set the charts to generate them");
+			return;
+		}
+		if(GUIFlag.csvPathForChart == null){
+			AlertMessage.showWarningAlert("No Path Selected", "No path was selected to read the CSV file", "Please, choose the CSV file path");
+            FileChooser fileChooser = new FileChooser();
+
+            // Set extension filter
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                    "CSV files (*.csv)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // Show open file dialog
+            File file = fileChooser.showOpenDialog(main.getPrimaryStage());
+
+            if (file != null) {
+                GUIFlag.csvPathForChart = file.getPath();
+                System.out.println(file.getPath());
+                System.out.println(GUIFlag.csvPathForChart);
+            }
+		}
 		main.getChartSuite().addChartsToSetConfig();
-		IChartGenerator chartExecution = 
-				ChartGeneratorFactory.createInstance(ProvidedInterface.ICHARTGENERATOR);
-		chartExecution.run();
+		main.getChartGenerator().run();
 	}
 
 	@FXML

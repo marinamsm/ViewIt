@@ -20,6 +20,7 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -27,14 +28,16 @@
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Pages name" GridPane.rowIndex="1" />
             <TextField fx:id="title" GridPane.columnIndex="1" />
             <TextArea fx:id="pagesName" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
               <buttons>
                 <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" text="OK" />
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
               </buttons>
             </ButtonBar>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Dataviews" GridPane.rowIndex="2" />
+            <TextArea fx:id="pagesName1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Line Chart Data" />
+      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Boxplot Chart Data" />
    </children>
 </AnchorPane>

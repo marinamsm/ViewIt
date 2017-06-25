@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import utils.guiflags.GUIFlag;
 
 public class TestCreationController {
 	
@@ -63,10 +64,15 @@ public class TestCreationController {
         x_times.setItems(optionX_times);
 		y_interval.setItems(optionY_interval);
         if(main.getTestInput().getURL() != "") {
-        	System.out.println("TestInput não nulo, uhuul!");
         	URLField.setText(main.getTestInput().getURL());
             x_times.setValue(main.getTestInput().getX_times());
             y_interval.setValue(main.getTestInput().getY_interval());
+//            if(GUIFlag.rootPath != ""){
+//            	System.out.println("TestCreationController class " + GUIFlag.rootPath);
+//            	main.getTestInput().setCsvFolder(GUIFlag.rootPath + "\\" + main.getTestInput().getURL());
+//            	main.getTestInput().setHarFolder(GUIFlag.rootPath + "\\" + main.getTestInput().getURL());
+//            	GUIFlag.csvPathForChart = GUIFlag.rootPath + "\\" + main.getTestInput().getURL();
+//            }
         }
         else {
         	URLField.setText("https://");
@@ -139,9 +145,9 @@ public class TestCreationController {
             catch(Exception e){
             	e.printStackTrace();
             }
-            main.getTestInput().setHarFolder(file.getParent()+ "\\harDirectory");
-            main.getTestInput().setCsvFolder(file.getParent()+"\\csvDirectory");
-            main.getTestInput().setSaveFlag(true);
+//            main.getTestInput().setHarFolder(file.getParent()+ "\\harDirectory");
+//            main.getTestInput().setCsvFolder(file.getParent()+ "\\csvDirectory");
+//            main.getTestInput().setSaveFlag(true);
             main.saveTestScenarioDataToFile(file);
         }
 	}
@@ -164,7 +170,6 @@ public class TestCreationController {
 		//executa os testes em segundo plano para não travar a interface gráfica
 		Task<Void> task = new Task<Void>() {
 		    @Override public Void call() {
-		        //main.getSchedulingTest().test();
 		    	testSchedule.setMain(main);
 		    	pageName.add("Home");
 		    	//run the tests and save the results in .har files

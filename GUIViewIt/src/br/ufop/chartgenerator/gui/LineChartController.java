@@ -69,7 +69,7 @@ public class LineChartController {
 	
 	@FXML 
 	public void cancelButtonAction() {
-		
+		main.showChartCreationView();
 	}
 	
 	

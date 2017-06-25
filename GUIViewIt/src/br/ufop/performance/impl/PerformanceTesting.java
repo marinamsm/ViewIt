@@ -33,11 +33,12 @@ class PerformanceTesting implements IPerformanceTesting {
 	public TestInput loadTestInput() {
 		try {
 			//faz e retorna as configurações do teste
-			config = main.getTestInput();
-			config.setNavigation();
-			//config.sortTestCasesByStepId();
+			//config = main.getTestInput();
+//			config.setNavigation();
+			main.getTestInput().setNavigation();
 			XML = false; //running ViewIt's GUI
-			return config;
+//			return config;
+			return main.getTestInput();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,7 +71,7 @@ class PerformanceTesting implements IPerformanceTesting {
         
         webDriver.manage().window().maximize();
         if(XML == false)
-        	config.executeTest(webDriver);
+        	main.getTestInput().executeTest(webDriver);
         else
         	testSuite.executeTest(webDriver);
         webDriver.quit();
@@ -106,10 +107,20 @@ class PerformanceTesting implements IPerformanceTesting {
      // Set default NetExport preferences
         profile.setPreference(domain + "netexport.alwaysEnableAutoExport", true);
         profile.setPreference(domain + "netexport.showPreview", false);
-        if(XML == false)
-        	profile.setPreference(domain + "netexport.defaultLogDir", config.getHarPath());
-        else
+        if(XML == false){
+        	if(main.getTestInput().getSaveFlag()) {
+        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarPath());
+        		profile.setPreference(domain + "netexport.defaultLogDir", main.getTestInput().getHarPath());
+        	}
+        	else {
+        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarDirectoryPath());
+        		profile.setPreference(domain + "netexport.defaultLogDir", main.getTestInput().getHarDirectoryPath());
+        	}
+        }
+        else{
         	profile.setPreference(domain + "netexport.defaultLogDir", testSuite.getHarDirectoryPath());
+        }
+        	
         /*profile.setPreference(domain + "netexport.sendToConfirmation", false);
         profile.setPreference(domain + "netexport.pageLoadedTimeout", 1500);
 		profile.setPreference(domain + "netexport.Automation", true);*/

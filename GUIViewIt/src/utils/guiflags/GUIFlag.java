@@ -4,11 +4,14 @@ import br.ufop.Main;
 import br.ufop.chartgenerator.model.ChartSuite;
 
 public class GUIFlag {
+	
 	public static boolean GUI;
 	
 	public static String csvPathForChart;
 	
 	public static ChartSuite chartSuite;
+	
+	public static String rootPath;
 	
 	public Main main;
 	

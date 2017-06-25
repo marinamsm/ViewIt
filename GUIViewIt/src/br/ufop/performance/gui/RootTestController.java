@@ -6,6 +6,7 @@ import br.ufop.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.FileChooser;
+import utils.guiflags.GUIFlag;
 
 public class RootTestController {
 	private Main main;
@@ -38,6 +39,8 @@ public class RootTestController {
         // Show open file dialog
         File file = fileChooser.showOpenDialog(main.getPrimaryStage());
 
+        GUIFlag.rootPath = file.getParent();
+        
         if (file != null) {
             main.loadTestScenarioDataFromFile(file);
         }

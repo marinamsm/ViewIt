@@ -8,12 +8,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import br.ufop.chartgenerator.api.IChartGenerator;
 import br.ufop.chartgenerator.gui.BarChartController;
 import br.ufop.chartgenerator.gui.BoxPlotChartController;
 import br.ufop.chartgenerator.gui.ChartCreationController;
 import br.ufop.chartgenerator.gui.LineChartController;
 import br.ufop.chartgenerator.gui.PieChartController;
 import br.ufop.chartgenerator.gui.RootChartController;
+import br.ufop.chartgenerator.impl.ChartGeneratorFactory;
+import br.ufop.chartgenerator.impl.ChartGeneratorFactory.ProvidedInterface;
 import br.ufop.chartgenerator.model.ChartSuite;
 import br.ufop.maingui.RootLayoutController;
 import br.ufop.maingui.RootProjectController;
@@ -29,17 +32,8 @@ import br.ufop.performance.gui.SelectingOptionController;
 import br.ufop.performance.gui.SubmittingController;
 import br.ufop.performance.gui.TestCreationController;
 import br.ufop.performance.gui.TypingController;
-import br.ufop.performance.model.CheckingAlert;
-import br.ufop.performance.model.CheckingBoxes;
-import br.ufop.performance.model.Clicking;
-import br.ufop.performance.model.ContextClicking;
-import br.ufop.performance.model.Navigating;
 import br.ufop.performance.model.PerformanceTestCase;
-import br.ufop.performance.model.SelectingOption;
-import br.ufop.performance.model.Submitting;
 import br.ufop.performance.model.TestInput;
-import br.ufop.performance.model.TestSuite;
-import br.ufop.performance.model.Typing;
 import br.ufop.testmgr.test.SchedulingTest;
 import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.application.Application;
@@ -85,6 +79,8 @@ public class Main extends Application {
     private ActionEditionController actionEditionController;
     private RootProjectController rootProjectController;
     private ObservableList<PerformanceTestCase> data = FXCollections.observableArrayList();
+    IChartGenerator chartGenerator = 
+			ChartGeneratorFactory.createInstance(ProvidedInterface.ICHARTGENERATOR);
     
     @Override
     public void start(Stage primaryStage) {
@@ -543,6 +539,9 @@ public class Main extends Application {
         String filePath = prefs.get("filePath", null);
         System.out.println("filepath in main.getProjectFilePath " + filePath);
         if (filePath != null) {
+        	if(filePath.substring(0).contains("D:"))
+        		getTestInput().setSaveFlag(false);
+        	else getTestInput().setSaveFlag(true);
             return new File(filePath);
         } else {
             return null;
@@ -553,7 +552,14 @@ public class Main extends Application {
         Preferences prefs = Preferences.userNodeForPackage(Main.class);
         if (file != null) {
             prefs.put("filePath", file.getPath());
-
+            if(file.getPath().substring(0).contains("D:")) {
+        		getTestInput().setSaveFlag(false);
+            }
+        	else {
+        		getTestInput().setHarFolder(file.getParent()+ "\\harDirectory");
+                getTestInput().setCsvFolder(file.getParent()+ "\\csvDirectory");
+                getTestInput().setSaveFlag(true);
+        	};
             primaryStage.setTitle("Project - " + file.getName());
         } else {
             prefs.remove("filePath");
@@ -579,6 +585,10 @@ public class Main extends Application {
 
     public SchedulingTest getSchedulingTest() {
     	return testSchedule;
+    }
+    
+    public IChartGenerator getChartGenerator() {
+    	return chartGenerator;
     }
     
     public ObservableList<PerformanceTestCase> getData() {

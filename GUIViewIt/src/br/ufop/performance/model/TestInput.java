@@ -1,5 +1,7 @@
 package br.ufop.performance.model;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.SortedMap;
@@ -38,6 +40,7 @@ public class TestInput extends TestSuite{
      * Default constructor.
      */
     public TestInput(){
+    	
     }
     
     public TestInput(int x_times, int y_interval, String URL) {
@@ -70,6 +73,20 @@ public class TestInput extends TestSuite{
     public TestInput getThis() {
     	return this;
     }
+    
+    public String getCsvDirectoryPath() {
+		
+		String canonicalPath = null;
+		try {
+			canonicalPath = new java.io.File(".").getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// determinar o diretório
+		String defaulLogDir = canonicalPath + File.separator + getCsvFolder();
+		return defaulLogDir;
+	}
     
     public int getX_times() {
         return x_times.get();

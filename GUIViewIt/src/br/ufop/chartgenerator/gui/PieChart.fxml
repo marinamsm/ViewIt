@@ -19,21 +19,27 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Chart Title" textAlignment="CENTER" wrappingWidth="90.3515625" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Page name" GridPane.rowIndex="1" />
             <TextField fx:id="title" GridPane.columnIndex="1" />
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
               <buttons>
                 <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" text="OK" />
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
               </buttons>
             </ButtonBar>
             <TextField fx:id="pageName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Type" GridPane.rowIndex="2" />
+            <TextField fx:id="pageName1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Information" GridPane.rowIndex="3" />
+            <TextField fx:id="pageName11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Line Chart Data" />
+      <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Pie Chart Data" />
    </children>
 </AnchorPane>

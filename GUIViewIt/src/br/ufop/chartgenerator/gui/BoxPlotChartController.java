@@ -80,7 +80,7 @@ public class BoxPlotChartController {
 	
 	@FXML 
 	public void cancelButtonAction() {
-		
+		main.showChartCreationView();
 	}
 	
 	

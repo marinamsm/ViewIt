@@ -1,3 +1,4 @@
 	,	,	,	,Quantidades,	,	,  	,	,	,Tamanhos,	,	,  	,	,Tempo (ms),	,	,	,	
 Tela, Nome do Arquivo,img,css,js,html,outros,total,img,css,js,html,outros,total,Blocking,Waiting,Receiving,Total,Page load, On Content Load
- 
+ Home,D:\ViewItGUIRepo\GUIViewIt\harDirectory\br.yahoo.com+2017-06-25+10-16-27.har,127,3,50,60,94,334,28811,300079,3001438,226224,94025,3650577,41906,58055,2392,102353,-1,1152
+Home,D:\ViewItGUIRepo\GUIViewIt\harDirectory\www.google.com.br+2017-06-25+10-18-00.har,6,0,4,1,0,11,629,0,800930,358,0,801917,271,589,115,975,792,3

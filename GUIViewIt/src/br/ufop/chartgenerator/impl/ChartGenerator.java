@@ -34,10 +34,9 @@ class ChartGenerator implements IChartGenerator{
 
 	@Override
 	public void run() {
-		
 		configCsvPreview();
 		if(GUIFlag.GUI)//is you are using ViewIt with GUI
-			GUIFlag.chartSuite.plotChart(csvPreview);
+			GUIFlag.chartSuite.plotChart(csvPreview); //each chart class sets the GUIFlag
 		else
 			chartSuite.plotChart(csvPreview);
 		
@@ -46,8 +45,11 @@ class ChartGenerator implements IChartGenerator{
 	public void configCsvPreview(){
 		csvPreview = (ICsvPreview)CsvPreviewFactory
 				 .createInstance(ProvidedInterface.ICSVPREVIEW);
-		if(GUIFlag.GUI)
+		if(GUIFlag.GUI){
+			System.out.println("VAI LER CSV");
 			csvPreview.readCsvFile(GUIFlag.csvPathForChart);
+			System.out.println("LEU");
+		}
 		else
 			csvPreview.readCsvFile(chartSuite.getCsvPath());
 	}

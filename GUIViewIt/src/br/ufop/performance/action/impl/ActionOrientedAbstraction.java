@@ -107,11 +107,17 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 
 	public void type(By locator, String text) {
 
+		try {
+			WebElement element = driver.findElement(locator);
+			element.clear();
+			element.sendKeys(text);
+			driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+			Thread.sleep(sleepTime);
+		}
+		catch(Exception e) {
+			System.err.println(e.toString());
+		}
 		
-		WebElement element = driver.findElement(locator);
-		element.clear();
-		element.sendKeys(text);
-		driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
 
 		
 	}
