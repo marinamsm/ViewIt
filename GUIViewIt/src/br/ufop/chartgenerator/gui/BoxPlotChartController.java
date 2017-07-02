@@ -40,9 +40,6 @@ public class BoxPlotChartController {
 		this.main = main;
 		if(control) {
         	main.getChartSuite().initBoxPlotChart();
-            main.getChartSuite().setCsvPath("geral.csv");
-            main.getChartSuite().setChartFolder("src");
-            main.setGUIFlag();
             control = false;
         }
 	} 

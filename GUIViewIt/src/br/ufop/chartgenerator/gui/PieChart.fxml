@@ -35,9 +35,9 @@
             </ButtonBar>
             <TextField fx:id="pageName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Type" GridPane.rowIndex="2" />
-            <TextField fx:id="pageName1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Information" GridPane.rowIndex="3" />
-            <TextField fx:id="pageName11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="information" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Text fill="WHITE" layoutX="222.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Pie Chart Data" />

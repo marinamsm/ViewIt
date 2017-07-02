@@ -7,7 +7,7 @@ public interface IPlotOrientedAbstration {
 	
 	public void plotPieChart();
 
-	void pieChart(String pageName, String type, String information);
+	void pieChart(String chartFolder, String title, String pageName, String type, String information);
 	
 	void boxPlotChart(String chartFolder, String title, Pages pages, DataViews dataViews);
 	

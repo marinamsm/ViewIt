@@ -72,6 +72,10 @@ public class ChartSuite extends ChartTypeSuite{
 		return defaultLogDir;
 	}
 
+	public String getCsv() {
+		return csvPath;
+	}
+	
 	public void setCsvPath(String csvPath) {
 		this.csvPath = csvPath;
 	}

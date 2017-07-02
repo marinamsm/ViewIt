@@ -6,6 +6,7 @@ import br.ufop.Main;
 import br.ufop.chartgenerator.api.IChartGenerator;
 import br.ufop.chartgenerator.impl.ChartGeneratorFactory;
 import br.ufop.chartgenerator.impl.ChartGeneratorFactory.ProvidedInterface;
+import br.ufop.chartgenerator.model.ChartTypeSuite;
 import br.ufop.utils.skiplabel.AlertMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -73,8 +74,10 @@ public class ChartCreationController {
 	
 	@FXML
 	private void finishButtonAction() {
+		main.getChartSuite().addChartsToSetConfig();
 		if(main.getChartSuite().getChartsConfig() == null || main.getChartSuite().getChartsConfig().size() == 0){
 			AlertMessage.showWarningAlert("No chart set", "No charts were set", "Please, set the charts to generate them");
+			System.out.println("chartSuite.chartsConfig == null");
 			return;
 		}
 		if(GUIFlag.csvPathForChart == null){
@@ -90,12 +93,15 @@ public class ChartCreationController {
             File file = fileChooser.showOpenDialog(main.getPrimaryStage());
 
             if (file != null) {
-                GUIFlag.csvPathForChart = file.getPath();
-                System.out.println(file.getPath());
-                System.out.println(GUIFlag.csvPathForChart);
+                main.getChartSuite().setCsvPath(file.getPath());
+                main.setGUIFlag();
+                GUIFlag.rootPath = file.getParent();
             }
 		}
-		main.getChartSuite().addChartsToSetConfig();
+		for(ChartTypeSuite chartCg : main.getChartSuite().getChartsConfig()) {
+			chartCg.setChartFolder(GUIFlag.rootPath);
+			System.out.println(chartCg.getClass() + " " + chartCg.getChartFolder());
+		}
 		main.getChartGenerator().run();
 	}
 

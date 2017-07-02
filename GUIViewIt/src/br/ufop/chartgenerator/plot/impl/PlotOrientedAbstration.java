@@ -1,8 +1,6 @@
 package br.ufop.chartgenerator.plot.impl;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,24 +8,19 @@ import java.util.List;
 
 import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.CategoryLabelPositions;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.TickUnit;
-import org.jfree.chart.axis.TickUnitSource;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.CategoryItemRenderer;
-import org.jfree.chart.renderer.category.CategoryStepRenderer;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.statistics.BoxAndWhiskerCategoryDataset;
 import org.jfree.data.statistics.DefaultBoxAndWhiskerCategoryDataset;
-import org.jfree.ui.RectangleInsets;
 
 import br.ufop.chartgenerator.data.api.ICsvPreview;
 import br.ufop.chartgenerator.data.model.CsvSummary;
@@ -37,7 +30,6 @@ import br.ufop.chartgenerator.plot.api.IPlotOrientedAbstration;
 import br.ufop.harviewer.model.ContentInfo;
 import br.ufop.harviewer.model.EntryTimings;
 import br.ufop.harviewer.model.PageTimings;
-import br.ufop.utils.skiplabel.CategoryAxisSkipLabels;
 
 public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	
@@ -54,7 +46,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	}
 	
 	@Override
-	public void pieChart(String pageName, String type, String information) {
+	public void pieChart(String chartFolder, String pageName, String title, String type, String information) {
 		if((type.toUpperCase()).equals("RESOURCE")){
 			CsvSummary csvSummary = csvPreview.getCsvSummary();
 			List<String> pages = new ArrayList<String>();
@@ -66,9 +58,9 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 			for(String name : pages){
 				ContentInfo contentInfo = csvSummary.getContentInfoByPage(name);
 				if((information.toUpperCase()).equals("SIZE"))
-					printChartResources(name, contentInfo);
+					printChartResources(chartFolder, name, title, contentInfo);
 				if((information.toUpperCase()).equals("QUANTITY"))
-					printChartTotalResources(name, contentInfo);
+					printChartTotalResources(chartFolder, name, title, contentInfo);
 			}
 		}
 	}
@@ -76,16 +68,18 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	@Override
 	public void boxPlotChart(String chartFolder, String title, Pages pages, DataViews dataViews) {
 		CsvSummary csvSummary = csvPreview.getCsvSummary();
+		
 		BoxAndWhiskerCategoryDataset dataset = createDataset(csvSummary,pages.getPages(),dataViews.getDataView());
+	
         JFreeChart boxPlotChart = ChartFactory.createBoxAndWhiskerChart(title,
         																"Page",
         																"Time(ms)",
         																dataset,
         																true);//legenda
         
-        File fileChart = new File(title+".png");
+        File fileChart = new File(chartFolder, title+".png");
 		try {
-			ChartUtilities.saveChartAsPNG(fileChart, boxPlotChart, 640, 480);
+			ChartUtilities.saveChartAsPNG(fileChart, boxPlotChart, 800, 600); //640, 480
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,6 +91,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	public void barChart(String chartFolder, String title, Pages pages){
 		CsvSummary csvSummary = csvPreview.getCsvSummary();
 		CategoryDataset dataset = createDataset2(csvSummary,pages.getPages());
+	
 		JFreeChart barChart = ChartFactory.createStackedBarChart(
 	        	title,
 	            "Pages",                  // domain axis label
@@ -107,7 +102,8 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	            true,                        // tooltips
 	            false                        // urls
 	        );
-		File fileChart = new File(title+".png");
+		
+		File fileChart = new File(chartFolder, title+".png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, barChart, 800, 600);
 		} catch (IOException e) {
@@ -136,7 +132,8 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 		lineChart.setBackgroundPaint(ChartColor.WHITE);
 		
 		//nao muda abaixo
-		File fileChart = new File(title+".png");
+//		File fileChart = new File(title+".png");
+		File fileChart = new File(chartFolder, title+".png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, lineChart, 800, 600);
 		} catch (IOException e) {
@@ -147,7 +144,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	}
 	
 	//privates uso do JFreeChart
-	private void printChartTotalResources(String pageName, ContentInfo contentInfo){
+	private void printChartTotalResources(String chartFolder, String pageName, String title, ContentInfo contentInfo){
 		DefaultPieDataset pieDataset = new DefaultPieDataset();
 		if(contentInfo.getTotalHtml() > 0)
 			pieDataset.setValue("HTML", contentInfo.getTotalHtml());
@@ -165,7 +162,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 														 true,//legend
 														 false,
 														 false);
-		File fileChart = new File(pageName+"Pie.png");
+		File fileChart = new File(chartFolder, title+"Pie.png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, pieChart, 640, 480);
 		} catch (IOException e) {
@@ -173,7 +170,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 			e.printStackTrace();
 		}
 	}
-	private void printChartResources(String pageName, ContentInfo contentInfo){
+	private void printChartResources(String chartFolder, String pageName, String title, ContentInfo contentInfo){
 		DefaultPieDataset pieDatabase= new DefaultPieDataset();
 		if(contentInfo.getHtml() > 0)
 			pieDatabase.setValue("HTML", contentInfo.getHtml());
@@ -192,7 +189,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 				 false,
 				 false);
 		
-		File fileChart = new File(pageName+"dataPieChart.png");
+		File fileChart = new File(chartFolder, title+"dataPieChart.png");
 		try {
 			ChartUtilities.saveChartAsPNG(fileChart, pieChart, 640, 480);
 		} catch (IOException e) {
@@ -348,6 +345,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		
 		List<String> pagesValid = csvSummary.getPageNames();//lista de paginas
+		System.out.println(pagesValid.get(0));
 		List<String> pages = new ArrayList<String>();
 		if(pagesIn == null){
 			pages.addAll(pagesValid);
@@ -365,7 +363,6 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 				}
 			}
 		}
-		
 		List<String> harFileNames = csvSummary.getHarNamesList(pages.get(0));
 		List<String> categoryHarName = new ArrayList<String>();
 		

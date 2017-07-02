@@ -35,9 +35,6 @@ public class PieChartController {
 		this.main = main;
 		if(control) {
         	main.getChartSuite().initPieChart();
-            main.getChartSuite().setCsvPath("geral.csv");
-            main.getChartSuite().setChartFolder("src");
-            main.setGUIFlag();
             control = false;
         }
 	}
@@ -53,11 +50,10 @@ public class PieChartController {
 	public void okButtonAction() {
 		
 		PieChart pie = new PieChart();
-		pie.setChartFolder("src");
 		pie.setTitle(title.getText());
 		pie.setPageName(pageName.getText());
-		pie.setType("resource");
-		pie.setInformation("quantity");
+		pie.setType(type.getText());
+		pie.setInformation(information.getText());
 		main.getChartSuite().getPieCharts().add(pie);
 		main.showChartCreationView();
 	}

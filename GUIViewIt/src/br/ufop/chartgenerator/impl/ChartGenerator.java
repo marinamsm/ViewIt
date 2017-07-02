@@ -47,6 +47,7 @@ class ChartGenerator implements IChartGenerator{
 				 .createInstance(ProvidedInterface.ICSVPREVIEW);
 		if(GUIFlag.GUI){
 			System.out.println("VAI LER CSV");
+			System.out.println(GUIFlag.csvPathForChart);
 			csvPreview.readCsvFile(GUIFlag.csvPathForChart);
 			System.out.println("LEU");
 		}

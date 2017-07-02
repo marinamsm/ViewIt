@@ -37,9 +37,6 @@ public class BarChartController {
 		this.main = main;
 		if(control) {
         	main.getChartSuite().initBarChart();
-            main.getChartSuite().setCsvPath("geral.csv");
-            main.getChartSuite().setChartFolder("src");
-            main.setGUIFlag();
             control = false;
         }
 	} 

@@ -596,7 +596,7 @@ public class Main extends Application {
     }
     
     public void setGUIFlag() {
-    	flag = new GUIFlag(true, getChartSuite().getCsvPath(), getChartSuite());
+    	flag = new GUIFlag(true, getChartSuite().getCsv(), getChartSuite());
     }
     
     public Stage getPrimaryStage() {

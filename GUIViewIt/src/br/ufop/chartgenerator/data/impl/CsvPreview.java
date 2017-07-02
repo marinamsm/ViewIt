@@ -18,6 +18,7 @@ class CsvPreview implements ICsvPreview {
 
 	@Override
 	public void readCsvFile(String csvPath) {
+		System.out.println(csvPath);
 		FileInputStream stream;
 		InputStreamReader reader;
 		BufferedReader br;
@@ -37,7 +38,9 @@ class CsvPreview implements ICsvPreview {
 			
 			while (line != null) {
 				auxLine = line.split(",");
+				System.out.println(auxLine[0]);
 				String pageName = auxLine[0].replaceAll("\\s+","");
+				System.out.println(auxLine[0]);
 				String harName = auxLine[1];
 				
 				ContentInfo contentInfo = new ContentInfo.Builder()
@@ -65,9 +68,9 @@ class CsvPreview implements ICsvPreview {
 				line = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
-
+			e.printStackTrace();
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
 
 	}

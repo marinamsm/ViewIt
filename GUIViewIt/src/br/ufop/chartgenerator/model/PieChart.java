@@ -56,8 +56,7 @@ public class PieChart extends ChartTypeSuite{
 	public void plotChart(ICsvPreview csvPreview) {
 		
 		plotBot = new PlotOrientedAbstration(csvPreview);
-		
-		plotBot.pieChart(pageName, type, information);
+		plotBot.pieChart(getChartFolder(), pageName, title, type, information);
 	}
 
 }

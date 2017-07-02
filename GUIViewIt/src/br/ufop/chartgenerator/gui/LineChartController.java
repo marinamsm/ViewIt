@@ -37,9 +37,6 @@ public class LineChartController {
 		this.main = main;
 		if(control) {
         	main.getChartSuite().initLineChart();
-            main.getChartSuite().setCsvPath("geral.csv");
-            main.getChartSuite().setChartFolder("src");
-            main.setGUIFlag();
             control = false;
         }
 	} 
