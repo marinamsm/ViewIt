@@ -468,19 +468,20 @@ public class Main extends Application {
 //                System.out.println(wrapper.getX_times());
 //                System.out.println(wrapper.getY_interval());
 //                System.out.println(wrapper.getURL());
+//                getTestInput().setMain(this);
                 getTestInput().setX_times(wrapper.getX_times());
                 getTestInput().setY_interval(wrapper.getY_interval());
                 getTestInput().setURL(wrapper.getURL());
 //                System.out.println(getTestInput().getX_times());
 //                System.out.println(getTestInput().getY_interval());
 //                System.out.println(getTestInput().getURL());
-//                for(int i = 0; i < data.size(); i++){
-//                	System.out.println("Tamanho da lista de acoes: " + data.size());
-//                	System.out.println(data);
-//                }
-      
-                showTestCreationView();
+                for(int i = 0; i < data.size(); i++){
+                	System.out.println("Tamanho da lista de acoes: " + data.size());
+                	System.out.println(data);
+                }
+                getTestInput().loadTestCasesByStepId(this);
                 setProjectFilePath(file);
+                showTestCreationView();
             }
             catch(Exception e){
             	e.printStackTrace();

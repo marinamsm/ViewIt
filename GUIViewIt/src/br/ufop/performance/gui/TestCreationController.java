@@ -67,6 +67,7 @@ public class TestCreationController {
         	URLField.setText(main.getTestInput().getURL());
             x_times.setValue(main.getTestInput().getX_times());
             y_interval.setValue(main.getTestInput().getY_interval());
+//            main.getTestInput().loadTestCasesByStepId();
 //            if(GUIFlag.rootPath != ""){
 //            	System.out.println("TestCreationController class " + GUIFlag.rootPath);
 //            	main.getTestInput().setCsvFolder(GUIFlag.rootPath + "\\" + main.getTestInput().getURL());

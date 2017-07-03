@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.TreeMap;
 
 import br.ufop.Main;
 import javafx.beans.property.IntegerProperty;
@@ -185,5 +186,52 @@ public class TestInput extends TestSuite{
     public void setSaveFlag(boolean saveFlag) {
     	this.saveFlag = saveFlag;
     }
+    
+    public void loadTestCasesByStepId(Main main) {
+    	if(this.main == null){
+    		this.main = main;
+    	}
+		Typing type = new Typing();
+    	Clicking click = new Clicking();
+    	Submitting submit = new Submitting();
+    	SelectingOption select = new SelectingOption();
+    	ContextClicking context = new ContextClicking();
+    	CheckingBoxes check = new CheckingBoxes();
+    	CheckingAlert alert = new CheckingAlert();
+    	PerformanceTestCase action;
+		// buscando testes do tipo Typing
+		for(PerformanceTestCase tc : main.getData()) {
+			if(tc.getClass().isInstance(type)) {
+				initTypingList();
+				getTypingSteps().add((Typing)tc);
+			}
+			else if(tc.getClass().isInstance(click)) {
+				initClickingList();
+				getClickingSteps().add((Clicking)tc);
+			}
+			else if(tc.getClass().isInstance(submit)) {
+				initSubmittingList();
+				getSubmittingSteps().add((Submitting)tc);
+			}
+			else if(tc.getClass().isInstance(select)) {
+				initSelectingOptionList();
+				getSelectingOptionSteps().add((SelectingOption)tc);
+			}
+			else if(tc.getClass().isInstance(context)) {
+				initContextClickingList();
+				getContextClickingSteps().add((ContextClicking)tc);
+			}
+			else if(tc.getClass().isInstance(check)) {
+				initCheckingBoxList();
+				getCheckingBoxSteps().add((CheckingBoxes)tc);
+			}
+			else if(tc.getClass().isInstance(alert)){
+				initCheckingAlertList();
+				getCheckingAlertSteps().add((CheckingAlert)tc);
+			}
+		}
+		
+	}
+
     
 }
