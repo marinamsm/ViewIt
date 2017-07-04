@@ -87,7 +87,7 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 			} else {
 				System.out.println("Fim da execucao do teste!");
 				readHarFilesFromDirectory(pageName);
-				//System.exit(0);
+				System.exit(0);
 				this.cancel();
 			}
 		}
