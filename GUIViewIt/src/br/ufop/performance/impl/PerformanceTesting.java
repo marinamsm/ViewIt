@@ -26,6 +26,8 @@ class PerformanceTesting implements IPerformanceTesting {
 	
 	private boolean XML = true; //defines how the program is being run, with XML or with GUI
 	
+	private int sleepTime; //used to prevent asynchronous testing and har reading
+	
 	public void setMain(Main main) {
 		this.main = main;
 	}
@@ -36,6 +38,7 @@ class PerformanceTesting implements IPerformanceTesting {
 			//config = main.getTestInput();
 //			config.setNavigation();
 			main.getTestInput().setNavigation();
+			sleepTime = main.getTestInput().getY_interval();
 			XML = false; //running ViewIt's GUI
 //			return config;
 			return main.getTestInput();

@@ -16,12 +16,20 @@ public class CheckingAlertController {
 	
 	private Main main;
 	
+	/**Name given to the action of checking alert message in this test case.
+	 * Important if you have multiple of these actions in the same test case.*/
+	/**Nome dado à ação de confirmar mensagem de alerta neste caso de teste.
+	 * Importante se houver várias dessas ações no mesmo caso de teste.*/
 	@FXML
 	private TextField description;
 	
+	/**Checking option to check alert message*/
+	/**Opção selecionada para confirmar mensagem*/
 	@FXML
 	private TextField optionInTheCheckbox;
 	
+	/**The step number will dictate the order of execution of the actions*/
+	/**O número do passo irá governar a ordem de execução das ações*/
 	@FXML
 	private ComboBox<String> stepNumber;
 	
@@ -35,6 +43,8 @@ public class CheckingAlertController {
 	
 	private boolean control = true;
 	
+	/**This function sets a variable with the main controller of the application.*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
 		this.main = main;
 		if(control){
@@ -43,13 +53,17 @@ public class CheckingAlertController {
 		}
 	}
 	
-	@FXML
+	/**Initializes the fields in the view*/
+	/**Inicializa os campos da tela*/
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
 		stepNumber.setItems(stepsList);
 	}
 	
-	public void okButtonAction() {
+	/**Sets details according to the user's input*/
+	/**Configura detalhes de acordo com a entrada do usuário*/
+	@FXML
+	private void okButtonAction() {
 		CheckingAlert check = new CheckingAlert();
 		check.setDescription(description.getText());
 		
@@ -72,8 +86,10 @@ public class CheckingAlertController {
 		main.showAdvancedSettingsView();
 	}
 	
+	/**Returns to preview screen*/
+	/**Retorna à tela anterior*/
 	@FXML
-	public void cancelButtonAction() {
+	private void cancelButtonAction() {
 		main.showAdvancedSettingsView();
 	}
 	

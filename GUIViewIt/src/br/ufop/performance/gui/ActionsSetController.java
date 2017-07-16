@@ -30,18 +30,37 @@ public class ActionsSetController {
 	@FXML
     private TableColumn<PerformanceTestCase, String> actionColumn;
 	
+	/**Name given to the action.
+	 * Important if you have multiple actions of the same type.*/
+	/**Nome dado à ação.
+	 * Importante se houver várias ações do mesmo tipo.*/
 	@FXML
 	private Label descriptionLabel;
 	
+	/**What is going to be typed when the test is running. 
+	 * Used only for Typing action. */
+	/**O que será digitado durante a execução do teste.
+	 * Usado apenas na ação de digitar. */
 	@FXML
 	private Label keyLabel;
 	
+	/**This is the input locator name found when inspecting element in the page to be tested.
+     *Unnecessary in Checking Alert action.*/
+	/**Esse é o nome do locator encontrado ao inspecionar elemento na página a ser testada.*/
 	@FXML
 	private Label locatorLabel;
 	
+	/**Locator to be used in order to locate the element in the page.
+     * Unnecessary in Checking Alert action.*/
+	/**Locator usado para localizar o elemento na página.
+	 * Desnecessário para a ação de Checking Alert.*/
 	@FXML
 	private Label typeOfLocatorLabel;
 	
+	 /**Checking option to check alert message.
+     * Used only for Checking Alert action. */
+	/**Opção selecionada para confirmar mensagem.
+	 * Usado apenas na ação Checking Alert.*/
 	@FXML
 	private Label optionToCheckLabel;
 	
@@ -64,6 +83,8 @@ public class ActionsSetController {
 	
 	private boolean control = true; //if control is true then it is the first time this screen is loaded by main
 	
+	/**This function sets a variable with the main controller of the application*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
 		this.main = main;
 		test = main.getTestInput();
@@ -88,11 +109,11 @@ public class ActionsSetController {
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
-    @FXML
-    private void initialize() {
+    public void initialize() {
     	//Initialize the table with the two columns
      }
-    
+    /**Sets TableView in order to show all the actions chosen by the user */
+    /**Configura TableView para mostrar todas as ações escolhidas pelo usuário*/
     private void setTable(){
     	//sets tableview
 //    	for(int i = 0; i < main.getData().size(); i++) {
@@ -105,6 +126,8 @@ public class ActionsSetController {
     	}*/	
     }
     
+    /**Updates the view accordig to actions*/
+    /**Atualiza a tela de acordo com as ações*/
     private void showTestSuiteDetails() {
     	
     	//Add change listener
@@ -187,18 +210,21 @@ public class ActionsSetController {
             }
     }
     
-    public void newButton() {
+    @FXML
+    private void newButton() {
     	main.showAdvancedSettingsView();
     }
     
-    public void editButton() {
+    @FXML
+    private void editButton() {
     	 PerformanceTestCase selectedAction = actionTable.getSelectionModel().getSelectedItem();
          if (selectedAction != null) {
              main.showActionEditionView(selectedAction);
          }
     }
     
-    public void deleteButton() {
+    @FXML
+    private void deleteButton() {
     
         int selectedIndex = actionTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -215,7 +241,8 @@ public class ActionsSetController {
     
     }
     
-    public void backButton() {
+    @FXML
+    private void backButton() {
     	main.showAdvancedSettingsView();
     }
 

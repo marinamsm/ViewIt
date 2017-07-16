@@ -16,17 +16,27 @@ public class ClickingController {
 	
 	private Main main;
 	
+	/**Name given to the action of clicking in this test case.
+	 * Important if you have multiple of these actions in the same test case.*/
+	/**Nome dado à ação de clique neste caso de teste.
+	 * Importante se houver várias dessas ações no mesmo caso de teste.*/
 	@FXML
 	private TextField description;
 	
+	/**Locator to be used in order to locate the element(e.g: button) in the page to click in*/
+	/**Locator usado para localizar o elemento (ex: um botão) na página a ser clicado*/
 	@FXML
 	private ComboBox<String> inputLocator; //String to be converted into ByTypes in ByLocator class
 	
 	ObservableList<String> list = FXCollections.observableArrayList("ByClassName", "ByCssSelector", "ById", "ByLinkText", "ByName", "ByPartialLinkText", "ByTagName", "ByXPath");
 	
+	/**This is the input locator name found when inspecting element in the page to be tested*/
+	/**Esse é o nome do locator encontrado ao inspecionar elemento na página a ser testada*/
 	@FXML	
 	private TextArea nameOfInputLocator; //String to be set in the value field of the ByLocator class
 	
+	/**The step number will dictate the order of execution of the actions*/
+	/**O número do passo irá governar a ordem de execução das ações*/
 	@FXML
 	private ComboBox<String> stepNumber;
 	
@@ -40,6 +50,8 @@ public class ClickingController {
 	
 	private boolean control = true; //if control is true then it is the first time the Clicking screen is loaded by main
 	
+	/**This function sets a variable with the main controller of the application.*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
 		this.main = main;
 		if(control) {
@@ -49,7 +61,8 @@ public class ClickingController {
 		
 	}
 	
-	@FXML
+	/**Initializes the fields in the view*/
+	/**Inicializa os campos da tela*/
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
 		inputLocator.setValue("ByXPath"); //default value
@@ -57,8 +70,10 @@ public class ClickingController {
 		stepNumber.setItems(stepsList);
 	}
 	
+	/**Sets details according to the user's input*/
+	/**Configura detalhes de acordo com a entrada do usuário*/
 	@FXML
-	public void okButtonAction() {
+	private void okButtonAction() {
 		Clicking click = new Clicking();
 		click.setDescription(description.getText());
 		click.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
@@ -78,8 +93,10 @@ public class ClickingController {
 		main.showAdvancedSettingsView();
 	}
 	
+	/**Returns to preview screen*/
+	/**Retorna à tela anterior*/
 	@FXML
-	public void cancelButtonAction() {
+	private void cancelButtonAction() {
 		main.showAdvancedSettingsView();
 	}
 	

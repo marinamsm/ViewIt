@@ -23,10 +23,18 @@ public class RootTestController {
 	
 	public RootTestController() {
 	}
+	
+	/**This function is called when the button "Create Scenario" is pressed.
+	 * It redirects to the main test page*/
+	/**Esta função é chamada ao pressionar o botão "Create Scenario".
+	 * Ela redireciona para a página principal de testes*/
 	@FXML
 	private void createTestButtonAction() {
 		main.showTestCreationView();
 	}
+	
+	/** This Opens the file chooser*/
+	/** Abre a janela de diálogo para seleção de arquivo*/
 	@FXML
 	private void openTestButtonAction() {
 		FileChooser fileChooser = new FileChooser();

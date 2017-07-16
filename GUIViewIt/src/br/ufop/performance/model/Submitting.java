@@ -71,6 +71,5 @@ public class Submitting extends PerformanceTestCase{
 				 locator.getValue()));
 		
 	}
-
 }
 

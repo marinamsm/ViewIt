@@ -23,6 +23,10 @@ public class RootChartController {
 	public void setMain(Main main) {
         this.main = main;
         GUIFlag.GUI = true;
+        main.getChartSuite().initLineChart();
+        main.getChartSuite().initPieChart();
+        main.getChartSuite().initBoxPlotChart();
+        main.getChartSuite().initBarChart();
     }
 	
 	public RootChartController() {

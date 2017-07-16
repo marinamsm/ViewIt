@@ -62,5 +62,4 @@ public class CheckingAlert extends PerformanceTestCase{
 		actionBot = new ActionOrientedAbstraction(webDriver);
 		actionBot.checkAlert(option);
 	}
-
 }

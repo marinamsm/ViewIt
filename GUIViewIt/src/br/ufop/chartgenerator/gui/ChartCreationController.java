@@ -103,6 +103,7 @@ public class ChartCreationController {
 			System.out.println(chartCg.getClass() + " " + chartCg.getChartFolder());
 		}
 		main.getChartGenerator().run();
+		System.exit(0);
 	}
 
 	@FXML

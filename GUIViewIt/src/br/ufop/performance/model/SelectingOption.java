@@ -83,5 +83,4 @@ public class SelectingOption extends PerformanceTestCase {
 				visibleText);
 
 	}
-
 }

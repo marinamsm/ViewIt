@@ -26,7 +26,7 @@ public class TestInput extends TestSuite{
     
 	private StringProperty harFolder = new SimpleStringProperty("harDirectory");
     
-	private final StringProperty csvFolder = new SimpleStringProperty("csvDirectory");
+	private final StringProperty csvFolder = new SimpleStringProperty("csvDirectory.csv");
     
 	private final StringProperty testDescription = new SimpleStringProperty("description");
     
@@ -35,7 +35,8 @@ public class TestInput extends TestSuite{
 	private boolean saveFlag = false;
 
     public void setMain(Main main) {
-    	this.main = main;
+    	if(this.main == null)
+    		this.main = main;
     }
     /**
      * Default constructor.

@@ -35,10 +35,6 @@ public class BarChartController {
 	
 	public void setMain(Main main) {
 		this.main = main;
-		if(control) {
-        	main.getChartSuite().initBarChart();
-            control = false;
-        }
 	} 
 	
 	public BarChartController(){

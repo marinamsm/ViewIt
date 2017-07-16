@@ -33,10 +33,6 @@ public class PieChartController {
 	
 	public void setMain(Main main) {
 		this.main = main;
-		if(control) {
-        	main.getChartSuite().initPieChart();
-            control = false;
-        }
 	}
 	
 	public PieChartController(){

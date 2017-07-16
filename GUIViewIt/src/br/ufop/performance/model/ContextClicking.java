@@ -75,12 +75,10 @@ public class ContextClicking extends PerformanceTestCase{
 		this.name = name;
 	}
 
-
-
 	@Override
 	public void executeTest(WebDriver webDriver) {
 		this.actionBot = new ActionOrientedAbstraction(webDriver);
 		actionBot.contextClicking(locator.getByObject(locator.getBy(),locator.getValue()), this.name);
 	}
-
+	
 }

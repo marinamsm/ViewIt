@@ -38,10 +38,6 @@ public class BoxPlotChartController {
 	
 	public void setMain(Main main) {
 		this.main = main;
-		if(control) {
-        	main.getChartSuite().initBoxPlotChart();
-            control = false;
-        }
 	} 
 	
 	public BoxPlotChartController(){

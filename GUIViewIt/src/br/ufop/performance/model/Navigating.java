@@ -54,7 +54,4 @@ public class Navigating extends PerformanceTestCase {
 		
 	}
 	
-
-	
-	
 }

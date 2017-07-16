@@ -17,19 +17,27 @@ import javafx.scene.control.TextField;
 public class SelectingOptionController {
 
 	private Main main;
-	
+	/**Name given to the action of selecting option in this test case.
+	 * Important if you have multiple of these actions in the same test case.*/
+	/**Nome dado à ação de selecionar opção neste caso de teste.
+	 * Importante se houver várias dessas ações no mesmo caso de teste.*/
 	@FXML
 	private TextField description;
 	
+	/**Locator to be used in order to locate the element(e.g: a radio button) in the page where an option will be selected*/
+	/**Locator usado para localizar o elemento (ex: um radio button) na página onde uma opção será selecionada*/
 	@FXML
 	private ComboBox<String> inputLocator;
 	
 	ObservableList<String> list = FXCollections.observableArrayList("ByClassName", "ByCssSelector", "ById", "ByLinkText", "ByName", "ByPartialLinkText", "ByTagName", "ByXPath");
 	
+	/**This is the input locator name found when inspecting element in the page to be tested*/
+	/**Esse é o nome do locator encontrado ao inspecionar elemento na página a ser testada*/
 	@FXML	
 	private TextArea nameOfInputLocator;
 	
-	
+	/**The step number will dictate the order of execution of the actions*/
+	/**O número do passo irá governar a ordem de execução das ações*/
 	@FXML
 	private ComboBox<String> stepNumber;
 	
@@ -43,6 +51,8 @@ public class SelectingOptionController {
 	
 	private boolean control = true;
 	
+	/**This function sets a variable with the main controller of the application.*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
 		this.main = main;
 		if(control){
@@ -51,7 +61,8 @@ public class SelectingOptionController {
 		}
 	}
 	
-	@FXML
+	/**Initializes the fields in the view*/
+	/**Inicializa os campos da tela*/
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
 		inputLocator.setValue("ByXPath");
@@ -59,8 +70,10 @@ public class SelectingOptionController {
 		stepNumber.setItems(stepsList);
 	}
 	
+	/**Sets details according to the user's input*/
+	/**Configura detalhes de acordo com a entrada do usuário*/
 	@FXML
-	public void okButtonAction() {
+	private void okButtonAction() {
 		
 		SelectingOption selected = new SelectingOption();
 		selected.setDescription(description.getText());
@@ -82,11 +95,17 @@ public class SelectingOptionController {
 		main.showAdvancedSettingsView();
 	}
 	
+	/**Returns to preview screen*/
+	/**Retorna à tela anterior*/
 	@FXML
-	public void cancelButtonAction() {
+	private void cancelButtonAction() {
 		main.showAdvancedSettingsView();
 	}
 	
+	/**Adds Typing object already set to an ObservableList (JAVAFX list).
+	 * The list is used by "ActionsSetController" to show the all the actions.*/
+	/**Adiciona objeto de Typing já configurado a uma ObservableList (lista do JAVAFX).
+	 * A lista é usada em "ActionsSetController" para mostrar todas as ações.*/
 	public void addToObsList(SelectingOption selected) {
 		main.getData().add(selected);
 	}

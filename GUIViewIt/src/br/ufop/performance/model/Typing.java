@@ -85,11 +85,7 @@ public class Typing extends PerformanceTestCase {
 		catch(Exception e) {
 			System.out.println("EXCEPTION IN TYPING");
 			e.printStackTrace();
-		}
-			
-
-		
-		
+		}	
 	}
 
 }

@@ -256,5 +256,4 @@ public class TestSuite extends PerformanceTestCase {
 		}
 
 	}
-
 }

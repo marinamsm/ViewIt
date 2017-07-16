@@ -37,53 +37,73 @@ public class AdvancedSettingsTestController {
 	@FXML
 	private Button contextClicking;
 	
+	/**This function sets a variable with the main controller of the application*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
         this.main = main;
 	}
 	
+	/**Returns to main test screen*/
+	/**Retorna à tela principal de testes*/
 	@FXML
-	public void backButtonAction() {
+	private void backButtonAction() {
 		main.showTestCreationView();
 	}
-	
+
+	/**Shows chosen actions (e.g: clicking, typing etc)*/
+	/**Exibe as ações escolhidas (ex: clicking, typing)*/
 	@FXML
-	public void myActionsButtonAction() {
+	private void myActionsButtonAction() {
 		main.showMyActionsView();
 	}
 	
+	/**Opens Typing view so the user can set details about the action of typing*/
+	/**Abre a tela da ação Typing(digitar) para o usuário configurar detalhes da ação de digitar*/
 	@FXML
-	public void typingButton() {
+	private void typingButton() {
 		main.showTypingView();
 	}
 	
+	/**Opens Checking Boxes view so the user can set details about this action*/
+	/**Abre a tela da ação Checking Boxes (selecionar uma ou várias opções) para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void checkingBoxesButton() {
+	private void checkingBoxesButton() {
 		main.showCheckingBoxesView();
 	}
 	
+	/**Opens Selecting Option view so the user can set details about this action*/
+	/**Abre a tela da ação Selecting Option (selecionar uma opção) para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void selectingOptionButton() {
+	private void selectingOptionButton() {
 		//it has the same action and view as checkingBox
 		main.showSelectingOptionView();
 	}
 	
+	/**Opens Clicking view so the user can set details about this action*/
+	/**Abre a tela da ação Clicking(clicar) para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void clickingButton() {
+	private void clickingButton() {
 		main.showClickingView();
 	}
 	
+	/**Opens Submitting view so the user can set details about this action*/
+	/**Abre a tela da ação Submitting(submeter formulário) para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void submittingButton() {
+	private void submittingButton() {
 		main.showSubmittingView();
 	}
 	
+	/**Opens Checking Alert view so the user can set details about this action*/
+	/**Abre a tela da ação Checking Alert(confirmar/recusar mensagem de alerta) para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void checkingAlertButton() {
+	private void checkingAlertButton() {
 		main.showCheckingAlertView();
 	}
 	
+	/**Opens Context Clicking view so the user can set details about this action*/
+	/**Abre a tela da ação Context Clicking para o usuário configurar detalhes desta ação*/
 	@FXML
-	public void contextClickingButton() {
+	private void contextClickingButton() {
 		main.showContextClickingView();
 	}
 }

@@ -15,6 +15,10 @@ public class ContextClickingController {
 	
 	private Main main;
 	
+	/**Name given to the action of context clicking in this test case.
+	 * Important if you have multiple of these actions in the same test case.*/
+	/**Nome dado a esta ação neste caso de teste.
+	 * Importante se houver várias dessas ações no mesmo caso de teste.*/
 	@FXML
 	private TextField description;
 	

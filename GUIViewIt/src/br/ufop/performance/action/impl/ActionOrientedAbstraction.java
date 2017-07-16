@@ -20,21 +20,14 @@ import br.ufop.performance.action.api.IActionOrientedAbstraction;
 public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 
 	private final int sleepTime = 3000;
-	private final int waitTime = 20; //20 s
-
-	/*
-	 * Ateh o momento (19/06) sao utilizados soment By.Xpath. Contudo, a
-	 * utilizacao de By como parametro facilita evolucao desta interface.
-	 * Posteriormente, evoluir para que o thread.sleep() seja utilizado somente
-	 * quando necessario (e.g. receber como parametro um boolean).
-	 */
+	private final int waitTime = 20; 
 
 	private final WebDriver driver;
 
 	public ActionOrientedAbstraction(WebDriver driver) {
 		this.driver = driver;
 	}
-
+	
 	public void click(By locator) {
 		try {
 			// esperar ate firebox carregar
@@ -73,9 +66,9 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			driver.get(URL);
 			driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
 
+			
+			
 			// esperar ateh que o Har seja exportado (Har sempre eh exportado
-			// quando nova pagina eh carregada)
-
 			Thread.sleep(sleepTime);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +93,7 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 		}
 		
 		Select sel = new Select(driver.findElement(locatorRadioForm));
-		//driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
 		sel.selectByVisibleText(selectedVisibleText);
 
 	}

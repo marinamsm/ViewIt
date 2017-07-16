@@ -35,10 +35,6 @@ public class LineChartController {
 	
 	public void setMain(Main main) {
 		this.main = main;
-		if(control) {
-        	main.getChartSuite().initLineChart();
-            control = false;
-        }
 	} 
 	
 	public LineChartController(){

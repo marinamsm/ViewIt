@@ -16,18 +16,38 @@ import javafx.scene.control.TextField;
 
 public class ActionEditionController {
 	
+	/**Name given to the action.
+	 * Important if you have multiple actions of the same type.*/
+	/**Nome dado à ação.
+	 * Importante se houver várias ações do mesmo tipo.*/
 	@FXML
     private TextField description;
 	
+	/**What is going to be typed when the test is running. 
+	 * Used only for Typing action. */
+	/**O que será digitado durante a execução do teste.
+	 * Usado apenas na ação de digitar. */
     @FXML
     private TextField key;
     
+    /**Locator to be used in order to locate the element in the page.
+     * Unnecessary in Checking Alert action.*/
+	/**Locator usado para localizar o elemento na página.
+	 * Desnecessário para a ação de Checking Alert.*/
     @FXML
     private TextField typeOfLocator;
     
+    /**This is the input locator name found when inspecting element in the page to be tested.
+     *Unnecessary in Checking Alert action.*/
+	/**Esse é o nome do locator encontrado ao inspecionar elemento na página a ser testada.
+	 * Desnecessário para a ação de Checking Alert.*/
     @FXML
     private TextArea locator;
     
+    /**Checking option to check alert message.
+     * Used only for Checking Alert action. */
+	/**Opção selecionada para confirmar mensagem.
+	 * Usado apenas na ação Checking Alert.*/
     @FXML
     private TextField optionToCheck;
     
@@ -46,6 +66,8 @@ public class ActionEditionController {
     
     private boolean control = true; //if control is true then it is the first time the Typing screen is loaded by main
     
+    /**This function sets a variable with the main controller of the application.*/
+	/**Recebe o principal controlador (Main) da aplicação*/
     public void setMain(Main main) {
     	this.main = main;
     	if(control){
@@ -53,7 +75,8 @@ public class ActionEditionController {
 			control = false;
 		}
     }
-    
+    /**Sets the view with the actions the user chose*/
+    /**Configura a tela com as ações que o usuário escolheu*/
     public void setAction(PerformanceTestCase action) {
     	this.action = action;
     	Typing type = new Typing();
@@ -131,7 +154,8 @@ public class ActionEditionController {
     	}
     }
     
-    public void okButtonAction() {
+    @FXML
+    private void okButtonAction() {
     	Typing type = new Typing();
     	Clicking click = new Clicking();
     	Submitting submit = new Submitting();
@@ -181,11 +205,17 @@ public class ActionEditionController {
     	main.showMyActionsView();
     }
     
-    public void backButtonAction() {
+    /**Returns to preview screen*/
+	/**Retorna à tela anterior*/
+    @FXML
+    private void backButtonAction() {
     	main.showMyActionsView();
     }
     
-    public void cancelButtonAction() {
+    /**Returns to preview screen*/
+	/**Retorna à tela anterior*/
+    @FXML
+    private void cancelButtonAction() {
     	main.showMyActionsView();
     }
 }

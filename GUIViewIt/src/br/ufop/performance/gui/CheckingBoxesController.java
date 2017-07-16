@@ -18,23 +18,34 @@ public class CheckingBoxesController {
 	
 	private Main main;
 	
+	/**Name given to the action of checking boxes in this test case.
+	 * Important if you have multiple of these actions in the same test case.*/
+	/**Nome dado à ação Checking Boxes neste caso de teste.
+	 * Importante se houver várias dessas ações no mesmo caso de teste.*/
 	@FXML
 	private TextField description;
 	
+	/**Options to check in a set of check boxes*/
+	/**Opções a serem selecionadas em um conjunto de check boxes*/
 	@FXML
 	private TextField optionsToCheck;
 	
 	private List<String> options;
 	
+	/**Locator to be used in order to locate the element(e.g: check box) in the page to select options*/
+	/**Locator usado para localizar os elementos (ex: check box) na página a serem selecionados*/
 	@FXML
 	private ComboBox<String> inputLocator;
 	
 	ObservableList<String> list = FXCollections.observableArrayList("ByClassName", "ByCssSelector", "ById", "ByLinkText", "ByName", "ByPartialLinkText", "ByTagName", "ByXPath");
 	
+	/**This is the input locator name found when inspecting element in the page to be tested*/
+	/**Esse é o nome do locator encontrado ao inspecionar elemento na página a ser testada*/
 	@FXML	
 	private TextArea nameOfInputLocator;
 	
-	
+	/**The step number will dictate the order of execution of the actions*/
+	/**O número do passo irá governar a ordem de execução das ações*/
 	@FXML
 	private ComboBox<String> stepNumber;
 	
@@ -48,6 +59,8 @@ public class CheckingBoxesController {
 	
 	private boolean control = true;
 	
+	/**This function sets a variable with the main controller of the application.*/
+	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
 		this.main = main;
 		if(control){
@@ -57,6 +70,8 @@ public class CheckingBoxesController {
 		}
 	}
 	
+	/**Initializes the fields in the view*/
+	/**Inicializa os campos da tela*/
 	@FXML
 	public void initialize() { 
 		//this method is called before any other methods because it is called during screen loading
@@ -65,8 +80,10 @@ public class CheckingBoxesController {
 		stepNumber.setItems(stepsList);
 	}
 	
+	/**Sets details according to the user's input*/
+	/**Configura detalhes de acordo com a entrada do usuário*/
 	@FXML
-	public void okButtonAction() {
+	private void okButtonAction() {
 		CheckingBoxes check = new CheckingBoxes();
 		check.setDescription(description.getText());
 		check.setLocatorGUI(inputLocator.getSelectionModel().getSelectedItem(), nameOfInputLocator.getText());
@@ -91,8 +108,10 @@ public class CheckingBoxesController {
 		main.showAdvancedSettingsView();
 	}
 	
+	/**Returns to preview screen*/
+	/**Retorna à tela anterior*/
 	@FXML
-	public void cancelButtonAction() {
+	private void cancelButtonAction() {
 		main.showAdvancedSettingsView();
 	}
 	

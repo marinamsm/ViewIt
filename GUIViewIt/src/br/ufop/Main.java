@@ -480,6 +480,7 @@ public class Main extends Application {
                 	System.out.println(data);
                 }
                 getTestInput().loadTestCasesByStepId(this);
+                //não chama controller de advanced settings, por isso elas não aparecem na tela. CORRIGIR ISTO!!!
                 setProjectFilePath(file);
                 showTestCreationView();
             }
@@ -558,7 +559,7 @@ public class Main extends Application {
             }
         	else {
         		getTestInput().setHarFolder(file.getParent()+ "\\harDirectory");
-                getTestInput().setCsvFolder(file.getParent()+ "\\csvDirectory");
+                getTestInput().setCsvFolder(file.getParent()+ "\\csvDirectory.csv");
                 getTestInput().setSaveFlag(true);
         	};
             primaryStage.setTitle("Project - " + file.getName());
