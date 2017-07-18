@@ -41,7 +41,8 @@ public class ChartCreationController {
 	private Button cancelButton;
 	
 	public void setMain(Main main) {
-        this.main = main;
+		if(this.main == null)
+			this.main = main;
     }
 	
 	

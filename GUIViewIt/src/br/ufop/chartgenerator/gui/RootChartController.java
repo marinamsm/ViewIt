@@ -21,12 +21,14 @@ public class RootChartController {
 	private ToggleButton openButton;
 	
 	public void setMain(Main main) {
-        this.main = main;
-        GUIFlag.GUI = true;
-        main.getChartSuite().initLineChart();
-        main.getChartSuite().initPieChart();
-        main.getChartSuite().initBoxPlotChart();
-        main.getChartSuite().initBarChart();
+		if(this.main == null){
+			this.main = main;
+			GUIFlag.GUI = true;
+	        main.getChartSuite().initLineChart();
+	        main.getChartSuite().initPieChart();
+	        main.getChartSuite().initBoxPlotChart();
+	        main.getChartSuite().initBarChart();
+		}
     }
 	
 	public RootChartController() {

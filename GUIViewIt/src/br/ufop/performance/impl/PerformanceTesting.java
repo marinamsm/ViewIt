@@ -29,7 +29,8 @@ class PerformanceTesting implements IPerformanceTesting {
 	private int sleepTime; //used to prevent asynchronous testing and har reading
 	
 	public void setMain(Main main) {
-		this.main = main;
+		if(this.main == null)
+			this.main = main;
 	}
 	
 	public TestInput loadTestInput() {

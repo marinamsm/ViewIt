@@ -34,7 +34,8 @@ public class BarChartController {
 	private boolean control = true;
 	
 	public void setMain(Main main) {
-		this.main = main;
+		if(this.main == null)
+			this.main = main;
 	} 
 	
 	public BarChartController(){

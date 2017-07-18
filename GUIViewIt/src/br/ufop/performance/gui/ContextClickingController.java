@@ -44,13 +44,10 @@ public class ContextClickingController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true;
-	
 	public void setMain(Main main) {
-		this.main = main;
-		if(control){
+		if(this.main == null){
+			this.main = main;
 			main.getTestInput().initContextClickingList();
-			control = false;
 		}
 	}
 	

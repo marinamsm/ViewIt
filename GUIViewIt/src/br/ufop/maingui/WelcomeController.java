@@ -24,7 +24,8 @@ public class WelcomeController {
 	
 	
 	public void setMain(Main main) {
-		this.main = main;
+		if(this.main == null)
+        	this.main = main;
 	}
 	
 	@FXML

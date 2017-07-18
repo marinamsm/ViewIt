@@ -48,17 +48,13 @@ public class ClickingController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true; //if control is true then it is the first time the Clicking screen is loaded by main
-	
 	/**This function sets a variable with the main controller of the application.*/
 	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
-		this.main = main;
-		if(control) {
+		if(this.main == null){
+			this.main = main;
 			main.getTestInput().initClickingList();
-			control = false;
 		}
-		
 	}
 	
 	/**Initializes the fields in the view*/

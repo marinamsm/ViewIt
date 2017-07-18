@@ -81,28 +81,24 @@ public class ActionsSetController {
 	
 	private TestInput test;
 	
-	private boolean control = true; //if control is true then it is the first time this screen is loaded by main
-	
 	/**This function sets a variable with the main controller of the application*/
 	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
-		this.main = main;
-		test = main.getTestInput();
-		if(control){
-			control = false;
+		if(this.main == null){
+			this.main = main;
+			test = main.getTestInput();
+			
+			setTable();
+			
+			stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
+	        
+			actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
+	        showTestSuiteDetails();
+	        
+	        // Listen for selection changes and show the test suite details when changed
+	        actionTable.getSelectionModel().selectedItemProperty().addListener(
+	                (observable, oldValue, newValue) -> showTestSuiteDetails());
 		}
-		
-		setTable();
-		
-		stepColumn.setCellValueFactory(new PropertyValueFactory<>("step"));
-        
-		actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
-        showTestSuiteDetails();
-        
-        // Listen for selection changes and show the test suite details when changed
-        actionTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showTestSuiteDetails());
-
 	}
 	
 	/**

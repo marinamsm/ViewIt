@@ -21,13 +21,9 @@ public class RootProjectController {
 	@FXML
 	private ToggleButton about;
 	
-	private boolean control = true; //if control is true then it is the first time the Typing screen is loaded by main
-	
 	public void setMain(Main main) {
-        this.main = main;
-        if(control){
-			control = false;
-		}
+		if(this.main == null)
+        	this.main = main;
     }
 	
 	public RootProjectController() {

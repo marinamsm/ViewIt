@@ -38,7 +38,8 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 
 	
 	public void setMain(Main main) {
-		this.main = main;
+		if(this.main == null)
+			this.main = main;
 	}
 	
 	//GUI
@@ -88,7 +89,7 @@ class PerformanceTestingSchedule implements IPerformanceTestingSchedule {
 				System.out.println("Fim da execucao do teste!");
 				readHarFilesFromDirectory(pageName);
 				System.exit(0);
-				this.cancel();
+//				this.cancel();
 			}
 		}
 	}

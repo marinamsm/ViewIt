@@ -41,16 +41,12 @@ public class CheckingAlertController {
 	@FXML
 	private Button cancelButton;
 	
-	private boolean control = true;
-	
 	/**This function sets a variable with the main controller of the application.*/
 	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
-		this.main = main;
-		if(control){
-			main.getTestInput().initCheckingAlertList();
-			control = false;
-		}
+		if(this.main == null){
+        	this.main = main;
+        }
 	}
 	
 	/**Initializes the fields in the view*/

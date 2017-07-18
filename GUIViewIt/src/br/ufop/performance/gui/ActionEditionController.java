@@ -69,11 +69,13 @@ public class ActionEditionController {
     /**This function sets a variable with the main controller of the application.*/
 	/**Recebe o principal controlador (Main) da aplicação*/
     public void setMain(Main main) {
-    	this.main = main;
-    	if(control){
-			main.getTestInput().initTypingList();
-			control = false;
-		}
+    	if(this.main == null){
+    		this.main = main;
+        	if(control){
+    			main.getTestInput().initTypingList();
+    			control = false;
+    		}
+    	}
     }
     /**Sets the view with the actions the user chose*/
     /**Configura a tela com as ações que o usuário escolheu*/

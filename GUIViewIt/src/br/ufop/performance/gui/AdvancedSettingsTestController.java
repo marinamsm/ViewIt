@@ -40,7 +40,9 @@ public class AdvancedSettingsTestController {
 	/**This function sets a variable with the main controller of the application*/
 	/**Recebe o principal controlador (Main) da aplicação*/
 	public void setMain(Main main) {
-        this.main = main;
+        if(this.main == null){
+        	this.main = main;
+        }
 	}
 	
 	/**Returns to main test screen*/

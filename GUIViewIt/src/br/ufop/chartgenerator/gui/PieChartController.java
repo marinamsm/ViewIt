@@ -32,7 +32,8 @@ public class PieChartController {
 	private boolean control = true;
 	
 	public void setMain(Main main) {
-		this.main = main;
+		if(this.main == null)
+			this.main = main;
 	}
 	
 	public PieChartController(){

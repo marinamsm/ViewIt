@@ -66,11 +66,15 @@ public class TestCreationController {
 	/**Recebe o principal controlador (Main) da aplicação
 	 * e modifica a view caso o usuário carregue um cenário já existente.*/
 	public void setMain(Main main) {
-        this.main = main;
-        //inicializa os campos para input do usuário
-        /*no construtor não funciona porque o construtor é chamado antes de carregar a interface gráfica,
-         * assim os campos da interface ainda são nulos (são alocados automaticamente no fxml pelo SceneBuilder)*/
-        x_times.setItems(optionX_times);
+		if(this.main == null){
+			this.main = main;
+		}
+    }
+	
+	public void initialize() {
+		//bind controller to model
+		//setBind();
+		x_times.setItems(optionX_times);
 		y_interval.setItems(optionY_interval);
         if(main.getTestInput().getURL() != "") {
         	URLField.setText(main.getTestInput().getURL());
@@ -81,14 +85,6 @@ public class TestCreationController {
         else {
         	URLField.setText("https://");
         }
-        
-		//init();
-		
-    }
-	
-	public void init() {
-		//bind controller to model
-		//setBind();
 	}
 	
 	public TestCreationController() {}	
