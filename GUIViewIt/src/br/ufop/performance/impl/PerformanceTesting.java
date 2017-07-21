@@ -11,6 +11,7 @@ import br.ufop.Main;
 import br.ufop.performance.api.IPerformanceTesting;
 import br.ufop.performance.model.TestInput;
 import br.ufop.performance.model.TestSuite;
+import javafx.scene.control.ProgressIndicator;
 
 class PerformanceTesting implements IPerformanceTesting {
 
@@ -113,11 +114,11 @@ class PerformanceTesting implements IPerformanceTesting {
         profile.setPreference(domain + "netexport.showPreview", false);
         if(XML == false){
         	if(main.getTestInput().getSaveFlag()) {
-        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarPath());
+//        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarPath());
         		profile.setPreference(domain + "netexport.defaultLogDir", main.getTestInput().getHarPath());
         	}
         	else {
-        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarDirectoryPath());
+//        		System.out.println("PerformanceTesting class " + main.getTestInput().getHarDirectoryPath());
         		profile.setPreference(domain + "netexport.defaultLogDir", main.getTestInput().getHarDirectoryPath());
         	}
         }

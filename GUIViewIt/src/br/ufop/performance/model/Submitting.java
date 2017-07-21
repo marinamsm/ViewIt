@@ -32,18 +32,30 @@ public class Submitting extends PerformanceTestCase{
 		return action;
 	}
 	
+	/**Number of this action's step.
+	 * This step is automatically set to 1 when using GUI.
+	 *Número do passo dessa ação.
+	 * Este passp é automaticamente configurado como 1 ao usar GUI.*/
 	public String getStepID() {
 		return stepID;
 	}
 
+	/**Number of this action's step.
+	 * This step is automatically set to 1 when using GUI.
+	 *Número do passo dessa ação.
+	 * Este passp é automaticamente configurado como 1 ao usar GUI.*/
 	public void setStepID(String stepID) {
 		this.stepID = stepID;
 	}
 
+	/**Description about this object action.
+	*Descrição sobre a ação deste objeto.*/
 	public String getDescription() {
 		return description;
 	}
 
+	/**Description about this object action.
+	*Descrição sobre a ação deste objeto.*/
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -64,6 +76,8 @@ public class Submitting extends PerformanceTestCase{
 		this.locator = locator;
 	}
 
+	/**Runs this action (ContextClicking) during the test according to its stepID.
+	*Executa essa ação (ContextClicking) durante o teste de acordo com seu stepID.*/
 	@Override
 	public void executeTest(WebDriver webdriver) {
 		actionBot = new ActionOrientedAbstraction(webdriver);

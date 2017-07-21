@@ -15,12 +15,17 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 public class TestCreationController {
 	
 	private Main main;
+	
+	@FXML
+	private AnchorPane self;
 	
 	@FXML
 	private TextField URLField; 
@@ -65,10 +70,17 @@ public class TestCreationController {
 	 * It also sets options to the view in case the user opens an existing scenario.*/
 	/**Recebe o principal controlador (Main) da aplicação
 	 * e modifica a view caso o usuário carregue um cenário já existente.*/
-	public void setMain(Main main) {
+	public void setMain(Main main, AnchorPane testView) {
 		if(this.main == null){
 			this.main = main;
+//			self = testView;
 		}
+		if(main.getTestInput().getURL() != "") {
+        	URLField.setText(main.getTestInput().getURL());
+            x_times.setValue(main.getTestInput().getX_times()); 
+            y_interval.setValue(Integer.toString(main.getTestInput().getY_interval())+" ms");
+            control = true;
+        }
     }
 	
 	public void initialize() {
@@ -76,15 +88,7 @@ public class TestCreationController {
 		//setBind();
 		x_times.setItems(optionX_times);
 		y_interval.setItems(optionY_interval);
-        if(main.getTestInput().getURL() != "") {
-        	URLField.setText(main.getTestInput().getURL());
-            x_times.setValue(main.getTestInput().getX_times()); 
-            y_interval.setValue(Integer.toString(main.getTestInput().getY_interval())+" ms");
-            control = true;
-        }
-        else {
-        	URLField.setText("https://");
-        }
+    	URLField.setText("https://");
 	}
 	
 	public TestCreationController() {}	
@@ -172,6 +176,8 @@ public class TestCreationController {
 	/** Used by "runButtonAction". It runs the test case in a background thread. It uses Task.*/
 	/** Usado em "runButtonAction". Executa o caso de teste em uma thread em segundo plano. Usa Task.*/
 	private void callTest() {
+//		ProgressIndicator progressIndicator = new ProgressIndicator();
+//        self.getChildren().addAll(progressIndicator);
 		//executa os testes em segundo plano para não travar a interface gráfica
 		Task<Void> task = new Task<Void>() {
 		    @Override public Void call() {
@@ -179,7 +185,6 @@ public class TestCreationController {
 		    	pageName.add("Home");
 		    	//run the tests and save the results in .har files
 		    	testSchedule.runPeriodically(pageName);
-		    	
 		    	return null;
 		    }
 		};

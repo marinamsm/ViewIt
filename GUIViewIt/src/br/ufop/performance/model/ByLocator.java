@@ -5,9 +5,13 @@ import org.openqa.selenium.By;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
+/**Type of locator to use in order to locate the element on the page*/
+/**Tipo de locator usado para encontrar o elemento na página*/
 @XStreamAlias("locator")
 public class ByLocator {
 
+	/**ByTypes are divided in: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.
+	 * ByTypes são divididos em: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.*/
 	@XStreamAsAttribute
 	private ByTypes by;
 
@@ -22,6 +26,8 @@ public class ByLocator {
 	}
 	
 	//FOR GUI
+	/**ByTypes are divided in: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.
+	 * ByTypes são divididos em: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.*/
 	public void setByFromString(String by) {
 		switch (by) {
 		case "ById":
@@ -54,6 +60,8 @@ public class ByLocator {
 	}
 	
 	//FOR XML ONLY
+	/**ByTypes are divided in: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.
+	 * ByTypes são divididos em: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.*/
 	public void setBy(ByTypes by) {
 		this.by = by;
 	}
@@ -66,6 +74,8 @@ public class ByLocator {
 		this.value = value;
 	}
 
+	/**ByTypes are divided in: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.
+	 * ByTypes são divididos em: ByClassName, ByCssSelector, ById, ByLinkText, ByName, ByPartialLinkText, ByTagName, ByXPath.*/
 	public By getByObject(ByTypes by, String value) {
 
 		switch (by) {

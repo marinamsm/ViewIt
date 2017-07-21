@@ -116,6 +116,11 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 	public void lineChart(String chartFolder, String title, Pages pages) {
 		CsvSummary csvSummary = csvPreview.getCsvSummary();
 		CategoryDataset dataset = createLineDataset(csvSummary,pages.getPages());
+		csvSummary.printTest();
+//		System.out.println(csvSummary.getContentInfoByPage("ALL"));
+//		System.out.println(csvSummary.getCsvInfoSummaryByPage("ALL"));
+//		System.out.println(csvSummary.getPageTimingsList("ALL"));
+//		System.out.println(csvSummary.getEntryTimingsList("ALL"));
 		
 		JFreeChart lineChart = ChartFactory.createLineChart(title,
 															"Date - Hour",
@@ -345,7 +350,7 @@ public class PlotOrientedAbstration implements IPlotOrientedAbstration{
 		DefaultCategoryDataset result = new DefaultCategoryDataset();
 		
 		List<String> pagesValid = csvSummary.getPageNames();//lista de paginas
-		System.out.println(pagesValid.get(0));
+//		System.out.println(pagesValid.get(0));
 		List<String> pages = new ArrayList<String>();
 		if(pagesIn == null){
 			pages.addAll(pagesValid);

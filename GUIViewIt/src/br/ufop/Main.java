@@ -43,6 +43,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -169,10 +170,9 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("performance/gui/TestCreation.fxml"));
             AnchorPane testView = (AnchorPane) loader.load();
             rootLayout.setCenter(testView);
-            
             // Give the controller access to the main app.
             testCreationController = loader.getController();
-            testCreationController.setMain(this);
+            testCreationController.setMain(this, testView);
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -219,7 +219,6 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("chartgenerator/gui/RootChart.fxml"));
             AnchorPane chartRootLayout = (AnchorPane) loader.load();
             rootLayout.setTop(chartRootLayout);
-         
          // Give the controller access to the main app.
         	rootChartController = loader.getController();
            	rootChartController.setMain(this);

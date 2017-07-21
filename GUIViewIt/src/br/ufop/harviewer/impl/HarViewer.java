@@ -152,9 +152,9 @@ class HarViewer implements IHarViewer {
 	@Override
 	public void exportHarFilesToCSVFile(String harPath, String csv, List <String> pageName) {
 		
-		System.out.println(harPath);
-		System.out.println(csv);
-		System.out.println(pageName.get(0));
+//		System.out.println(harPath);
+//		System.out.println(csv);
+//		System.out.println(pageName.get(0));
 		String csvContent = " ";
 		readHarFilesFromDirectory(harPath, csv, pageName);
 		for (int i = 0; i < harInfoList.size(); i++) {
@@ -220,9 +220,9 @@ class HarViewer implements IHarViewer {
 	public List<HarInfoSummary> readHarFilesFromDirectory(String harPath, String csv, List <String> pageName) {
 		//o loadHarDirectoryConfigurations serve apenas para ler dados do xml
 		//harConfig = loadHarDirectoryConfigurations(harConfigPath);
-		System.out.println(harPath);
-		System.out.println(csv);
-		System.out.println(pageName.get(0));
+//		System.out.println(harPath);
+//		System.out.println(csv);
+//		System.out.println(pageName.get(0));
 		harConfig = new HarDirectoryConfig();
 		harConfig.setCsvFilePath(csv);
 		harConfig.setPageName(pageName);
