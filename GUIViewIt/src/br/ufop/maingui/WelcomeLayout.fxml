@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,10 +22,51 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ChoiceBox fx:id="gettingStarted" layoutX="184.0" layoutY="122.0" prefHeight="25.0" prefWidth="174.0" styleClass="drop-down-list" stylesheets="@viewit.css" />
-      <Text fill="WHITE" layoutX="186.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Getting started" />
-      <ChoiceBox fx:id="language" layoutX="184.0" layoutY="179.0" prefHeight="25.0" prefWidth="124.0" styleClass="drop-down-list" stylesheets="@viewit.css" />
-      <Text fill="WHITE" layoutX="186.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writingsSubHeader" text="Language" />
-      <Label fx:id="about" layoutX="184.0" layoutY="240.0" styleClass="writingsSubHeader" stylesheets="@viewit.css" text="About" textFill="WHITE" />
+      <ChoiceBox layoutX="184.0" layoutY="122.0" prefHeight="25.0" prefWidth="174.0" styleClass="drop-down-list" stylesheets="@viewit.css" />
+      <ChoiceBox layoutX="184.0" layoutY="179.0" prefHeight="25.0" prefWidth="124.0" styleClass="drop-down-list" stylesheets="@viewit.css" />
+      <Accordion layoutX="156.0" layoutY="122.0">
+        <panes>
+          <TitledPane animated="false" stylesheets="@viewit.css" text="Getting started" textFill="WHITE">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="list-view" stylesheets="@viewit.css">
+                     <children>
+                        <ListView fx:id="gettingStarted" prefHeight="200.0" prefWidth="200.0" stylesheets="@viewit.css" AnchorPane.bottomAnchor="-20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <styleClass>
+                              <String fx:value="list-cell" />
+                              <String fx:value="list-view" />
+                           </styleClass>
+                        </ListView>
+                     </children>
+                  </AnchorPane>
+            </content>
+               <styleClass>
+                  <String fx:value="accordion" />
+                  <String fx:value="right-anchor-pane" />
+               </styleClass>
+          </TitledPane>
+          <TitledPane animated="false" styleClass="right-anchor-pane" stylesheets="@viewit.css" text="Language" textFill="WHITE">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="language" prefHeight="200.0" prefWidth="200.0" styleClass="right-anchor-pane" stylesheets="@viewit.css" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" styleClass="right-anchor-pane" stylesheets="@viewit.css" text="About" textFill="WHITE">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="right-anchor-pane">
+                     <children>
+                        <Text fx:id="about" fill="WHITE" layoutX="2.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Text" wrappingWidth="142.09375" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+         <styleClass>
+            <String fx:value="accordion" />
+            <String fx:value="writings" />
+         </styleClass>
+      </Accordion>
    </children>
 </AnchorPane>

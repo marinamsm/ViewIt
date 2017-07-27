@@ -4,8 +4,8 @@ import br.ufop.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 
 public class WelcomeController {
 	private Main main;
@@ -14,13 +14,13 @@ public class WelcomeController {
 	ObservableList<String> llist = FXCollections.observableArrayList("English", "Português");
 	
 	@FXML
-	private ChoiceBox gettingStarted;
+	private ListView gettingStarted;
 	
 	@FXML
-	private ChoiceBox language;
+	private ListView language;
 	
 	@FXML
-	private Label about; 
+	private Text about; 
 	
 	
 	public void setMain(Main main) {
@@ -31,8 +31,8 @@ public class WelcomeController {
 	@FXML
 	public void initialize() {
 		gettingStarted.setItems(list);
-		language.setValue("English");
 		language.setItems(llist);
+		about.setText("Authors: Amanda Sávio Nascimento e Silva, Eduardo Chagas, Marina de Souza Mendes - UFOP - DECOM");
 	}
 	
 	@FXML

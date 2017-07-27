@@ -3,6 +3,10 @@
 	-fx-opacity: 0.0; /*invisible }ChoiceBox*/ 
 }
 
+.accordion .titled-pane .title {
+    -fx-background-color: transparent ;
+}
+
 .writingsHeader {
 	-fx-text-fill: white;
 	-fx-font-size: 40px;
@@ -108,3 +112,53 @@
 .right-anchor-pane {
   -fx-background-color: rgb(147, 205, 221);
 }
+
+.list-view .list-cell {
+  -fx-background-color: rgb(147, 205, 221);
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-border-color: rgb(147, 205, 221);
+  -fx-font-family: Lora;
+}
+
+.table-cell {
+  -fx-background-color: rgb(49,133,156);
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-alignment: CENTER;
+  -fx-font-weight: bold;
+  -fx-border-color: rgb(49,133,156);
+  -fx-font-family: Lora;
+}
+
+.table-cell:hover, .table-cell:selected {
+  -fx-background-color: rgb(79,129,189);
+}
+
+/*#action:selected {
+	-fx-background-color: rgb(79,129,189);
+}*/
+
+.column-header > .label {
+	-fx-background-color: rgb(49,133,156);
+	-fx-text-fill: white;
+	-fx-border-color: rgb(49,133,156);
+}
+
+.table-view .label {
+	-fx-background-color: rgb(49,133,156);
+	-fx-text-fill: white;
+	-fx-border-color: rgb(49,133,156);
+}
+/*
+.teste > .column-header {
+	-fx-background-color: rgb(49,133,156);
+	-fx-border-color: rgb(49,133,156);
+}
+ 
+.teste > .column-header > .label {
+	-fx-background-color: rgb(49,133,156);
+	-fx-border-color: rgb(49,133,156);
+}
+ */

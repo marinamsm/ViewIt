@@ -71,8 +71,8 @@ public class ActionOrientedAbstraction implements IActionOrientedAbstraction {
 			// esperar ateh que o Har seja exportado (Har sempre eh exportado
 			Thread.sleep(sleepTime);
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.exit(0);
+			
 		}
 
 	}

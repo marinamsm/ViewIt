@@ -10,19 +10,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufop.performance.gui.TestCreationController">
    <children>
-      <AnchorPane layoutX="-5.0" prefHeight="244.0" prefWidth="317.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css">
+      <AnchorPane layoutX="-5.0" prefHeight="244.0" prefWidth="317.0" styleClass="right-anchor-pane" stylesheets="@../../maingui/viewit.css" AnchorPane.leftAnchor="14.0">
          <children>
-            <Text fill="WHITE" layoutX="15.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="URL" wrappingWidth="299.13672644644976">
+            <Text fill="WHITE" layoutX="15.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="URL" wrappingWidth="299.13672644644976" AnchorPane.leftAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="15.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="How many times the test should be executed?" wrappingWidth="299.13671875">
+            <Text fill="WHITE" layoutX="15.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="How many times the test should be executed?" wrappingWidth="299.13671875" AnchorPane.leftAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="14.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Interval between each test" wrappingWidth="274.9999952316284">
+            <Text fill="WHITE" layoutX="14.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="Interval between each test" wrappingWidth="274.9999952316284" AnchorPane.leftAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -36,7 +36,7 @@
             <ComboBox fx:id="y_interval" layoutX="8.0" layoutY="179.0" prefWidth="119.0" />
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="14.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="All the configurations for this scenario will be saved in this project before execution" wrappingWidth="526.13671875">
+      <Text fill="WHITE" layoutX="14.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="writings" text="All the configurations for this scenario will be saved in this project before execution" wrappingWidth="526.13671875" AnchorPane.leftAnchor="14.0">
          <font>
             <Font size="14.0" />
          </font>

@@ -73,12 +73,16 @@ class PerformanceTesting implements IPerformanceTesting {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        webDriver.manage().window().maximize();
-        if(XML == false)
-        	main.getTestInput().executeTest(webDriver);
-        else
-        	testSuite.executeTest(webDriver);
+        try {
+	        webDriver.manage().window().maximize();
+	        if(XML == false)
+	        	main.getTestInput().executeTest(webDriver);
+	        else
+	        	testSuite.executeTest(webDriver);
+        } catch(Exception e) {
+        	e.printStackTrace();
+        	System.exit(0);
+        }
         webDriver.quit();
 }
 	private void setProfilePreferences() {

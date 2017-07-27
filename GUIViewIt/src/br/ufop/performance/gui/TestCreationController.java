@@ -36,10 +36,10 @@ public class TestCreationController {
 	@FXML
 	private ComboBox<String> y_interval;
 	
-	private ObservableList<Integer> optionX_times = FXCollections.observableArrayList(1,2,3,5,10,15);
+	private ObservableList<Integer> optionX_times = FXCollections.observableArrayList(1,2,3,5,10,15,30);
 	
 	private ObservableList<String> optionY_interval = FXCollections.observableArrayList("100 ms","200 ms","300 ms", "1 min", "5 min", "15 min", "30 min", "1 h",
-																							"3 hs", "5 hs", "12 hs", "24 hs");
+																							"3 h", "5 h", "12 h", "24 h");
 	
 	@FXML
 	private Button advancedButton;
@@ -86,7 +86,9 @@ public class TestCreationController {
 	public void initialize() {
 		//bind controller to model
 		//setBind();
+		x_times.setValue(1);
 		x_times.setItems(optionX_times);
+		y_interval.setValue("100 ms");
 		y_interval.setItems(optionY_interval);
     	URLField.setText("https://");
 	}
@@ -99,6 +101,7 @@ public class TestCreationController {
 		main.getTestInput().setMain(main);
 		if(x_times.getSelectionModel().getSelectedItem() != null)
 			main.getTestInput().setX_times(x_times.getSelectionModel().getSelectedItem());
+		else main.getTestInput().setX_times(1);
 		if(y_interval.getSelectionModel().getSelectedItem() != null){
 			String[] interval = y_interval.getSelectionModel().getSelectedItem().split("\\s");
 			//verificar se já está em ms ou não
@@ -106,7 +109,7 @@ public class TestCreationController {
 				main.getTestInput().setY_interval((int)(long)TimeUnit.MILLISECONDS.convert(Integer.parseInt(interval[0]), TimeUnit.MINUTES));
 //				System.out.println("TestCreationController - y_interval " + (int)(long)TimeUnit.MILLISECONDS.convert(Integer.parseInt(interval[0]), TimeUnit.MINUTES));
 			}
-			else if(interval[1].contains("h") || interval[1].contains("hs")){
+			else if(interval[1].contains("h")){
 				main.getTestInput().setY_interval((int)(long)TimeUnit.MILLISECONDS.convert(Integer.parseInt(interval[0]), TimeUnit.HOURS));
 //				System.out.println("TestCreationController - y_interval " + (int)(long)TimeUnit.MILLISECONDS.convert(Integer.parseInt(interval[0]), TimeUnit.HOURS));
 			}
@@ -114,7 +117,7 @@ public class TestCreationController {
 				main.getTestInput().setY_interval(Integer.parseInt(interval[0]));
 			}
 		}
-			
+		else main.getTestInput().setY_interval(100);
 		main.getTestInput().setURL(URLField.getText());
 		main.getTestInput().setNavigationOnSave();
 	}
